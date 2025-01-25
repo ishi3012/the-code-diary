@@ -10796,3 +10796,58 @@ header.masthead .post-heading .meta a {
     font-size: 2.25rem;
   }
 }
+
+#toc {
+  position: sticky;
+  top: 20px; /* Adjust to add space from the top */
+  max-height: calc(100vh - 20px); /* Ensure it doesn’t overflow the viewport */
+  padding: 15px;
+  background-color: #f8f9fa; /* Light background for contrast */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#toc h3 {
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
+
+#toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#toc ul li {
+  margin-bottom: 0.5em;
+}
+
+#toc ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+#toc ul li a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+.decorative-heading {
+  position: relative;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center; /* Center the heading */
+  margin-bottom: 1rem;
+}
+
+.decorative-heading::after {
+  content: '';
+  display: block;
+  height: 4px; /* Thickness of the line */
+  background-color: #FF6347; /* Line color */
+  margin: 0.5rem auto 0; /* Space below the text */
+  width: 100%; /* Makes the line as wide as the heading */
+  max-width: 300px; /* Optional: Limits the maximum line width */
+}
