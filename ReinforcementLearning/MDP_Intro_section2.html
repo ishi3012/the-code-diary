@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <!-- <h1>Charting the Path: MDP Fundamentals and Cliff Walking Implementation</h1> -->
+                             <h1>Paving the Way: Exploring MDPs Through Cliff Walking Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading">Introduction to Markov Decision Processes (MDPs): <br> ~ Policies: The Agent’s Game Plan ~ </h1>
+                                
+                                <p>Now that we’ve got the basics of Markov Decision Processes (MDPs) down, it’s time to talk strategy—Policies. If MDPs are the rules of the game, a policy is the agent’s playbook. It’s the blueprint for how the agent makes decisions at every step, guiding its actions in the pursuit of maximum rewards. Think of it as the “game plan” that turns raw potential into winning moves.</p>
+                                
+                                <h3>What is an MDP?</h3>
+                                <p>At its core, an MDP is a way to model sequential decision-making. You’re an agent in an environment, making decisions (or "actions") that affect the environment’s state and, in turn, determine the rewards you receive. The ultimate goal? Choose actions that maximize your rewards over time.
+
+                                <h3>What is a Policy?</h3>
+                                <p>A policy (𝜋) is essentially a mapping from states to actions. For every state the agent finds itself in, the policy tells it what to do next. There are two kinds of policies:</p>
+                                    <ol>
+                                        <li><b>Deterministic Policy:</b>
+                                            Always maps a state to a specific action.
+                                            <ul>
+                                                <li>Example: In a maze, if the agent is in square (2,3), the policy might always say “go right.”</li>
+                                                <li>Analogy: It’s like a GPS that gives you a single, fixed route to your destination.</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Stochastic Policy:</b>
+                                            Maps a state to a probability distribution over actions.
+                                            <ul>
+                                                <li>Example: In square (2,3), the policy might suggest “go right” with a 70% probability and “go left” with a 30% probability.</li>
+                                                <li>Analogy: It’s like choosing a restaurant where you mostly stick to your favorites but occasionally try something new.</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+
+                                    <h3>Why Policies Matter</h3>
+                                    <p>The ultimate goal of reinforcement learning is to find the optimal policy—the one that maximizes the agent’s cumulative reward over time. A good policy ensures the agent navigates the environment efficiently, avoids pitfalls (like falling off cliffs, hint hint), and achieves its goal with maximum success.</p>
+                                
+                                    <h3>Evaluating a Policy</h3>
+                                    <p>To figure out how good a policy is, we use two key concepts: Value Functions. These are like report cards for policies, grading how well the agent is expected to perform when following a specific plan.</p>
+                                    <ol>
+                                        <li>State-Value Function (V<sup>π</sup> (s) ) 
+                                            <p>This measures how good it is to be in a specific state 𝑠 when following policy 𝜋. In other words, it tells us the expected total reward starting from state 𝑠 and sticking to π.</p>
+                                            <p>Mathematically : </p>
+                                            <p><img src="../assets/img/mdp_2.png" alt="description" /></p>
+
+                                            Where:
+                                            <ul>
+                                                <li>γ is the discount factor, controlling how much we care about future rewards.</li>
+                                                <li>R<sub>t+1</sub> is the reward at time t+1.</li>
+                                            </ul>
+                                            <p><b>Fun Analogy:</b> It’s like looking at a map and seeing which route offers the best scenery and shortest travel time combined.</p>
+                                        </li>
+
+                                        <li>Action-Value Function (Q<sup>π</sup> (s, a) ) 
+                                            <p>This measures how good it is to take a specific action 𝑎 in a specific state 𝑠, while following policy 𝜋 afterward.</p>
+                                            <p>Mathematically : </p>
+                                            <p><img src="../assets/img/mdp_3.png" alt="description" /></p>
+                                            
+                                            <p><b>Fun Analogy:</b> Imagine you’re in a food court, deciding which restaurant to try. Q<sup>π</sup> (s, a) is like predicting how much you’ll enjoy a meal at a specific restaurant if you stick with your regular dining habits afterward.</p>
+                                        </li>
+                                    </ol>
+
+                                    <h3>Optimal Policy and Value Functions</h3>
+                                    <p>The goal of reinforcement learning is to find the optimal policy (𝜋<sup>*</sup>) that maximizes the expected rewards. For the optimal policy, the value functions are denoted as:</p>
+                                    <ul>
+                                        <li>Optimal State-Value Function: V<sup>*</sup>(s)</li>
+                                        <li>Optimal Action-Value Function: Q<sup>*</sup> (s, a)</li>
+                                    </ul>
+                                    <p>These represent the best possible outcomes the agent can achieve from any state or state-action pair.</p>
+
+                                    <h3>A Simple Example: The Cliff Walking Problem</h3>
+                                    <p>Let’s imagine our agent is navigating the infamous Cliff Walking Environment.</p>
+                                    <ul>
+                                        <li><b>States:</b> The grid cells in the environment.</li>
+                                        <li><b>Actions</b> Moving up, down, left, or right.</li>
+                                        <li>Rewards:
+                                            <ul>
+                                                <li>−1 for each step.</li>
+                                                <li>−100 if the agent falls off the cliff.</li>
+                                                <li>+0 for reaching the goal.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <p>Policies in Action:</p>
+                                    <ul>
+                                        <li>A bad policy might wander aimlessly and repeatedly fall off the cliff.</li>
+                                        <li>A good policy will hug the safe edge, minimizing penalties while reaching the goal.</li>
+                                        <li>The optimal policy finds the fastest, safest path to the goal with minimal risk.</li>
+                                    </ul>
+
+                                    <h3>How Do We Improve a Policy?</h3>
+                                    <p>Two main approaches help improve policies:</p>
+                                    <ul>
+                                        <li><b>Policy Evaluation:</b> Compute V<sup>π</sup>(s) and Q<sup>π</sup> (s, a) to assess how well the current policy performs.</li>
+                                        <li><b>Policy Improvement:</b> Adjust the policy based on value function insights to make better decisions.</li>
+                                    </ul>
+                                    <p>Together, these steps form the foundation of Policy Iteration, a process for finding the optimal policy.</p>
+                                    <h3>What’s Next?</h3>
+                                    <p>In the next section, we’ll roll up our sleeves and dive deeper into Policy Evaluation and Policy Iteration. We’ll break down how to compute value functions, refine policies, and implement these concepts in the Cliff Walking Environment. Ready to see MDPs in action? Let’s keep the momentum going! 🚀✨</p>
+
+                                    
+                                
+
+                                
+                                        
+                                
+                                <div class="navigation">        
+                                    <a href="./MDP_Intro_section1.html" class="btn-nav" title="Go to the previous section">Previous Section</a>                            
+                                    <a href="./MDP_Intro_section3.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                                </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

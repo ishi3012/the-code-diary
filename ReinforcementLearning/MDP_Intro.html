@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <!-- <h1>Charting the Path: MDP Fundamentals and Cliff Walking Implementation</h1> -->
+                             <h1>Paving the Way: Exploring MDPs Through Cliff Walking Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading">Introduction to Markov Decision Processes (MDPs): <br> ~ The Blueprint of Decision-Making ~ </h1>
+                                
+                                <p>Imagine you’re navigating a maze. At every step, you have to make a decision: go left, right, or straight. Each move brings you closer to the exit—or maybe to a dead end. What if you had a way to make decisions that ensured you’d always find the shortest path? Enter Markov Decision Processes (MDPs): the mathematical framework that turns complex decision-making problems into solvable puzzles.</p>
+                                
+                                <h2 class="decorative-heading">What is an MDP?</h2>
+                                <p>At its core, an MDP is a way to model sequential decision-making. You’re an agent in an environment, making decisions (or "actions") that affect the environment’s state and, in turn, determine the rewards you receive. The ultimate goal? Choose actions that maximize your rewards over time.
+
+                                </p><p>Think of an MDP as your personal strategy guide to life (or, at least, a very organized maze).</p>
+                                <p>A MDP is a process which:
+                                    <ul>
+                                        <li>Is a sequential decision problem (a sequence of decisions)</li>
+                                        <li>Operates in a fully observable, stochastic environment</li>
+                                        <li>Makes decisions by making transitions between states in the environment and obtaining rewards</li>
+                                        <li>Obeys the Markov property: transitions only depend on the most recent state and action, and no prior history.</li>
+                                    </ul>
+                                </p>
+                                <h2 class="decorative-heading">Key Components of an MDP</h2>
+
+                                <p><img src="../assets/img/mdp_1.png" alt="description" /></p>
+                                <ol>
+                                    <li><p>States (𝑆):</p>
+                                        <p>These represent the different situations you can be in.</p>
+                                        <ul>
+                                            <li>Example: In a maze, a state could be your current position. </li>
+                                            <li>Fun Analogy: Think of states as "checkpoints" in a video game—your starting point, where you save progress, and your ultimate goal. </li>
+                                        </ul>
+                                    </li>
+
+                                    <li><p>Actions (A):</p>
+                                        <p>The choices available to you at each state.</p>
+                                        <ul>
+                                            <li>Example: In the maze, you can move left, right, up, or down.</li>
+                                            <li>Fun Analogy: Actions are like deciding whether to attack, defend, or heal in a turn-based RPG.</li>
+                                        </ul>
+                                    </li>
+
+                                    <li><p>Transition Function  (P(s<sup><b>'</b></sup> | s, a)):</p>
+                                        <p>This defines the probabilities of moving to a new state (s<sup><b>'</b></sup>) given your current state (s) and action (a) </p>
+                                        <ul>
+                                            <li>Example: If you move left in the maze, there’s a 70% chance you’ll go left and a 30% chance you’ll slip on a banana peel and stay in the same spot.</li>
+                                            <li>Fun Analogy: It’s like rolling a dice to see if your character successfully picks a lock.</li>
+                                        </ul>
+                                    </li>
+
+                                    <li><p>Rewards (R(s, a, s<sup><b>'</b></sup>)):</p>
+                                        <p>The immediate payoff for taking an action in a state and ending up in a new state.</p>
+                                        <ul>
+                                            <li>Example: Finding a treasure chest in the maze gives you a reward of +10</li>
+                                            <li>Fun Analogy: Rewards are like the coins you collect in Super Mario—they’re what you’re aiming for!</li>
+                                        </ul>
+                                    </li>
+                                    <li><p>Discount Factor (γ):</p>
+                                        <p>This determines how much you value future rewards compared to immediate ones.</p>
+                                        <ul>
+                                            <li>Example: If 𝛾 = 0.9, you slightly favor immediate rewards but still care about future ones. If 𝛾=1, you’re super patient.</li>
+                                            <li>Fun Analogy: It’s like deciding whether to spend your gold now or save it for a shiny sword later.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                <h2 class="decorative-heading">Markov Decision Processes: What Makes Them Tick?</h2>
+
+                                <p>Let’s dive into the essentials of Markov Decision Processes (MDPs)—the foundation of many reinforcement learning tasks. If your problem has the Markov Property, you’re officially in MDP territory! But what exactly does that mean? Let’s break it down step by step in plain, fun terms.</p>
+                                <h5>Another Lens on MDPs</h5>
+                                <p>If your reinforcement learning task satisfies the Markov Property, it qualifies as an MDP. The Markov Property means that the future is independent of the past, as long as you know the present. In simpler terms:
+                                    <p>"What happens next depends only on where you are right now, not how you got there."</p>
+
+                                    For example:
+                                    <ul>
+                                        <li>If you’re in a maze, knowing your current position is enough to decide your next move.</li>
+                                        <li>You don’t need a full replay of all the wrong turns you took to get there.</li>
+                                    </ul>
+
+                                </p>
+                                <h5>Finite MDPs: Keeping Things Manageable</h5>
+                                <p>When the state and action sets are finite (not infinite), we have a finite MDP. This makes life simpler because you can actually map out all the possibilities, like drawing a flowchart for a video game level.</p>
+
+                                <h6>Defining a Finite MDP</h6>
+                                <p>To fully describe a finite MDP, you need to specify three main components:
+                                    <ol>
+                                        <li>
+                                            State and Action Sets
+                                            <ul>
+                                                <li>States(S) : All the possible situations your agent can encounter.Example: Every square in a grid-world maze.</li>
+                                                <li>Actions(A) :The choices your agent can make.Example: Move left, right, up, or down.</li>
+                                            </ul>
+                                            <p>Think of this as the "menu" of options available in any given situation.</p>
+                                        </li>
+                                        <li>
+                                            One-Step Dynamics
+                                            <p>This is where the magic of transitions and rewards comes into play. The dynamics answer these two questions:</p>
+                                            <ol>
+                                                <li>If I take action 𝑎 in state 𝑠, where will I end up?
+                                                <p>Transition probabilities (p(s<sup><b>'</b></sup>, r | a)) tell you the likelihood of ending up in a new state s<sup><b>'</b></sup> and receiving reward r.</p>
+                                                <p>Example: In the maze, taking action "go right" might:</p>
+                                                <ul>
+                                                    <li>Move you right with an 80% chance.</li>
+                                                    <li>Leave you in the same spot (oops!) with a 20% chance.</li>
+                                                </ul><br>
+                                                </li>
+                                                <li>What reward will I get for taking that action?
+                                                    <ul><li>Rewards (r) can be good (yay!) or bad (boo!). Example: Reaching the goal = +10, falling off a cliff = −100.</li></ul>
+                                                </li>
+                                            </ol>
+                                            <p>Mathematically:
+                                                <p><img src="../assets/img/mdp_4.png" alt="description" /></p>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            Simplified Transition and Reward Functions
+                                            <p>If we only care about where we end up (𝑠′) and the expected rewards (𝑟) without breaking them down into probabilities, we use:</p>
+                                            <ol>
+                                                <li>State Transition Probabilities: 
+                                                    <p><img src="../assets/img/mdp_5.png" alt="description" /></p>
+                                                    <p>This tells us the chance of landing in 𝑠′after taking 𝑎 in 𝑠, regardless of the reward.</p>
+                                                </li>
+                                                <li>Expected Rewards: 
+                                                    <p><img src="../assets/img/mdp_6.png" alt="description" /></p>
+                                                </li>
+                                            </ol>
+                                            <p>This gives us the average reward we expect for taking action 𝑎 in state 𝑠.</p>
+                                        </li>
+                                    </ol>
+                                </p>
+                                <h5>What Makes This "Known"?</h5>
+                                <p>In many cases, these components are assumed to be known. This assumption makes MDPs a mathematically idealized model. In real-world applications, we often don’t know all the details and have to estimate them through experience (hello, reinforcement learning!).</p>
+
+                                <h2 class="decorative-heading">States and Observations: Seeing the World Through the Agent's Eyes</h2>
+                                <p>In the world of Markov Decision Processes (MDPs), the agent always relies on its understanding of the state to make decisions. But what happens when the environment isn’t crystal clear? Enter the concept of observations—the breadcrumbs of information an agent uses to navigate when it can’t see the whole picture.</p>
+
+                                <h5>State vs. Observation: What’s the Difference?</h5>
+                                <ul>
+                                    <li>
+                                        State (S<sub>t</sub>):
+                                        <p>Represents the complete picture of the environment at a specific time 𝑡 Example: In a maze, the state could be your exact position on the grid, including the walls, the goal, and the cliff edges.</p>                                            
+                                    </li>
+
+                                    <li>
+                                        Observation (O<sub>t</sub>):
+                                        <p>When the agent can’t fully perceive the state, it forms an internal estimate based on what it observes. Example: The agent might only see part of the maze (like a foggy day in a labyrinth), so it guesses its position based on limited information.</p>                                                                                    
+                                    </li>
+                                </ul>
+                                <h5>Why Does This Matter?</h5>
+                                <p>When the environment is only partially observable, the agent has to get creative. It relies on its observations (O<sub>t</sub>) to estimate the state and decide its next action. This makes the problem more complex but also more realistic—after all, in the real world, we don’t always have all the information either!</p>
+
+                                <h5>A Peek Inside the Agent’s Mind</h5>
+                                <p>Here’s how the process works when the state is partially observable:</p>
+                                <ol>
+                                    <li>The agent receives an observation (O<sub>t</sub>) about the environment.</li>
+                                    <li>It updates its internal state—essentially its mental map of the world.</li>
+                                    <li>Based on this internal state, it takes an action.</li>
+                                    <li>The environment responds with a reward and a new observation, starting the loop all over again.</li>
+                                </ol>
+
+                                <h5>Why Do We Combine States and Observations in MDPs?</h5>
+                                <p>To simplify things, we often don’t distinguish between states and observations in basic MDP discussions. We assume that the agent always knows the true state, making it easier to design and evaluate policies. However, in more advanced scenarios (like Partially Observable MDPs or POMDPs), this distinction becomes crucial.</p>
+                                                                
+                                <h2 class="decorative-heading">Actions and Action Spaces: The Agent’s Toolkit</h2> 
+                                <p>Every decision your agent makes boils down to actions—the choices it can take at any given moment. These actions are what drive the agent forward in its quest to maximize rewards. But not all environments offer the same freedom of choice. That’s where action spaces come in!</p>
+
+                                <h5>What Are Actions?</h5>
+                                <p>Actions are the building blocks of decision-making in reinforcement learning.</p>
+                                <ul>
+                                    <li>They represent the decisions the agent makes at each step.</li>
+                                    <li>The agent’s policy uses these actions to navigate through the environment, respond to challenges, and earn rewards.</li>
+                                </ul>
+
+                                <h5>What Are Action Spaces?</h5>
+                                <p>The action space is the set of all possible actions an agent can take in a given environment. It defines the limits of what the agent can do. Different environments provide different kinds of action spaces:</p>
+                                <ol>
+                                    <li><b>Discrete Action Spaces</b> These are environments where the agent has a finite set of actions to choose from. 
+                                        <ul>
+                                        <li>Example:
+                                        <ul>
+                                            <li>In Atari games, the agent might choose between "move left," "move right," "jump," or "shoot."</li>
+                                            <li>In a grid-world, actions might include "up," "down," "left," and "right."</li>
+                                        </ul>
+                                        </li>
+                                        <li>Fun Analogy: It’s like playing chess—you have a set number of moves you can make on each turn.</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Continuous Action Spaces</b> In these environments, the agent can choose actions from a continuous range of values, typically represented as real-valued vectors.
+                                        <ul>
+                                            <li>Example:
+                                            <ul>
+                                                <li>Controlling a robot arm, where actions involve adjusting joint angles or applying forces with real-valued precision.</li>
+                                                <li>Self-driving cars, where the agent decides how much to accelerate, brake, or turn.</li>
+                                            </ul>
+                                            </li>
+                                            <li>Fun Analogy: It’s like driving a car—you’re not restricted to just "full speed" or "no speed." Instead, you can accelerate smoothly or make precise turns.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                <h5>Why Action Spaces Matter</h5>
+                                    <p>The type of action space shapes the strategies and algorithms your agent uses to solve problems:</p>
+                                    <ul>
+                                        <li><b>Discrete Spaces: </b>Simpler to model and compute, often used in games and grid-world environments.</li>
+                                        <li><b>Continuous Spaces: </b>More complex but necessary for real-world applications like robotics, physics simulations, and autonomous systems.</li>
+                                    </ul>
+                                    <p>Understanding the action space helps us design policies and learning algorithms that are tailored to the specific needs of the environment.</p>
+                                
+                                <h2 class="decorative-heading">State Transition: The Dance of Decisions</h2>
+                                <p>In the world of reinforcement learning, the journey from one state to the next is called a state transition. It’s the dynamic interaction between the agent and the environment that drives the learning process. Let’s break it down in simple terms: every action the agent takes creates a ripple effect, moving it to a new state and shaping the rewards it receives.</p>
+
+                                <h5>The Goal: Finding the Optimal Policy</h5>
+                                <p>At the heart of reinforcement learning is the quest to discover the optimal policy (π) </p>
+                                <ul>
+                                    <li>The policy determines which action (A) the agent should take when it’s in a particular state (S).</li>
+                                    <li>The goal? Maximize the cumulative reward over time. Think of the policy as the agent’s secret recipe for success—it tells the agent, “When you’re in state S<sub>t</sub>, take action A<sub>t</sub>"</li>
+                                </ul>
+                                
+                                <h5>How State Transitions Work</h5>
+                                <p>Here’s the sequence of events in a state transition:</p>
+                                <ol>
+                                    <li><b>Current State (S<sub>t</sub>): </b>The agent starts in a particular state at time t.</li>
+                                    <li><b>Take an Action (A<sub>t</sub>): </b>The policy guides the agent to choose an action based on its current state.</li>
+                                    <li>Environment Responds:
+                                        <ul>
+                                            <li>The environment provides a reward R<sub>t</sub> for the action.</li>
+                                            <li>It moves the agent to a new state S<sub>t+1</sub>, based on the dynamics of the system.</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Repeat: The agent updates its understanding and decides the next action, creating a sequence of states:</b>
+                                        S<sub>0</sub> -> S<sub>1</sub> -> S<sub>2</sub> ... S<sub>t</sub> -> S<sub>t+1</sub>
+
+                                    </li>
+                                </ol>
+
+                                <h5>State Transition in Action</h5>
+                                <p>Imagine you’re navigating a maze:</p>
+                                <ul>
+                                    <li><b>State (S<sub>t</sub>): </b>Your current position in the maze.</li>
+                                    <li><b>Action (A<sub>t</sub>): </b>Moving "right" to the next square.</li>
+                                    <li><b>Reward (R<sub>t</sub>): </b>Moving "right" to the next square.
+                                        <ul>
+                                            <li>+10 if you reach the goal.</li>
+                                            <li>−1 for taking a step (it’s time-consuming).</li>
+                                            <li>−100 if you fall off a cliff!</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>New State (S<sub>t+1</sub>): </b>The square you land on after moving right. </li>
+                                </ul>
+
+                                <h5>Why State Transitions Matter</h5>
+                                <p>State transitions are the building blocks of reinforcement learning. They connect:</p>
+                                <ul>
+                                    <li><b>The present: </b>Where the agent is now.</li>
+                                    <li><b>The future: </b>Where the agent will end up based on its actions.</li>
+                                    <li><b>The reward: </b>How well those actions align with the agent’s ultimate goal.</li>
+                                </ul>
+                                <p>Without state transitions, the agent wouldn’t have the feedback it needs to improve its decisions. They’re the roadmap that guides the agent toward optimal performance.</p>
+
+                                <h2 class="decorative-heading">Episodes: The Story of an Agent's Journey</h2>
+                                <p>In reinforcement learning, the agent’s adventure unfolds like a story, with a clear beginning and end. Each journey is called an episode (or, if you’re feeling fancy,𝜏 for "tau"). Let’s dive into what episodes are and how they help us understand an agent’s actions and decisions over time.</p>
+                                <h5>What is an Episode?</h5>
+                                <p>An episode is a sequence of states and actions that the agent experiences as it interacts with the environment. It’s the complete story from the starting point to the final destination.</p>
+                                <p>Formally, an episode looks like this:<br>
+                                    𝜏 = (S<sub>1</sub>, A<sub>1</sub>,S<sub>2</sub>, A<sub>2</sub>, ...)
+                                    <br><br>
+                                    Where:
+                                    <ul>
+                                        <li>S<sub>t</sub>: The state the agent is in at time 𝑡.</li>
+                                        <li>A<sub>t</sub>: The action the agent takes at time 𝑡.</li>
+                                    </ul>
+                                </p>
+                                <p>Each step in the episode is a decision point, leading to a new state and eventually to the story’s conclusion.</p>
+
+                                <h5>Deterministic vs. Stochastic Episodes</h5>
+                                <p>Not all episodes play out the same way—sometimes they’re predictable, and other times they’re full of surprises!</p>
+                                <ul>
+                                    <li>Deterministic Episodes:<p>The next state (S<sub>t+1</sub>) is determined entirely by the current state (S<sub>t</sub>) and action (A<sub>t</sub>) : <p> S<sub>t+1</sub> = <i>f</i> (S<sub>t</sub>, A<sub>t</sub>)</p> </p><p>Example: Moving in a grid-world maze with no random obstacles.</p></li>
+                                    <li>Stochastic Episodes:<p>The next state (S<sub>t+1</sub>) depends on probabilities. Even if the agent takes the same action in the same state, the result might vary : <p> S<sub>t+1</sub> ~ P (. | S<sub>t</sub>, A<sub>t</sub>)</p> </p><p>Example: Moving in a grid-world maze with no random obstacles.</p></li>
+                                </ul>
+
+                                <h5>Actions and Policies: Who Calls the Shots?</h5>
+                                <p>In an episode, the agent’s actions aren’t random—they’re guided by its policy (π) </p>
+                                <ul>
+                                    <li>The policy determines what action A<sub>t</sub> the agent takes in each state S<sub>t</sub></li>
+                                    <li>The better the policy, the more likely the agent is to navigate its episode successfully.</li>
+                                </ul>
+
+                                <h5>Trajectories and Rollouts: Cool Synonyms</h5>
+                                <p>Episodes are also known as trajectories or rollouts—fancier terms that highlight the journey-like nature of an agent’s interactions. Whether you call it an episode, trajectory, or rollout, the concept is the same: it’s a path that the agent follows as it learns and grows.</p>
+
+                                <h5>Why Are Episodes Important?</h5>
+                                <p>Episodes are essential for evaluating an agent’s performance and learning process:</p>
+                                <ul>
+                                    <li>They provide a structured sequence for tracking state transitions, actions, and rewards.</li>
+                                    <li>They help the agent measure its cumulative reward over time.</li>
+                                    <li>They define clear start and end points, making it easier to analyze and improve the agent’s behavior.</li>
+                                </ul>
+
+                                <h5>Real-World Analogy</h5>
+                                <p>Imagine playing a board game:</p>
+                                <ul>
+                                    <li>The game starts when you place your token on the first square.</li>
+                                    <li>Each move is like a state-action pair (S<sub>t</sub>, A<sub>t</sub>)</li>
+                                    <li>The game ends when you either win, lose, or reach the final square.</li>
+                                    <li>The entire game session is your episode, complete with all the decisions you made along the way.</li>
+                                </ul>
+                                <h2 class="decorative-heading">Rewards and Returns: The Agent’s Scorecard</h2>
+                                <p>In reinforcement learning, rewards are the bread and butter of how agents learn. They’re like little nuggets of feedback that tell the agent how well it’s doing. Whether it’s a pat on the back for a great move or a slap on the wrist for a poor choice, rewards shape the agent’s journey to greatness. Let’s break it down!</p>
+
+                                <h5>What Are Rewards (R)?</h5>
+                                <p>Rewards are numerical values the agent receives after performing an action (A<sub>t</sub>) in a particular state (S<sub>t</sub>). They can be:
+                                    <ul>
+                                        <li><b>Positive: </b>A bonus for taking the right action.</li>
+                                        <li><b>Negative: </b>A penalty for making a poor decision.</li>
+                                    </ul>
+                                    For example:
+                                    <ul>
+                                        <li><b>+10: </b>Successfully reaching the goal.</li>
+                                        <li><b>−5: </b>Falling off a cliff (oops).</li>
+                                    </ul>
+                                </p>
+                                <h5>Delayed Gratification</h5>
+                                <p>Here’s the catch: rewards in reinforcement learning are often delayed.</p>
+                                <ul>
+                                    <li>The agent takes action A<sub>t</sub> in state S<sub>t</sub>, but the reward (R<sub>t+1) only comes after the environment transitions to the next state (S<sub>t+1</sub>).</li>
+                                    <li>This means the agent has to think ahead and make decisions that may not pay off immediately.</li>
+                                </ul>
+                                
+                                <h5>Returns (𝐺): The Bigger Picture</h5>
+                                <p>While rewards measure immediate feedback, what we really care about is the cumulative reward, also known as returns (𝐺).</p>
+                                <p>The return is the total sum of all future rewards the agent expects to collect from time t onward:</p>
+                                <p> G<sub>t</sub> = R<sub>t+1</sub> + R<sub>t+2</sub> + ...+ R<sub>T</sub><br><br>
+                                    Where: T is the final time step of the episode.
+                                </p>
+
+                                <h5>Why Rewards and Returns Matter</h5>
+                                <p>In reinforcement learning, the agent’s goal isn’t just to maximize the next reward—it’s to maximize cumulative rewards over time. This means the agent must:</p>
+                                <ul>
+                                    <li>Balance short-term rewards (grabbing a coin now) with long-term goals (avoiding a trap to reach the treasure).</li>
+                                    <li>Learn to evaluate the impact of current actions on future rewards.</li>
+                                </ul>
+                                
+                                <h5>An Example: Treasure Hunt</h5>
+                                <p>Imagine you’re in a treasure hunt:</p>
+                                <ul>
+                                    <li><b>Immediate Reward (R) :</b> Picking up a coin along the way gives you +5.</li>
+                                    <li><b>Cumulative Reward (G) :</b> Your ultimate goal is to reach the treasure chest, which gives +100. If you’re too focused on collecting coins, you might miss the chest entirely!</li>
+                                      
+                                </ul>
+                                <h5>The Reward-Return Relationship</h5>
+                                <p>Here’s how rewards and returns connect:</p>
+                                <ol>
+                                    <li>Rewards (𝑅) are the stepping stones.</li>
+                                    <li>Returns (G) are the big picture.</li>
+                                </ol>
+                                <p>The agent uses both to guide its learning, aiming for actions that lead to higher long-term returns.</p>
+
+
+
+
+                                <h2 class="decorative-heading">Why MDPs Are a Big Deal</h2>
+                                <p>MDPs are the foundation of Reinforcement Learning (RL). They allow us to model complex environments where decisions are made sequentially, with consequences that unfold over time.
+
+                                    Think about where MDPs show up:
+                                    <ul>
+                                        <li><b>Self-Driving Cars:</b> Deciding whether to speed up, slow down, or change lanes.</li>
+                                        <li><b>Game AI:</b> Choosing moves in chess, Go, or your favorite RPG.</li>
+                                        <li><b>Robotics:</b> Planning paths in dynamic environments.</li>
+                                        <li><b>Healthcare:</b> Optimizing treatment strategies over a patient’s lifetime.</li>
+                                    </ul>                                
+                                </p>
+                                <p>MDPs take messy real-world problems and give them structure—a way to think clearly about uncertainty, rewards, and decisions.</p>
+                                
+                                <h2 class="decorative-heading">How Does It Work? A Simple Example</h2>
+                                <p>Let’s revisit the maze. Here’s how it looks as an MDP:
+                                    <ul>
+                                        <li><b>States (S):</b> Each square in the maze is a state.</li>
+                                        <li><b>Actions (A):</b> You can move left, right, up, or down.</li>
+                                        <li><b>Transition Function (P):</b> Moving left works 80% of the time; the rest of the time, you hit a wall and stay put.</li>
+                                        <li><b>Rewards (R):</b> 
+                                            <ul>
+                                                <li>+10: Reachinng the exit.</li>
+                                                <li>-1: Bumping into walls.</li>
+                                                <li>0: Moving through empty spaces.</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Discount Factor (γ): You value reaching the exit quickly, so γ=0.9. </b></li>
+                                    </ul>         
+                                    Your goal? Find the path that maximizes your total reward.                       
+                                </p>
+
+                                <h2 class="decorative-heading">Why MDPs Are Fun (and Useful!)</h2>
+                                <p>MDPs give you a framework to think strategically:
+                                    <ul>
+                                        <li>Should you take a risky shortcut for a big reward or stick to the safe path?</li>
+                                        <li>How much should you care about future rewards versus immediate ones?</li>
+                                        
+                                    </ul>         
+                                    And best of all, solving an MDP isn’t just an abstract math exercise—it’s the backbone of how AI learns to play games, navigate the world, and make decisions.
+                                </p>
+                                
+                                <h2 class="decorative-heading">What’s Next?</h2>
+                                <p>Now that we’ve introduced MDPs, it’s time to dig deeper. In the next section, we’ll explore the interactions of various compnents of MDP. Let’s keep the journey going! 🎯✨</p>
+                                
+                                
+                                
+                                
+                                
+                                <div class="navigation">                                    
+                                    <a href="./MDP_Intro_section1.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                                </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

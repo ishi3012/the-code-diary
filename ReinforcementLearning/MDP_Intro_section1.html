@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <!-- <h1>Charting the Path: MDP Fundamentals and Cliff Walking Implementation</h1> -->
+                             <h1>Paving the Way: Exploring MDPs Through Cliff Walking Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            
+                                <!-- Section 1 -->
+                                <h1 class="decorative-heading">Introduction to Markov Decision Processes (MDPs): <br> ~ Policies: The Agent’s Game Plan ~ </h1>
+
+                                <p>MDPs are not just a set of mathematical concepts—they’re a living, breathing framework (well, almost) where the <b>agent</b> and the <b>environment</b> interact to make decisions. It’s like watching a chess match where every move is planned, executed, and evaluated with precision.</p>
+
+                                <p>Now, let’s dive into the heart of this interaction and explore the **dynamic duo** of reinforcement learning: the <b>agent</b> and the <b>environment</b>.</p>
+
+
+                                <h3>Agent and Environment: The RL Duo</h3>
+                                <p>Before we dive deeper into policies, let’s revisit the foundational relationship in reinforcement learning: the Agent and the Environment.</p>
+                                <ol>
+                                    <li><b>The Agent:</b><p>The agent is the learner, the decision-maker. It takes actions, learns from rewards, and tries to improve its performance over time. Think of the agent as the hero of our story, navigating through challenges to achieve its goals.</p></li>
+                                    <li><b>The Environment:</b><p>The environment is the world in which the agent operates. It provides feedback to the agent in the form of rewards and new states based on the actions taken. The environment can be anything—a maze, a game, a robot’s workspace, or even a financial market.</p></li>
+                                </ol>
+
+                                <h3>The Dynamic Duo in Action</h3>
+                                <p>Here’s how the interaction between the agent and the environment works:</p>
+                                <ol>
+                                    <li>At time 𝑡, the agent observes the current state 𝑆<sub>𝑡</sub>.</li>
+                                    <li>Based on its policy (𝜋), the agent selects an action 𝐴<sub>𝑡</sub>.</li>
+                                    <li>The environment processes the action and responds with:
+                                        <ul>
+                                            <li>A reward R<sub>𝑡</sub>, which indicates how good or bad the action was.</li>
+                                            <li>The next state S<sub>𝑡+1</sub>, which represents the new situation the agent finds itself in.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                <p>This cycle repeats, creating a feedback loop where the agent learns from its experiences.</p>
+
+                                <h3>Why This Relationship Matters for Policies</h3>
+                                <p>Policies are the brain behind the agent’s actions. Without a policy, the agent wouldn’t know what to do in response to the environment. The goal is to design a policy that enables the agent to navigate its environment effectively, earning the highest rewards while adapting to changing states.</p>
+                                
+                                
+                                <h3>What’s Next?</h3>
+                                <p>Now that we’ve introduced MDPs, it’s time to dig deeper. In the next section, we’ll explore Policies—the agent’s game plan for making decisions—and learn how to evaluate them. Let’s keep the journey going! 🎯✨</p>
+                                
+
+                                
+                                        
+                                
+                                <div class="navigation">        
+                                    <a href="./MDP_Intro" class="btn-nav" title="Go to the previous section">Previous Section</a>                            
+                                    <a href="./MDP_Intro_section2.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                                </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
