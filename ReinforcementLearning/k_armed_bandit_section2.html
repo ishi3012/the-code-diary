@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>2. The Epsilon-Greedy Algorithm: The Best of Both Worlds</h3>
+                            
+                            <p>Let’s say you’re back at your favorite restaurant, but this time you’re feeling adventurous. You still love your go-to dish (hello, pepperoni pizza), but every once in a while, you’re tempted to try something new—just in case there’s a hidden gem on the menu. That’s the epsilon-greedy algorithm in a nutshell: mostly stick with what works, but leave a little room for exploration.</p>
+                            <h4>How It Works:</h4>
+                            <p>The epsilon-greedy algorithm introduces a sprinkle of randomness into the decision-making process:</p>
+                                <ol>
+                                    <li>Most of the time (with probability 1−𝜖), it chooses the action with the highest estimated reward—just like the greedy algorithm.</li>
+                                    <li>Sometimes (with probability 𝜖), it picks a random action to explore other options.</li>
+                                </ol>
+                                
+                                <p>Think of 𝜖 as your adventurous spirit:</p>
+                                
+                                <ul>
+                                    <li>A high 𝜖 means you’re a bold risk-taker, trying out new actions more frequently.</li>
+                                    <li>A low 𝜖 means you’re playing it safe, sticking mostly to what you already know works.</li>
+                                </ul>
+                            </p>                            
+                            <h4>The Genius Behind It:</h4>
+                            <p>The epsilon-greedy algorithm strikes a balance between exploitation (making the best decision based on what you know) and exploration (gathering more information to improve future decisions).
+                            <p>Here’s why it works:</p>
+                            <ul>
+                                <li>By exploring occasionally, you reduce the risk of missing out on better options (hello, Hawaiian pizza!).</li>                                
+                                <li>By exploiting most of the time, you ensure you’re maximizing rewards based on your current knowledge.</li>
+                            </ul>
+                            </p>
+
+                            <h4>A Real-Life Example:</h4>
+                            <p>Imagine you’re testing ads for an online campaign.
+                                <ul>
+                                    <li>Exploitation: Show the ad that’s already performing well (say, Ad A).</li>                                
+                                    <li>Exploration: Occasionally show other ads (like Ad B or Ad C) to see if one outperforms Ad A in the long run.</li>
+                                </ul>
+                            </p>
+                            <h4>The Downside: How Much is Too Much?</h4>
+                            <p>Choosing the right value for 𝜖 can be tricky.
+                                <ul>
+                                    <li>Too high (𝜖 = 1): You explore way too much and barely exploit.</li>                                
+                                    <li>Too low (𝜖 = 0.01): You might get stuck with a “good enough” option and miss out on discovering something better.</li>
+                                </ul>
+                                <p>It’s like deciding how often to order something new at your favorite restaurant—too often, and you might end up disappointed; too rarely, and you might never find your next favorite dish.</p>
+                            </p>
+                            <h4>In a Nutshell:</h4>
+                            <p>The epsilon-greedy algorithm is all about striking the perfect balance between playing it safe and taking risks. It’s simple, flexible, and a massive step up from the plain greedy approach. Whether you're testing ads, pulling slot machine levers, or deciding where to grab dinner, epsilon-greedy ensures you explore just enough to discover hidden gems while maximizing what already works.</p>
+                            <p>Ready to dive deeper? In the next section, we’ll switch gears and explore Optimistic Initial Values—a strategy that starts off bold and helps agents make smarter choices right from the beginning. Let’s see how optimism can shape better decision-making! 🚀✨</p>
+                            
+                            
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section1.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section3.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

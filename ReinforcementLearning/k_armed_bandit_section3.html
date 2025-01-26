@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>3. Optimistic Initial Values</h3>
+                            
+                            <p>Imagine you’re walking into a new ice cream shop with 10 flavors, and you’re on a mission to find the best one. But here’s the twist: instead of assuming all the flavors are average, you start with the mindset that every flavor is amazing. "This pistachio? Probably the best ever. That mango sorbet? Bound to be a masterpiece." This is the idea behind Optimistic Initial Values—you assume the best about everything, encouraging exploration right from the start.</p>
+                            
+                            <h4>How It Works:</h4>
+                            <p>Optimistic Initial Values are all about setting high expectations for actions. Instead of starting with neutral or zero estimates for rewards (like in epsilon-greedy), you assign each action a high initial reward value. Here’s the magic:</p>
+                                <ol>
+                                    <li>The agent starts overly optimistic about every action.</li>
+                                    <li>Actions that aren’t chosen frequently will retain their high estimated value, encouraging the agent to explore them.</li>
+                                    <li>Over time, as the agent gathers data, these values adjust to reflect reality.</li>
+                                </ol>
+                                
+                                <p>It’s like giving every slot machine in the casino a glowing “Jackpot Guaranteed!” sign on Day 1. The agent will naturally try all of them to see if they live up to the hype.</p>
+                                
+                                <p>The Formula:<br>
+                                    For each action 𝑎, you initialize its estimated value 𝑄(𝑎)to a high number, typically greater than the maximum possible reward. For example:
+                                <p>Q(a) = Q<sub>0</sub></p>
+                                where: 
+                                <ul>
+                                    <li>Q<sub>0</sub> is a high optimistic value (e.g. 10 if if rewards usually range between 0–1) </li>
+                                    <li>These optimistic values shrink as the agent collects more data and updates its estimates.</li>
+                                </ul>
+                            </p> 
+                            
+                            
+                            <h4>Why It’s Great:</h4>
+                            <p>Optimistic Initial Values encourage exploration without randomness. Unlike epsilon-greedy, which sometimes takes completely random actions, this method ensures that every decision is guided by the agent’s current estimates. </p>
+                            <p></p>Here’s why it works:</p>
+                            <ul>
+                                <li>Built-in Exploration: Actions that haven’t been tried yet maintain their high value, automatically making them attractive.</li>                                
+                                <li>Faster Convergence: Since exploration happens early on, the agent can settle into a good strategy more quickly.</li>
+                            </ul>
+                            </p>
+
+                            <h4>A Real-Life Example:</h4>
+                            <p>Let’s say you’re testing out food delivery apps, and you start with the assumption that all of them are equally amazing.
+                                <ul>
+                                    <li>The first few orders might prove that one app is consistently late (down goes its estimated value).</li>                                
+                                    <li>Another app delivers piping hot food every time—its value stays high, and you stick with it.</li>
+                                    <li>The optimistic assumption pushes you to try each app early, so you don’t miss out on discovering a hidden gem.</li>
+                                </ul>
+                            </p>
+                            <h4>The Catch: Optimism Needs Limits</h4>
+                            <p>While this approach is great for encouraging exploration, it comes with a few caveats:
+                                <ul>
+                                    <li>Pick Realistic Initial Values: If your optimism is too unrealistic (e.g., Q<sub>0</sub> = 1000 when rewards range from 0–1), the agent might spend too much time chasing a bad action.</li>                                
+                                    <li>Stationary Rewards Work Best: Optimistic Initial Values shine when rewards don’t change over time. If they do, the agent might get stuck chasing old assumptions.</li>
+                                </ul>
+                            </p>
+                            <h4>In a Nutshell:</h4>
+                            <p>Optimistic Initial Values are like starting your decision-making journey with rose-colored glasses. By assuming the best about every option, the agent is naturally driven to explore early, gathering the data it needs to make smarter decisions later.</p>
+                            <p>It’s simple, effective, and avoids the randomness of epsilon-greedy. In the next section, we’ll look at more advanced strategies, but for now, let’s enjoy the optimism and keep exploring! 🌟✨</p>
+                            
+                            
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section2.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section4.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

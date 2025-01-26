@@ -10851,3 +10851,48 @@ header.masthead .post-heading .meta a {
   width: 100%; /* Makes the line as wide as the heading */
   max-width: 300px; /* Optional: Limits the maximum line width */
 }
+
+
+.subtopic {
+  overflow: hidden; /* Hides the overflow so only one panel is visible */
+  /*width: 100%;*/
+  /*height: 100vh; /* Full viewport height */
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 300%; /* 100% for each panel */
+}
+
+.panel {
+  flex: 0 0 100%; /* Each panel still takes up the full width of the viewport */
+    height: auto; /* Adjusts height based on content */
+    min-height: 100vh; /* Ensures a minimum height of 100vh for smaller sections */
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: left;
+    background: #f7f7f7;
+}
+
+.navigation {
+  text-align: center;
+  margin: 20px 0; /* Add space above and below the buttons */
+}
+
+.btn-nav {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-nav:hover {
+  background-color: #0056b3;
+}

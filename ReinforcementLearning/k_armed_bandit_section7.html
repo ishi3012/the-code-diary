@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>Evaluating Bandit Strategies</h3>
+                            
+                            <p>Now that we’ve assembled the dream team of bandit strategies, it’s time to see how they actually perform. But how do we evaluate these strategies? What metrics help us determine if our agent is a high-achieving explorer or just a lucky gambler? Let’s break it down.</p>                           
+                            
+                            <h4>1. Cumulative Reward: The Ultimate Scoreboard</h4>
+                                <p>Cumulative reward is like the leaderboard of a video game—it tells us how much reward the agent has collected over time. The higher the cumulative reward, the better the agent’s performance.</p>
+                                <p>Why It Matters:
+                                <ul>
+                                    <li>It’s simple, intuitive, and shows whether the agent is consistently making good decisions.</li>
+                                    <li>A strategy with high cumulative reward means it’s balancing exploration and exploitation effectively.</li>
+                                </ul>
+                                <p>How to Track It:</p>
+                                <ul>
+                                    <li>At each time step 𝑡, add the reward R<sub>t</sub> to the running total:
+                                        <p>G<sub>t</sub> = ∑<sup>t</sup><sub>i=1</sub> R<sub>i</sub> </p>
+
+                                        where: G<sub>t</sub> is hhcumulative reward  at time t.                                    
+                                    </li>
+                                </ul>
+                             
+                                                    
+                            <h4>2. Regret: The FOMO Metric</h4>
+                            <p>Regret measures how much reward the agent missed out on by not always choosing the best action. Think of it as the ultimate "What could have been?" metric.</p>
+                            
+                            <p>Why It Matters:</p>
+                            <ul><li>Even if cumulative reward is high, regret tells us if the agent left too much on the table by failing to discover the best actions quickly.</li></ul>                                  
+                            
+                            <p>How to Calculate It:
+                                <ul>
+                                    <li>At each time step 𝑡, compare the reward from the best possible action R<sub>*</sub>(t) with the reward actually received R<sub>t</sub>:
+                                        <p> Regret(t) = ∑<sup>t</sup><sub>i=1</sub> (R<sub>*</sub>(t) - R<sub>i</sub>)</p>
+                                    </li>
+                                </ul>
+                            </p>
+                            <p>The Goal:
+                                <ul>
+                                    <li>A good strategy minimizes regret over time, ideally making it grow very slowly as the agent learns.</li>
+                                </ul>
+                            </p>
+                            
+                            <h4>3. Convergence Rate: How Fast Do We Learn?</h4>
+                                <p>The convergence rate measures how quickly the agent identifies the best action. It’s like timing how long it takes you to find the jackpot slot machine in a casino.</p>
+                                
+                                <p>Why It Matters:</p>
+                                <ul>
+                                    <li>Some strategies, like greedy, might converge quickly but risk getting stuck in suboptimal actions.</li>
+                                    <li>Others, like epsilon-greedy or UCB, take longer but are more likely to settle on the true best action.</li>
+                                </ul>                                  
+                                
+                                <p>Key Question:
+                                    <ul>
+                                        <li>Does the strategy find the optimal solution efficiently, or does it take forever to get there? </li>
+                                    </ul>
+                                </p>
+                            
+                            <h4>4. Exploration Efficiency: Smarter, Not Harder</h4>
+                                <p>Exploration efficiency measures how well the strategy balances trying new actions versus exploiting what’s already known.</p>
+                                
+                                <p>Why It Matters:</p>
+                                <ul>
+                                    <li>Too much exploration wastes resources on bad options.</li>
+                                    <li>Too little exploration risks missing the best action.</li>
+                                </ul>                                  
+                                
+                                <p>What to Look For:
+                                    <ul>
+                                        <li>Strategies like UCB and Thompson Sampling tend to explore more intelligently compared to the randomness of epsilon-greedy. </li>
+                                    </ul>
+                                </p>
+
+                                <h4>Comparing Strategies: Visualizing the Battle</h4>
+                                <p>Want to see how the strategies stack up? Plotting metrics like cumulative reward, regret, or action selection over time can reveal their strengths and weaknesses.</p>
+                                
+                                <p>Example Plots:</p>
+                                <ol>
+                                    <li>Cumulative Reward Over Time: A rising curve that shows which strategy collects rewards fastest.</li>
+                                    <li>Regret Over Time: A shrinking curve (or slow-growing one) that shows how quickly regret decreases as the agent learns.</li>
+                                    <li>Action Selection Frequency: A heatmap or bar chart showing how often each action was selected—useful for spotting over-exploration or exploitation.</li>
+                                </ol>                                  
+                                
+                                <h4>The Final Verdict</h4>
+                                <p>No strategy is perfect, and the best choice depends on the problem you’re solving:
+                                    <ul>
+                                        <li>Need quick results? Try Greedy or Optimistic Initial Values.</li>
+                                        <li>Want a balanced, reliable approach? Go for Epsilon-Greedy or UCB.</li>
+                                        <li>Facing uncertainty? Thompson Sampling might be your best bet.</li>
+                                    </ul>
+                                </p>
+                                <p>Next up, let’s bring these metrics to life with practical examples and code! Ready to roll up your sleeves? 🎰✨</p>
+                            
+                            
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section6.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section8.html" class="btn-nav" title="Go to the next section">Next Section</a> 
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

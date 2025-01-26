@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>6. Gradient Bandits: Let the Actions Compete</h3>
+                            
+                            <p>Imagine you’re managing a team, and every team member (or action, in our case) is competing for your attention. But instead of just picking the best performer based on past results, you reward everyone proportionally to how well they’re doing—and encourage even the underdogs to step up their game. That’s Gradient Bandits for you: it’s all about letting actions fight for glory while dynamically adjusting their chances of getting picked.</p>
+                            
+                            <h4>How It Works:</h4>
+                            <p>Gradient Bandits use a preference-based approach to decide which action to take. Instead of maintaining reward estimates like in epsilon-greedy or UCB, it assigns each action a preference score
+                                H(a). The higher the preference, the more likely the action will be chosen.
+                                
+                                <p>Here’s the process:
+                                    
+                                    <ol>
+                                        <li>
+                                            Calculate Probabilities: Convert preferences into probabilities using a softmax function:
+                                            <p> P(a) = e<sup>H(a)</sup> / ∑<sub>b</sub>e<sup>H(a)</sup></p>
+                                            where:
+                                            <ul>
+                                                <li>P(a) : The probability of selecting action a.</li>
+                                                <li>H(a) : The preference of action a.</li>
+                                                <li>Actions with higher preferences get higher probabilities but never dominate completely—so every action always has a chance.</li>
+                                            </ul>
+
+                                        </li>
+                                        <li>Update Preferences: After taking an action and observing its reward, the preferences are updated using the following rule:
+                                            <p>H(a) <- H(a) + α(R - R<sup>^</sup>)(1 - P(a))</p>
+
+                                            where:
+                                            <ul>
+                                                <li>α : Learning rate (how fast preferences are adjusted).</li>
+                                                <li>R : Reward received..</li>
+                                                <li>R<sup>^</sup>: Baseline reward (average reward to keep things fair). </li>
+                                                <li>P(a): Probability of the selected action. </li>
+                                            </ul>
+                                        </li>
+                                        </ol>
+                                        <p>This update rule increases the preference for actions that perform well while reducing it for those that underperform, relative to the baseline.</p>
+
+                                    
+                            </p>                            
+                            <h4>Why It’s Cool:</h4>
+                            <p>Gradient Bandits are like a talent show for actions. Every action has a shot, and the probabilities dynamically adjust to reward good performance and give others a chance to shine.</p>
+                            <p>Key features include:</p>
+                            <ol>
+                                <li>Dynamic Adjustments: Probabilities are updated continuously, adapting to changes in rewards over time.</li>                                
+                                <li>Exploration and Exploitation in Harmony: There’s no need for separate exploration mechanisms—softmax ensures a natural balance.</li>
+                                <li>Baselines Keep It Fair: The baseline reward ensures that updates are relative to the overall performance, preventing over-rewarding actions that just happen to do well once.</li>
+                            </ol>
+                            <p>If an action hasn’t been tried much, its confidence bound is high, giving it a chance to be explored. But as you gather more data, the confidence bound shrinks, and decisions start favoring actions with genuinely high rewards.</p>
+                            
+
+                            <h4>Real-Life Analogy:</h4>
+                            <p>Imagine you’re picking what movie to watch:
+                                <ul>
+                                    <li>You assign a preference score to each genre based on past enjoyment—comedy, action, sci-fi, etc.</li>                                
+                                    <li>The more you enjoy a genre (reward), the more likely you’ll pick it again.</li>
+                                    <li>But thanks to softmax, even that experimental indie film still has a small chance to make the cut—because who knows, it might surprise you!</li>
+                                </ul>
+                            </p>
+
+                            
+                            <h4>The Downside: Handle with Care</h4>
+                            <p>Gradient Bandits can work wonders, but they rely heavily on the right settings:
+                                <ul>
+                                    <li>Learning Rate(α) : Too high, and preferences swing wildly. Too low, and updates are too slow.</li>
+                                    <li>Baseline Reward (R<sup>^</sup>) : Picking a poor baseline can skew the entire process.</li>
+                                </ul>
+                                Also, if rewards are non-stationary (constantly changing), the algorithm might struggle to keep up.
+                            </p>
+
+                            <h4>In a Nutshell:</h4>
+                            <p>Gradient Bandits are a clever, preference-driven method for tackling the K-Armed Bandit problem. They let actions compete dynamically while keeping things fair and balanced. Think of it as a self-adjusting system that learns what you love without fully ignoring the underdogs.</p>
+                            <p>Next up, we’ll explore how to evaluate these strategies and see how they stack up against each other. Let’s keep the journey going! 🎯✨</p>
+                            
+                            
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section5.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section7.html" class="btn-nav" title="Go to the next section">Next Section</a> 
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

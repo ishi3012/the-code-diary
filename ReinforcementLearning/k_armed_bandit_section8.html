@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>Practical Examples and Code : Epsilon greedy </h3>
+
+                            <p>Let’s dive into the exciting part—bringing our theoretical understanding of bandit strategies to life with real code and visualizations. 
+                                In this section, we’ll explore the epsilon-greedy strategy by running simulations, visualizing performance, and comparing how different levels of exploration (𝜖) 
+                                affect rewards. Ready? Let’s roll up those sleeves! </p>
+                            
+                            <h4>Step 1: Simulating the K-Armed Bandit Environment</h4>
+                            <p>First, we set up the environment. Imagine a casino with four slot machines (or "bandits"), each with a unique reward mechanism. Here’s how the bandits behave:</p>
+                            
+                            <ul>
+                                <li>Action 1: Always gives a reward of 8. (Safe but boring.)</li>
+                                <li>Action 2: Pays out 100 only 12% of the time; otherwise, you get 0. (High risk, high reward!)</li>
+                                <li>Action 3: Randomly generates rewards between -10 and 35. (Wild card!)</li>
+                                <li>Action 4: Mixes fixed rewards (20) and random values between 8 and 18. (A bit unpredictable.)</li>
+                            </ul>
+                            <pre><code>
+                    import random
+                    
+                        def Action1():
+                            return 8
+
+                        def Action2():
+                            return 100 if random.random() < 0.12 else 0
+
+                        def Action3():
+                            return random.uniform(-10, 35)
+
+                        def Action4():
+                            num = random.random()
+                            if num < 0.3333:
+                                return 20
+                            elif num < 0.6667:
+                                return random.choice(range(8, 19))
+                            return 0
+
+                        Actions = [Action1, Action2, Action3, Action4]
+                            </code></pre>
+
+                            <h4>Step 2: Implementing Epsilon-Greedy Strategy</h4>
+                            <p>The epsilon-greedy algorithm balances exploration and exploitation:</p>
+                            <ul>
+                                <li>With probability 1 - 𝜖, the agent chooses the best-known action (exploitation).</li>
+                                <li>With probability 𝜖, it picks a random action (exploration).</li>
+                            </ul>
+                            <p>Here’s the implementation:</p>
+                            <pre><code>
+                    import numpy as np
+
+                    def run_epsilon_greedy(actions, epsilon, timesteps, runs):
+                        num_actions = len(actions)
+                        q_list = np.zeros((runs, num_actions))  # Estimated rewards
+                        n_list = np.zeros((runs, num_actions))  # Action counts
+                        avg_rewards = np.zeros(timesteps)
+
+                        for run in range(runs):
+                            for step in range(timesteps):
+                                # Exploit or Explore
+                                if random.random() >= epsilon:
+                                    selected = np.argmax(q_list[run])  # Exploit
+                                else:
+                                    selected = random.randint(0, num_actions - 1)  # Explore
+
+                                # Pull the selected bandit and get the reward
+                                reward = actions[selected]()
+                                n_list[run, selected] += 1
+                                q_list[run, selected] += (reward - q_list[run, selected]) / n_list[run, selected]
+                                avg_rewards[step] += reward
+
+                        avg_rewards /= runs
+                        avg_Q = np.mean(q_list, axis=0)
+                        avg_N = np.mean(n_list, axis=0)
+                        return avg_Q, avg_N, avg_rewards
+
+                            </code></pre>
+
+                            
+                            <h4>Step 3: Running the Simulation</h4>
+                            <p>We’ll test the epsilon-greedy strategy with three exploration levels: 𝜖 = 0.0, 0.1, 0.01 over 1000 steps and 2000 runs.</p>
+                            
+                            <p>Simulation Code:</p>
+                            <pre><code>
+                            timesteps = 1000
+                            runs = 2000
+                            epsilons = [0.0, 0.01, 0.1]
+
+                            results = []
+                            for epsilon in epsilons:
+                                result = run_epsilon_greedy(Actions, epsilon, timesteps, runs)
+                                print(f'Epsilon {epsilon}: Q={result[0]}, N={result[1]}')
+                                results.append(result)
+                            </code></pre>
+                        
+                            <h4>Step 4: Visualizing the Results</h4>
+                            <p>We’ll plot average rewards over time for each epsilon value to see how exploration impacts performance.</p>
+                            
+                            <p>Visualization Code:</p>
+                            <pre><code>
+                                import matplotlib.pyplot as plt
+
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    plt.plot(result[2], label=f'Epsilon = {epsilons[index]}')
+
+                                plt.xlabel('Steps')
+                                plt.ylabel('Average Rewards')
+                                plt.title('Performance of Epsilon-Greedy Strategies')
+                                plt.legend()
+                                plt.show()
+
+                            </code></pre>
+                            <div style="text-align: center;"></div><img src="../assets/img/epsilon_result1.png" alt="description" /></div>
+
+                            <h4>Step 5: Adding Metrics to the Simulation</h4>
+                            <p>Here’s the updated simulation code that tracks cumulative rewards, regret, and action selection frequency.</p>
+                            <p>Updated Simulation Code:</p>
+                            <pre><code>
+                                def run_epsilon_greedy_with_metrics(actions, epsilon, timesteps, runs, optimal_action):
+                                num_actions = len(actions)
+                                q_list = np.zeros((runs, num_actions))  # Estimated rewards
+                                n_list = np.zeros((runs, num_actions))  # Action counts
+                                avg_rewards = np.zeros(timesteps)
+                                regret = np.zeros(timesteps)
+
+                                for run in range(runs):
+                                    for step in range(timesteps):
+                                        # Exploit or Explore
+                                        if random.random() >= epsilon:
+                                            selected = np.argmax(q_list[run])  # Exploit
+                                        else:
+                                            selected = random.randint(0, num_actions - 1)  # Explore
+
+                                        # Pull the selected bandit and get the reward
+                                        reward = actions[selected]()
+                                        n_list[run, selected] += 1
+                                        q_list[run, selected] += (reward - q_list[run, selected]) / n_list[run, selected]
+
+                                        # Track cumulative rewards and regret
+                                        avg_rewards[step] += reward
+                                        regret[step] += actions[optimal_action]() - reward
+
+                                avg_rewards /= runs
+                                regret /= runs
+                                avg_Q = np.mean(q_list, axis=0)
+                                avg_N = np.mean(n_list, axis=0)
+                                return avg_Q, avg_N, avg_rewards, regret
+
+                            </code></pre>
+
+                            <h4>Step 6: Cumulative Reward Over Time</h4>
+                            <p>Cumulative rewards tell us which strategy collects rewards the fastest.</p>
+                            
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    cumulative_rewards = np.cumsum(result[2])
+                                    plt.plot(cumulative_rewards, label=f'Epsilon = {epsilons[index]}')
+
+                                plt.xlabel('Steps')
+                                plt.ylabel('Cumulative Rewards')
+                                plt.title('Cumulative Reward Over Time')
+                                plt.legend()
+                                plt.show()
+
+                            </code></pre>
+                            
+                            <h4>Step 7: Regret Over Time</h4>
+                            <p>Regret measures how much reward the agent missed by not always selecting the optimal action.</p>
+                            
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    plt.plot(result[3], label=f'Epsilon = {epsilons[index]}')
+
+                                plt.xlabel('Steps')
+                                plt.ylabel('Regret')
+                                plt.title('Regret Over Time')
+                                plt.legend()
+                                plt.show()
+                            </code></pre>
+
+                            <h4>Step 8: Action Selection Frequency</h4>
+                            <p>This bar chart shows how often each action was selected during the simulation.</p>
+                            
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    plt.bar(range(len(Actions)), result[1], alpha=0.5, label=f'Epsilon = {epsilons[index]}')
+
+                                plt.xlabel('Actions')
+                                plt.ylabel('Selection Frequency')
+                                plt.title('Action Selection Frequency')
+                                plt.legend()
+                                plt.show()
+                            </code></pre>
+
+                            <h3>Discussion of Results</h3>
+                            <ul>
+                                <li>Cumulative Reward Over Time:
+                                    <ul>
+                                        <li>Higher exploration (ϵ = 0.1) collects rewards faster in the long run, as it discovers the optimal action more consistently. </li>
+                                        <li>Low exploration (ϵ = 0.0) performs well initially but plateaus, as it fails to explore better actions. </li>
+                                    </ul>
+                                </li>
+                                <li>Regret Over Time:
+                                    <ul>
+                                        <li>Higher exploration starts with more regret (due to trying suboptimal actions) but reduces regret faster as the agent learns the environment. </li>
+                                        <li>No exploration results in constant regret, as the agent gets stuck with a suboptimal strategy.</li>
+                                    </ul>
+                                </li>
+                                <li>Action Selection Frequency:
+                                    <ul>
+                                        <li>Higher exploration results in a more balanced selection of actions. </li>
+                                        <li>Lower exploration favors exploiting one or two actions, often missing out on the optimal one.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h3>Conclusion:</h3>
+                            <p>From these visualizations, it’s clear that balancing exploration and exploitation is critical for maximizing rewards and minimizing regret. The epsilon-greedy strategy provides a simple yet powerful way to achieve this balance.</p>
+                            <p>Next, we’ll explore Optimistic Initial Values, a strategy that encourages exploration by starting with bold assumptions. Stay tuned as we uncover another exciting approach to mastering the bandit problem!</p>
+
+
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section7.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section9.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

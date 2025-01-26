@@ -27,3 +27,25 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 })
+
+
+let currentPanel = 0; // Track the current panel
+const panels = document.querySelectorAll('.panel'); // All panels
+const slider = document.querySelector('.slider'); // Slider container
+const totalPanels = panels.length;
+
+// Handle "Next" button click
+document.getElementById('nextBtn').addEventListener('click', () => {
+    if (currentPanel < totalPanels - 1) {
+        currentPanel++;
+        slider.style.transform = `translateX(-${currentPanel * 100}%)`;
+    }
+});
+
+// Handle "Previous" button click
+document.getElementById('prevBtn').addEventListener('click', () => {
+    if (currentPanel > 0) {
+        currentPanel--;
+        slider.style.transform = `translateX(-${currentPanel * 100}%)`;
+    }
+});

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>Practical Examples and Code : Optimistic Initial Values </h3>
+
+                            <p>Let’s take our exploration a step further with Optimistic Initial Values, a strategy that starts bold and learns fast. And yes, we’ll be using the same bandits (Actions) we’ve been working with so far—because why fix something that’s already fun and diverse? 🎰
+
+                            </p>
+                            
+                            <h4>Implementation in Code</h4>
+                            <p>Here’s how we implement Optimistic Initial Values in our bandit simulation:</p>
+                            <pre><code>
+                                def run_optimistic_initial_values(actions, timesteps, runs, Q0):
+                                num_actions = len(actions)
+                                q_list = np.full((runs, num_actions), Q0)  # Initialize Q-values with optimism (Q0)
+                                n_list = np.zeros((runs, num_actions))  # Action counts
+                                avg_rewards = np.zeros(timesteps)
+                            
+                                for run in range(runs):
+                                    for step in range(timesteps):
+                                        # Select action with the highest Q-value (greedy approach)
+                                        selected = np.argmax(q_list[run])
+                            
+                                        # Pull the selected bandit and get the reward
+                                        reward = actions[selected]()
+                                        n_list[run, selected] += 1
+                                        q_list[run, selected] += (reward - q_list[run, selected]) / n_list[run, selected]
+                            
+                                        # Track average rewards
+                                        avg_rewards[step] += reward
+                            
+                                avg_rewards /= runs
+                                avg_Q = np.mean(q_list, axis=0)
+                                avg_N = np.mean(n_list, axis=0)
+                                return avg_Q, avg_N, avg_rewards
+                            
+                            </code></pre>
+
+                            <h4>Running the Simulation</h4>
+                            <p>We’ll simulate Optimistic Initial Values with 𝑄<sub>0</sub> = 10 over 1000 timesteps and 2000 runs. This encourages the agent to test every bandit early.</p>
+                            
+                            <pre><code>
+                                timesteps = 1000
+                                runs = 2000
+                                Q0 = 10  # Optimistic initial value
+
+                                # Run the simulation
+                                result = run_optimistic_initial_values(Actions, timesteps, runs, Q0)
+                                print(f'Optimistic Initial Values: Q={result[0]}, N={result[1]}')
+
+
+                            </code></pre>
+
+                            <h4>Visualizing the Results</h4>
+                            <p>1. Cumulative Reward Over Time</p>
+                            <pre><code>
+                                cumulative_rewards = np.cumsum(result[2])
+                                plt.figure(figsize=(10, 5))
+                                plt.plot(cumulative_rewards, label=f'Optimistic Q0 = {Q0}')
+                                plt.xlabel('Steps')
+                                plt.ylabel('Cumulative Rewards')
+                                plt.title('Cumulative Reward Over Time (Optimistic Initial Values)')
+                                plt.legend()
+                                plt.show()
+                            </code></pre>
+                            <p>2. Action Selection Frequency</p>
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                plt.bar(range(len(Actions)), result[1])
+                                plt.xlabel('Actions')
+                                plt.ylabel('Selection Frequency')
+                                plt.title('Action Selection Frequency (Optimistic Initial Values)')
+                                plt.show()
+                            </code></pre>
+
+                            <p>3. Plot the performance of the three epsilons</p>
+                            <pre><code>
+                                import matplotlib.pyplot as plt
+
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    plt.plot(result[2], label=f'Epsilon = {epsilons[index]}')
+
+                                plt.xlabel('Steps')
+                                plt.ylabel('Average Rewards')
+                                plt.title('Performance of Epsilon-Greedy Strategies')
+                                plt.legend()
+                                plt.show()
+
+                            </code></pre>
+                            <div style="text-align: center;"></div><img src="../assets/img/epsilon_result2.png" alt="description" /></div> 
+
+                            
+                            <h3>Discussion of Results</h3>
+                            <ul>
+                                <li>Cumulative Reward Over Time:
+                                    Cumulative Reward: By exploring early, the agent identifies the optimal action faster, leading to higher cumulative rewards in the long run.
+                                </li>
+                                <li>Action Selection Frequency: The optimistic start ensures that all actions are tested sufficiently, with the agent eventually focusing on the best-performing bandit (Action 3 in this case).
+                                </li>
+                                
+                            </ul>
+                            <h3>Conclusion:</h3>
+                            <p>Optimistic Initial Values provide a simple yet powerful way to drive early exploration. By assuming the best about all actions, the agent ensures it doesn’t miss out on hidden opportunities. And best of all, it does this systematically—no randomness required!</p>
+                            <p>Next, we’ll dive into Thompson Sampling, where probabilities meet rewards for a sophisticated twist on exploration and exploitation. Stay tuned for the ultimate probabilistic strategy! 🎯✨</p>
+
+
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section8.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section10.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

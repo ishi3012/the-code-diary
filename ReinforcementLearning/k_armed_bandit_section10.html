@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>Practical Examples and Code : Thompson Sampling: </h3>
+
+                            <p>Now it’s time to meet the ultimate probabilistic strategist—Thompson Sampling. This method doesn’t just balance exploration and exploitation; it does so in a way that feels like magic (but is really math). It’s like having a smart advisor who uses probabilities to guide your decisions, always learning and adapting.                        </p>
+                            
+                            <h4>Code Implementation</h4>
+                            <p>Here’s how we can implement Thompson Sampling for the K-Armed Bandit problem:</p>
+                            <pre><code>
+                                def run_thompson_sampling(actions, timesteps, runs):
+    num_actions = len(actions)
+    alpha = np.ones(num_actions)  # Success counts (for Beta distribution)
+    beta = np.ones(num_actions)  # Failure counts (for Beta distribution)
+    avg_rewards = np.zeros(timesteps)
+    action_counts = np.zeros(num_actions)
+
+    for run in range(runs):
+        for step in range(timesteps):
+            # Sample from Beta distribution for each action
+            sampled_probs = [np.random.beta(alpha[a], beta[a]) for a in range(num_actions)]
+            selected = np.argmax(sampled_probs)  # Choose the action with the highest sample
+
+            # Pull the selected bandit and get the reward
+            reward = actions[selected]()
+            action_counts[selected] += 1
+
+            # Update Beta distribution parameters
+            if reward > 0:
+                alpha[selected] += 1  # Reward counts as a "success"
+            else:
+                beta[selected] += 1  # No reward counts as a "failure"
+
+            avg_rewards[step] += reward
+
+    avg_rewards /= runs
+    return avg_rewards, action_counts
+
+                            
+                            </code></pre>
+
+                            <h4>Running the Simulation</h4>
+                            <p>Let’s simulate Thompson Sampling over 1000 timesteps and 2000 runs with our familiar bandits: </p>
+                            <pre><code>
+                                timesteps = 1000
+                                runs = 2000
+                                
+                                # Run Thompson Sampling
+                                avg_rewards, action_counts = run_thompson_sampling(Actions, timesteps, runs)
+                                
+                                print(f'Average Rewards: {avg_rewards[-1]}')
+                                print(f'Action Selection Counts: {action_counts}')
+                            </code></pre>
+
+                            <h4>Visualizing Thompson Sampling</h4>
+                            <p>1. Cumulative Reward Over Time: We’ll track how quickly the cumulative rewards grow.</p>
+                            <pre><code>
+                                cumulative_rewards = np.cumsum(avg_rewards)
+                                plt.figure(figsize=(10, 5))
+                                plt.plot(cumulative_rewards, label='Thompson Sampling')
+                                plt.xlabel('Steps')
+                                plt.ylabel('Cumulative Rewards')
+                                plt.title('Cumulative Reward Over Time (Thompson Sampling)')
+                                plt.legend()
+                                plt.show()
+
+                            </code></pre>
+                            <p>2. Action Selection Frequency : Let’s see how often each action was selected during the simulation.</p>
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                plt.bar(range(len(Actions)), action_counts)
+                                plt.xlabel('Actions')
+                                plt.ylabel('Selection Frequency')
+                                plt.title('Action Selection Frequency (Thompson Sampling)')
+                                plt.show()
+
+                            </code></pre>
+
+                            
+                            <h3>Discussion of Results</h3>
+                            <ul>
+                                <li>Cumulative Reward: Thompson Sampling rapidly identifies the optimal action while still exploring others, resulting in consistently high cumulative rewards.</li>
+                                <li>Action Selection Frequency: Initially, there’s a wide distribution of action selections, but as the agent learns, it focuses on the best-performing bandit.</li>
+                            </ul>
+                            <h3>Conclusion:</h3>
+                            <p>Thompson Sampling is more than just a strategy—it’s a probabilistic masterpiece. By combining exploration and exploitation with Bayesian brilliance, it brings intelligence to decision-making.</p>
+                            <p>Next, we’ll tie everything together by comparing all strategies and analyzing how they stack up against each other. Get ready for the ultimate showdown!🎯✨ </p>
+
+
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section9.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section11.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

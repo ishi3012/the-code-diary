@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>The Ultimate Showdown: Comparing All Strategies</h3>
+
+                            <p>Now that we’ve explored various strategies—Greedy, Epsilon-Greedy, Optimistic Initial Values, and Thompson Sampling—it’s time to put them head-to-head and see how they perform. Which one balances exploration and exploitation best? Which one learns the fastest? Let’s find out! 🎯</p>
+                            
+                            <h4>How We’ll Compare</h4>
+                            <p>We’ll evaluate the strategies across three key metrics:</p>
+                            <ol>
+                                <li>Cumulative Reward Over Time: Measures which strategy collects the most rewards as the simulation progresses.</li>
+                                <li>Regret Over Time: Tracks how much reward was missed by not always choosing the optimal action.</li>
+                                <li>Action Selection Frequency: Shows how each strategy balances exploring different actions versus exploiting the best-known option.</li>
+                            </ol>
+
+                            <h4>Simulation Setup</h4>
+                            <p>We’ll use the same bandits (Actions) as before:</p>
+                            <ul>
+                                <li>Action 1: Always gives a reward of 8.</li>
+                                <li>Action 2: Pays out 100 only 12% of the time; otherwise, you get 0.</li>
+                                <li>Action 3: Randomly generates rewards between -10 and 35 (the optimal action overall).</li>
+                                <li>Action 4: Mixed behavior with a mix of fixed (20) and random rewards (8-18).</li>
+                            </ul>
+
+                            <h4>Step 1: Run Simulations for All Strategies</h4>
+                            <p>We run each strategy over the same environment with 1000 timesteps and 2000 runs. The results will include:</p>
+                            <ul>
+                                <li>Average rewards per timestep.</li>
+                                <li>Regret over time.</li>
+                                <li>Action selection counts.</li>
+                            </ul>
+                            <pre><code>
+                                strategies = ['Greedy', 'Epsilon-Greedy (ε=0.1)', 'Optimistic Initial Values (Q₀=10)', 'Thompson Sampling']
+                                results = []
+                                # Simulate each strategy
+                                # (Add your implementation for each strategy here, similar to the examples provided earlier)
+                                results.append(run_greedy(Actions, timesteps, runs))
+                                results.append(run_epsilon_greedy(Actions, epsilon=0.1, timesteps=timesteps, runs=runs, initial_Q=False))
+                                results.append(run_optimistic_initial_values(Actions, timesteps, runs, Q0=10))
+                                results.append(run_thompson_sampling(Actions, timesteps, runs))
+                            </code></pre>
+
+                            <h4>Step 2: Visualize and Compare Metrics</h4>
+                            <p>1. Cumulative Reward Over Time</p>
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    cumulative_rewards = np.cumsum(result[2])
+                                    plt.plot(cumulative_rewards, label=strategies[index])
+
+                                plt.xlabel('Steps')
+                                plt.ylabel('Cumulative Rewards')
+                                plt.title('Cumulative Reward Over Time')
+                                plt.legend()
+                                plt.show()
+                            </code></pre>
+
+                            
+                            <p>2. Regret Over Time</p>
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    plt.plot(result[3], label=strategies[index])
+
+                                plt.xlabel('Steps')
+                                plt.ylabel('Regret')
+                                plt.title('Regret Over Time')
+                                plt.legend()
+                                plt.show()
+
+                            </code></pre>
+
+                            <p>3. Action Selection Frequency</p>
+                            <pre><code>
+                                plt.figure(figsize=(10, 5))
+                                for index, result in enumerate(results):
+                                    plt.bar(np.arange(len(Actions)) + 0.2 * index, result[1], width=0.2, label=strategies[index])
+
+                                plt.xlabel('Actions')
+                                plt.ylabel('Selection Frequency')
+                                plt.title('Action Selection Frequency')
+                                plt.legend()
+                                plt.show()
+                            </code></pre>
+                            <h3>Discussion of Results</h3>
+                            <ol>
+                                <li>Cumulative Reward: 
+                                    <ul>
+                                        <li>Thompson Sampling and Optimistic Initial Values typically perform the best, quickly identifying the optimal action and maximizing rewards.</li>
+                                        <li>Greedy struggles because it fails to explore enough.</li>
+                                        <li>Epsilon-Greedy strikes a decent balance, with higher exploration leading to better long-term rewards.</li>
+                                   
+                                    </ul>
+                                </li>
+                                <li>Regret:
+                                    <ul>
+                                        <li>Thompson Sampling shows the slowest growth in regret, as it learns efficiently.</li>
+                                        <li>Greedy has high regret due to its lack of exploration.</li>
+                                        <li>Epsilon-Greedy and Optimistic Initial Values fall in between, depending on their parameters.</li>
+                                    </ul>
+                                </li>
+                                <li>Action Selection Frequency:
+                                    <ul>
+                                        <li>Greedy heavily favors one action (often suboptimal).</li>
+                                        <li>Epsilon-Greedy explores more but still skews toward the best action.</li>
+                                        <li>Optimistic Initial Values tests every action early before converging on the optimal one.</li>
+                                        <li>Thompson Sampling shows the most adaptive behavior, balancing exploration and exploitation dynamically.</li>
+                                    </ul>
+                                </li>
+
+                            </ol>
+                            <h3>The Verdict</h3>
+                            <p>There’s no one-size-fits-all winner, but here’s the breakdown:</p>
+                            <ul>
+                                <li>If you want simplicity: Go for Epsilon-Greedy.</li>
+                                <li>If you need early exploration: Optimistic Initial Values is your friend.</li>
+                                <li>If you’re looking for sophistication: Thompson Sampling is the gold standard.</li>
+                                <li>If you hate exploring: Well, Greedy is your go-to—but don’t say we didn’t warn you!</li>
+                            </ul>
+                            <h3>Conclusion</h3>
+                            <p>All these strategies have their strengths and weaknesses, and the right choice depends on your goals and environment. Understanding how they work and when to use them is key to mastering the K-Armed Bandit problem.</p>
+                            <p>Next, we’ll wrap things up with reflections on what we’ve learned and a sneak peek at real-world applications of bandit strategies. Stay tuned! 🎯✨</p>
+
+                            
+
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section10.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section12.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

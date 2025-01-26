@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>5. Thompson Sampling: Let Probability Be Your Guide</h3>
+                            
+                            <p>Imagine you’re at a carnival with multiple game booths, each offering mysterious rewards. Instead of blindly picking one or sticking with the same booth, you bring out a secret weapon: a probability map that tells you how promising each booth might be. Every time you play, the map gets updated, guiding you toward smarter choices. That’s Thompson Sampling—a method that blends exploration and exploitation using the power of probabilities.</p>
+                            
+                            <h4>How It Works:</h4>
+                            <p>Thompson Sampling is rooted in Bayesian statistics, but don’t worry—it’s friendlier than it sounds! The key idea is to maintain a probability distribution for each action, reflecting how confident you are in its potential reward. </p>
+                             <p>
+                                <ol>
+                                    <li>
+                                        <b>Start With Prior Beliefs:</b><br>
+                                        Assign an initial probability distribution (a “prior”) for each action. For example, if you don’t know much about an action, you might start with a uniform distribution (all options are equally likely to be good).
+                                        
+                                    </li>
+                                    <li>
+                                        <b>Sample From the Distribution:</b><br> 
+                                        For each action, sample a random value from its probability distribution. These sampled values represent how “good” you think each action might be.
+                                    </li>
+                                    <li>
+                                        <b>Choose the Best Sample:</b><br> 
+                                        Pick the action with the highest sampled value. Essentially, you're letting probability guide your choice while still favoring the most promising actions.
+                                    </li>
+                                    <li>
+                                        <b>Update the Distribution:</b><br> 
+                                        After observing the reward from your chosen action, update its probability distribution to reflect the new information. Actions that perform well will have distributions that skew toward higher rewards, while poor performers will see their probabilities drop.
+                                    </li>
+                                </ol>
+                            </p> 
+                                                      
+                            <h4>Why It’s Smart:</h4>
+                            <p>Thompson Sampling is brilliant because it naturally balances exploration and exploitation without needing manual parameters like epsilon. Here’s why it works:</p>
+                            <p>Key features include:</p>
+                            <ol>
+                                <li>
+                                    <b>Exploration Happens Naturally:</b><br> 
+                                    Actions with uncertain distributions (i.e., less data) will occasionally get picked because their sampled values might still be high.
+                                </li>
+                                <li>
+                                    <b>Exploitation is Automatic:</b><br> 
+                                    Actions with consistently high rewards will dominate over time as their distributions concentrate around higher values.
+                                </li>
+                            </ol>
+                            
+                            <h4>Real-Life Analogy:</h4>
+                            <p>Let’s say you’re testing ads for an online campaign.
+                                <ul>
+                                    <li>Each ad starts with a probability distribution based on your initial assumptions.</li>                                
+                                    <li>Over time, as you observe click-through rates (rewards), the distributions for each ad get updated.</li>
+                                    <li>Thompson Sampling will guide you to focus on the best-performing ads while still occasionally testing others to make sure you’re not missing out.</li>
+                                </ul>
+                            </p>
+
+                            <h4>The Math (Simplified):</h4>
+                            <p>In the case of binary rewards (e.g., success/failure):
+                                <ul>
+                                    <li>You can use a Beta distribution as your prior for each action.</li>                                
+                                    <li>The Beta distribution is updated based on the number of successes (𝑆) and failures (𝐹) observed for an action:
+                                        <p> Beta (𝑆 + 1,𝐹 + 1) </p>
+                                    </li>
+                                    <li>This update ensures that actions with more successes have a higher probability of being chosen, while less-tested actions retain some uncertainty, encouraging exploration.</li>
+                                </ul>
+                            </p>
+
+                            <h4>Why You’ll Love It:</h4>
+                            <p>In the case of binary rewards (e.g., success/failure):
+                                <ol>
+                                    <li>No Arbitrary Parameters: Unlike epsilon-greedy, there’s no need to set a random exploration rate. Thompson Sampling handles it dynamically.</li>                                
+                                    <li>Adaptive to Uncertainty: It automatically adjusts exploration based on how much you know about each action.</li>
+                                    <li>Great for Real-World Applications: From online ad optimization to A/B testing, Thompson Sampling shines in environments where balancing exploration and exploitation is critical.</li>
+                                </ol>
+                            </p>
+
+                            
+                            <h4>The Catch: Bayesian Basics</h4>
+                            <p>While Thompson Sampling is powerful, it requires some knowledge of Bayesian statistics and probability distributions to implement effectively. But don’t worry—it’s worth the learning curve!</p>
+
+                            <h4>In a Nutshell:</h4>
+                            <p>Thompson Sampling is like having a smart, probability-powered advisor who helps you make better decisions by constantly learning from the outcomes. It’s flexible, intuitive, and one of the most elegant solutions to the exploration vs. exploitation dilemma.</p>
+                            <p>Next up, we’ll explore how these strategies perform in different scenarios—and maybe even dive into combining them for maximum impact. Stay tuned for the grand finale! </p>
+                            
+                            
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section4.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section6.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>K-Armed Bandits in Action: Concepts, Code, and Practical Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#reaching-stars">Markov Decision Process (MDP)</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            <h1  class="decorative-heading">K-Armed Bandits in Action: Methods for Balancing Exploration and Exploitation</h1>
+                            
+                            <h3>4. Upper Confidence Bound (UCB): Confidence Meets Strategy</h3>
+                            
+                            <p>Alright, let’s turn up the sophistication dial. The Upper Confidence Bound (UCB) method is like having a friend who not only knows which slot machine is good but also has an uncanny ability to tell you how sure they are about it. It’s not just about rewards anymore—it’s about rewards and confidence.</p>
+                            <h4>How It Works:</h4>
+                            <p>The UCB method balances exploration and exploitation by assigning each action a confidence bound — a number that reflects both:
+                                <ol>
+                                    <li>The estimated reward (how good the action seems based on past results).</li>
+                                    <li>The uncertainty of that reward (how much data you’ve gathered about that action).</li>
+                                </ol>
+                                
+                                <p>Here’s the magic formula for UCB:
+                                    
+                                    <p>Q<sub>t</sub> + c * sqrt (ln(t) / N<sub>t</sub>(a))</p>
+
+                                    where:
+                                    <ul>
+                                        <li>Q<sub>t</sub> : The estimated reward of action a at time t.</li>
+                                        <li>N<sub>t</sub> : The number of times action a has been selected so far.</li>
+                                        <li>c             : A constant that controls how much exploration you want (bigger 𝑐 more exploring).</li>
+                                        <li>t             : The total number of actions taken.</li>
+                                    </ul>
+                            </p>                            
+                            <h4>Why Does This Work?</h4>
+                            <p>UCB is clever because it prioritizes actions based on two factors:</p>
+                            <ol>
+                                <li>Actions with high rewards (exploitation).</li>                                
+                                <li>Actions with less data, which means higher uncertainty (exploration).</li>
+                            </ol>
+                            <p>If an action hasn’t been tried much, its confidence bound is high, giving it a chance to be explored. But as you gather more data, the confidence bound shrinks, and decisions start favoring actions with genuinely high rewards.</p>
+                            
+
+                            <h4>A Real-Life Example:</h4>
+                            <p>Imagine you’re running a coffee shop and testing new drinks:
+                                <ul>
+                                    <li>The Mocha Latte is popular, and you’ve served it 100 times. You’re pretty confident about its reward (a solid 4.5/5).</li>                                
+                                    <li>The Pumpkin Spice Latte is new, and you’ve only sold it 5 times. It’s rated 4.7/5, but there’s still a lot of uncertainty about how good it really is.</li>
+                                </ul>
+                                
+                                UCB says: Try the Pumpkin Spice Latte again! Why? Because even though the Mocha Latte is consistent, the Pumpkin Spice Latte could be a hidden gem worth more exploration.
+                            </p>
+
+
+                            <h4>The Genius of UCB:</h4>
+                            <p>
+                                <ul>
+                                    <li>Confidence-Aware Decisions: Unlike epsilon-greedy, which randomly explores, UCB is deliberate about exploration. It prioritizes actions with the potential to yield better results based on their confidence bounds.</li>                                
+                                    <li>Less Guesswork: UCB adapts naturally over time. As you gather more data, it leans toward the most reliable options without neglecting exploration.</li>
+                                </ul>
+                            </p>
+
+                            <h4>The Catch: Is Confidence Always Reliable?</h4>
+                            <p>UCB works best when:
+                                <ul>
+                                    <li>Rewards are stationary (they don’t change over time).</li>
+                                    <li>You have a reasonable value for 𝑐 to control exploration.</li>
+                                </ul>
+                                If rewards fluctuate or if 𝑐 is poorly chosen, UCB might misjudge the balance between exploring and exploiting. It’s like sticking with a favorite dish when the chef has just switched up the recipe—oops!
+                            </p>
+
+                            <h4>In a Nutshell:</h4>
+                            <p>The UCB method is like a smart explorer who uses confidence and rewards to guide their choices. It’s deliberate, efficient, and can outperform epsilon-greedy when applied to the right problems.</p>
+                            <p>Ready to go even deeper? Next up, we’ll explore Gradient Bandits, where we take the competition between actions to a whole new level. Let’s keep leveling up! 🎯✨</p>
+                            
+                            
+                            <div class="navigation">
+                                <a href="./k_armed_bandit_section3.html" class="btn-nav" title="Go to the previous section">Previous Section</a>
+                                <a href="./k_armed_bandit_section5.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                            </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
