@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <!-- <h1>Charting the Path: MDP Fundamentals and Cliff Walking Implementation</h1> -->
+                             <h1>Paving the Way: Exploring MDPs Through Cliff Walking Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h2 class="decorative-heading">Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading">Mastering Temporal Difference Learning and Q-Learning</h1>
+                                
+                                <p>In our previous discussions, we explored Policy Evaluation, Policy Iteration, and Value Iteration—powerful methods for solving Markov Decision Processes (MDPs). Now, let's dive into the heart of model-free reinforcement learning: Temporal Difference (TD) Learning and Q-Learning.</p>
+                                <p>If Value Iteration and Policy Iteration relied on having a model of the environment, what happens when we don’t know the transition probabilities or rewards? That’s where TD Learning shines—learning directly from experience, just like we do in real life!</p>
+
+                                <h2 class="decorative-heading">1. Temporal Difference (TD) Learning: Learning from Experience</h2>
+                                <p>Imagine you’re learning to drive. The first time you take the wheel, you don’t have a perfect model of how the car will respond, but you learn by doing—adjusting your actions based on immediate feedback. TD Learning operates the same way: instead of waiting until the end of an episode (as in Monte Carlo methods), it updates estimates step-by-step using real-time experience.</p>
+                                <h4>The TD(0) Update Rule</h4>
+                                <p>The fundamental TD update rule is: </p>
+                                    <p>V(s) ← V(s) + α [R + γ V (s′) − V(s) ]</p>
+
+                                <p>where : </p>
+                                <ul>
+                                    <li>V(s) is the estimated value of state 𝑠. </li>
+                                    <li>R is the observed reward </li>
+                                    <li>γ is the discount factor </li>
+                                    <li>V(s′) is the estimated value of the next state</li>
+                                    <li>α is the learning rate</li>
+                                </ul>
+                                <p>Rather than waiting for an entire sequence to end (like Monte Carlo learning), TD Learning makes updates at each step, refining value estimates on the go.</p>
+                                
+                                <h4>Real-Life Example: Learning a New Language</h4>
+                                <p>If you start learning Spanish, you don’t wait until you finish an entire textbook before updating what words you know. Instead, you adjust your understanding after each conversation. This is exactly how TD Learning works—updating knowledge step-by-step rather than in one big batch.</p>
+                                
+                                <h2 class="decorative-heading">2. Q-Learning: The Foundation of Modern RL</h2>
+                                <p>Now, let’s talk about Q-Learning, one of the most important reinforcement learning algorithms, used in everything from game-playing AI (like AlphaGo and Deep Q-Networks) to robotics.</p>
+                                <p>While TD Learning focuses on state values, Q-Learning improves action values by learning an optimal policy through trial and error.</p>
+
+                                <h4>The Q-Learning Update Rule</h4>
+                                <p>The core update equation for Q-Learning is:</p>
+                                <img src="../assets/img/qlearning_update_rule.png" alt="description" />
+                                <p>where : </p>
+                                <ul>
+                                    <li>Q(s,a) is the quality of taking action 𝑎 in state 𝑠</li>
+                                    <li>R is the immediate reward received </li>
+                                    <li>γ is the discount factor </li>
+                                    <li>max<sub>a<sup>′</sup></sub> Q(s<sup>′</sup> , a<sup>'</sup>) estimates the best possible future reward,</li>
+                                    <li>α is the learning rate</li>
+                                </ul>
+                                <br/>
+                                <h4>Breaking It Down: Learning by Trial and Error</h4>
+                                <p>Imagine a robot vacuum trying to clean a room. Initially, it moves randomly, bumping into obstacles and learning which actions (turn left, turn right, move forward) result in successful cleaning. Over time, it optimizes its policy—favoring actions that lead to maximal cleaning efficiency.</p>
+                                <h5><p>Key Feature of Q-Learning:</p></h5>
+                                <ul><li><b>Off-Policy Learning : </b>Unlike methods like SARSA (which we’ll discuss next), Q-Learning learns from the greedy best action, regardless of the actions actually taken.</li></ul>
+                                <br/>
+                                <h2 class="decorative-heading" text-align: center;>3. Monte Carlo vs. TD Learning: Key Differences</h2>
+                                    
+                                    
+                                    <img src="../assets/img/mc_vs_td.png" alt="description" style="display: block; margin: auto;" />
+                                    <p>Monte Carlo learning is like playing an entire chess game before learning what worked, while TD Learning is like adjusting your strategy after every move.</p>
+                                
+                                <h2 class="decorative-heading">4. SARSA: The On-Policy Counterpart to Q-Learning</h2>
+                                <p>While Q-Learning learns from the best possible action, SARSA (State-Action-Reward-State-Action) updates the policy based on the action actually taken, making it an on-policy method.</p>
+
+                                <h4>SARSA Update Rule</h4>
+                                <p><img src="../assets/img/sarsa_update_rule.png" alt="description" style="display: block; margin: auto;" /></p>
+
+                                <h4>Real-Life Example: Teaching a Teenager to Drive</h4><br/>
+                                <ul>
+                                    <li><b>Q-Learning (Off-Policy): </b>The AI learns the best theoretical driving strategy, even if it takes suboptimal actions.</li>
+                                    <li><b>SARSA (On-Policy): </b>The AI learns from its own actual driving mistakes, making it safer for real-world training.</li>
+                                </ul>
+                                <p>SARSA is often preferred for training self-driving cars because it considers what the agent actually does, rather than assuming optimal actions.</p>
+
+                                <h2 class="decorative-heading">5. When to Use Which Algorithm?</h2>
+                                <p><img src="../assets/img/qlearning_when_to_use.png" alt="description" style="display: block; margin: auto;" /></p>
+
+                                <h2 class="decorative-heading">Final Thoughts: The Power of Learning from Experience</h2>
+                                <p>Temporal Difference Learning, Q-Learning, and SARSA have revolutionized AI. Whether it’s teaching robots, training game AIs, or optimizing stock trading, these methods mimic human learning—making AI smarter with every step.</p>
+                                <p>In the next section, we’ll explore Deep Q-Networks (DQN) and how neural networks help scale reinforcement learning to complex environments. Stay tuned! 🚀</p>
+
+                                <div class="navigation">        
+                                    <a href="./MDP_Intro_section4.html" class="btn-nav" title="Go to the previous section">Previous Section</a>                            
+                                    <a href="./MDP_Intro_section6.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                                </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

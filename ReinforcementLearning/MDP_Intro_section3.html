@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <!-- <h1>Charting the Path: MDP Fundamentals and Cliff Walking Implementation</h1> -->
+                             <h1>Paving the Way: Exploring MDPs Through Cliff Walking Implementation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h2 class="decorative-heading">Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Introduction to Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container" id="section1"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading">Getting Hands-On with Policy Evaluation and Policy Iteration</h1>
+                                
+                                <p>Alright, now that we’ve laid the groundwork for Markov Decision Processes (MDPs), it’s time to roll up our sleeves and get into the action! We’ll dive into Policy Evaluation and Policy Iteration—two key components that help us refine decision-making strategies in MDPs. By the end of this section, you’ll not only understand these concepts but also see them in action in the Cliff Walking Environment. So, grab a coffee (or your favorite beverage) and let’s break it down!</p>
+
+                                <h2 class="decorative-heading">Policy Evaluation: Understanding the Worth of a Policy</h3>
+                                    <p>Let’s say you’re playing a board game where you earn points based on the moves you make. You want to know: if you follow a particular strategy, how much reward can you expect to accumulate over time? That’s precisely what Policy Evaluation does—it helps compute the value function for a given policy.
+                                        <br/>Mathematically, we express the value function for a policy as:
+                                        <p><img src="../assets/img/mdp_2.png" alt="description" style="display: block; margin: auto;" />
+
+                                            <br/> 
+                                            Where:
+                                            <ul>
+                                                <li>γ is the discount factor, controlling how much we care about future rewards.</li>
+                                                <li>R<sub>t+1</sub> is the reward at time t+1.</li>
+                                            </ul>
+                                            This means we evaluate the expected sum of rewards, discounted over time, if we start at state  and follow policy . The Bellman Equation gives us a recursive way to compute this:
+                                    
+                                    </p>
+
+                                    <h2 class="decorative-heading">Policy Iteration: Making Better Decisions Over Time</h2>
+                                    <p>Now that we know how to evaluate a policy, the next logical step is to improve it! Policy Iteration does exactly that: it alternates between Policy Evaluation (measuring the value of a policy) and Policy Improvement (updating the policy to make better decisions).</p>
+                                    <h4>Algorithm: Policy Iteration</h4>
+                                        <p><img src="../assets/img/policy_iteration_algo.png" alt="description" style="display: block; margin: auto;" />
+
+                                    <h2 class="decorative-heading">Applying Policy Iteration in the Cliff Walking Environment</h2>
+                                    <p>Now, let’s put these concepts to the test in the Cliff Walking Environment—a classic reinforcement learning problem. Picture a grid where you must navigate from Start to Goal without falling off a cliff (which incurs a heavy penalty).</p>
+                                    <ul>
+                                        <li><b>States: </b>Each grid position.</li>
+                                        <li><b>Actions: </b>Move left, right, up, or down. </li>
+                                        <li><b>Rewards: </b>-1 for each step, -100 for falling off the cliff, and 0 at the goal.</li>
+                                        <li><b>Goal: </b>Find the optimal policy that reaches the goal with minimal penalties.</li>
+                                    </ul>
+                                    
+                                    <p>Using Policy Iteration, we:</p>
+                                    <ol>
+                                        <li>Initialize a random policy (e.g., moving randomly or always moving right).</li>
+                                        <li>Evaluate the policy to compute the value function.</li>
+                                        <li>Improve the policy by choosing actions that minimize the risk of falling off while reaching the goal efficiently.</li>
+                                        <li>Repeat until we find the optimal policy.</li>
+                                    </ol>
+
+                                    <h4>Implementation: Policy Iteration</h4>
+                                    <pre>
+                                        <code>
+import numpy as np
+
+    def policy_iteration(P, R, gamma=0.9, theta=1e-6):
+        n_states, n_actions = R.shape
+        policy = np.zeros(n_states, dtype=int)
+        V = np.zeros(n_states)
+        
+        while True:
+            # Policy Evaluation
+            while True:
+                delta = 0
+                for s in range(n_states):
+                    v = V[s]
+                    a = policy[s]
+                    V[s] = sum([P[s, a, s_prime] * (R[s, a] + gamma * V[s_prime]) for s_prime in range(n_states)])
+                    delta = max(delta, abs(v - V[s]))
+                if delta < theta:
+                    break
+            
+            # Policy Improvement
+            policy_stable = True
+            for s in range(n_states):
+                old_action = policy[s]
+                policy[s] = np.argmax([sum([P[s, a, s_prime] * (R[s, a] + gamma * V[s_prime]) for s_prime in range(n_states)]) for a in range(n_actions)])
+                if old_action != policy[s]:
+                    policy_stable = False
+            
+            if policy_stable:
+                break
+        
+        return policy, V
+                                    </code>
+                                    </pre>
+
+                                    <h2 class="decorative-heading">Wrapping Up</h2>
+                                    <p>We’ve taken a deep dive into Policy Evaluation and Policy Iteration, seeing how they help refine decision-making in MDPs. Whether it’s choosing the best route as a delivery driver, improving Netflix recommendations, or avoiding the dreaded cliffs in reinforcement learning, these concepts have real-world significance.</p>
+
+                                    <p>In the next section, we’ll push further into Value Iteration, another powerful way to solve MDPs efficiently. Ready to see how we can find the best policies even faster? Stay tuned! 🚀</p>
+
+
+                                
+                                
+                                
+
+                                
+                                        
+                                
+                                <div class="navigation">        
+                                    <a href="./MDP_Intro_section2.html" class="btn-nav" title="Go to the previous section">Previous Section</a>                            
+                                    <a href="./MDP_Intro_section4.html" class="btn-nav" title="Go to the next section">Next Section</a>
+                                </div> 
+                                                        
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
