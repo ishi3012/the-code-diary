@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Leveraging the Syndemics Approach: <br> ~ Unveiling Disease Interactions with Machine Learning  ~ </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="healthcare_leveragingsdoh.html">Leveraging Community Health Workers & Social Determinants of Health for Predicting Emergency Department Readmissions</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+                                <!-- Section 1 -->
+                                <h2 class="decorative-heading">Key Findings: Disease Interactions and Syndemics</h2>
+                                <br/>
+                                <h4>Cluster Analysis: K-Means and K-Modes</h4>
+                                <p>In our study, we clustered the data using 30 disease attributes, which allowed us to identify patterns and relationships among various health conditions. To achieve this, we implemented two clustering algorithms: K-Modes and K-Means.</p>
+                                <p>To determine the optimal number of clusters, we utilized elbow plots, leading us to establish k=16 as the most suitable choice for our analysis. This method enabled us to visualize the point at which the addition of more clusters yields diminishing returns, confirming that 16 clusters provide a balanced representation of the data. </p>        
+                                <!-- <div style="text-align: left;">
+                                    <img src="img/elbow_kmodes.png" alt="description" style="display: block;" />
+                                    <p><strong>Fig:</strong> Elbow plot for KModes</p>
+                                </div>        -->
+                                <figure style="text-align: center;">
+                                    <img src="img/elbow_kmodes.png" alt="description" />
+                                    <figcaption><strong>Fig:</strong> Elbow plot for KModes</figcaption>
+                                </figure>
+                                <figure style="text-align: center;">
+                                    <img src="img/elbow_kmeans.png" alt="description" />
+                                    <figcaption style="text-align: center;"><strong>Fig:</strong> Elbow plot for KMeans</figcaption>
+                                </figure>
+                                <br/>
+
+                                <p>To assess the quality of the clusters generated by both the K-Modes and K-Means algorithms, we employed two metrics: Silhouette Scores and the Adjusted Rand Index (ARI).Based on the clustering results obtained from the K-Modes and K-Means methods, we specifically focused our analysis on clusters that demonstrated Silhouette Scores greater than 0.8. This threshold indicates a high degree of separation and cohesion within the clusters, suggesting that they are well-defined and representative of distinct patterns in the data.</p>
+                                <ul>
+                                    <li><b>Silhouette Scores </b>provide insight into the cohesiveness of clusters by measuring how similar an object is to its own cluster compared to other clusters. Higher silhouette values indicate better-defined clusters.</li><br/>
+                                        <figure style="text-align: center;">
+                                            <img src="img/silhoutte_score.png" alt="description" />
+                                            <!-- <figcaption style="text-align: center;"><strong>Fig:</strong> </figcaption> -->
+                                        </figure>
+                                    <li><b>The Adjusted Rand Index (ARI)  </b>quantifies the agreement between the clustering results and a ground truth partitioning, taking into account the chance grouping of elements. A higher ARI value signifies a more accurate clustering relative to the true labels.
+                                        
+                                        <figure style="text-align: center;">
+                                            <img src="img/ari_score.png" alt="description" />
+                                            <!-- <figcaption style="text-align: center;"><strong>Fig:</strong> </figcaption> -->
+                                        </figure>
+                                    </li>                                
+                                </ul>
+                                <p>The clusters identified with Silhouette Scores exceeding this threshold are as follows:
+                                    <ul><li>K-Modes: Cluster_4</li><li>K-Means: Cluster_7</li></ul>
+                                    <figure style="text-align: center;">
+                                        <img src="img/intersected_cluster.png" alt="description" />
+                                        <!-- <figcaption style="text-align: center;"><strong>Fig:</strong> </figcaption> -->
+                                    </figure>
+                                </p>
+                                <br/>
+                                <h2 class="decorative-heading">Results</h2><br/>
+                                <h4>Demographics Intersection</h4>
+                                <p>The analysis reveals a significant intersection between K-Modes Cluster 4 and K-Means Cluster 7, comprising a total of 4,157 patients. 
+                                    This intersection indicates a notable overlap in the demographic characteristics captured by both clustering methodologies. Specifically, 
+                                    K-Modes Cluster 4 contains a population of 4,961 patients, while K-Means Cluster 7 consists of 4,671 patients. 
+                                    The demographic features of these intersecting patients warrant further examination, as they may provide valuable insights into shared 
+                                    characteristics and health outcomes among these groups. Understanding the demographics of this intersection 
+                                    can enhance the interpretation of clustering results and inform targeted interventions for the patient population.</p>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <img src="img/demographics1.png" alt="Gender bar graph" style="width: 48%;">
+                                        <img src="img/demographics2.png" alt="Age bar graph" style="width: 48%;">
+                                    </div>
+                                    <div>
+                                        <img src="img/demographics3.png" alt="PCVC bar graph" style="width: 48%;">
+                                        <img src="img/demographics4.png" alt="Race/Ethnicity bar graph" style="width: 48%;">
+                                    </div>
+                                    
+                                <br/>
+                                <h4>Observed-Expected Ratio Results</h4>	
+                                <p>The analysis of the Observed-Expected Ratio (OER) for the intersecting cluster highlights several potential syndemics, with OER values exceeding 1.0. The most pronounced associations include the following:</p>
+                                
+                                <figure style="text-align: center;">
+                                    <img src="img/oer_heatmap.png" alt="OER REsults Heatmap">
+                                </figure>
+                                <figure style="text-align: center;">
+                                    <img src="img/disease_graph_result.png" alt="OER REsults Heatmap">
+                                </figure>
+                                <div class="navigation">        
+                                    <a href="./syndemics_methodology.html" class="btn-nav" title="Go to the previous section">Methodology</a>
+                                    <a href="./syndemics_recommendations.html" class="btn-nav" title="Go to the next section">Recommendations</a> 
+                                </div> 
+
+                                
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
