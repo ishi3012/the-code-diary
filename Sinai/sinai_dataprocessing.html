@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Leveraging Community Health Workers for Predicting Emergency Department Readmission</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Harnessing the Syndemics Framework:Unraveling Disease Interactions with Machine Learning</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+                                <!-- Section 1 -->
+                                
+                                <h2 class="decorative-heading">Data Collection</h2>
+                                <p>  The dataset for this study consists of 2,173 patient records, each with 315 features encompassing demographic information (e.g., age, sex), 
+                                    referral details (e.g., high-risk based on social worker assessments, discharge from the ED), Community Health Worker (CHW) contact logs 
+                                    (e.g., number of calls, length of calls), and Social Determinants of Health (SDoH) data (survey answers about food or housing insecurity). 
+                                    The data set is a collection of patients from Mt. Sinai and Holy Cross hospitals and were generally referred to the Sinai Urban Health 
+                                    Institute (SUHI) by social workers between July 2020 and February 2024. Originally, CHWs were stationed in the ED, but COVID made that 
+                                    impractical. Starting in January 2022, SUHI’s CHW program expanded their referrals to include behavioral health patients and proactively 
+                                    reaching out to in-patients. The proactive outreach consisted in internally searching the Sinai Health Systems database for patients who had 
+                                    had 3 or more rounds to the post discharge program, i.e., they were repeatedly referred to CHWs by social workers. Additionally, starting in 
+                                    April 2022, SUHI slightly expanded the set of SDoH variables. 
+                                </p>
+                                <figure style="text-align: center;">
+                                    <img src="img/sinai_dataset.png" alt="Sinai Dataset details">
+                                    <figcaption>Figure 1: Data description including levels of engagement and corresponding data.</figcaption>
+                                </figure>
+
+                                <p>As illustrated in Figure 1, the dataset comprises three distinct patient groups:</p>
+                                <ul>
+                                    <li><b>Non-engaged Patients:</b> Consisting of 729 patients (33% of the total population), these individuals had no recorded engagement with CHWs.</li><br/>
+                                    <li><b>Engaged Patients:</b> Consisting of 1,448 patients (67% of the population), these individuals had documented interactions with CHWs. This group was further divided into:
+                                        <ul>
+                                            <br/>
+                                            <li><b>Not Surveyed Patients:</b> Comprising 630 patients (44% of engaged, 29% of total population), these patients interacted with CHWs but did not participate in the SDoH survey.</li><br/>
+                                            <li><b>Surveyed Patients:</b> A subset of 818 engaged patients (56% of engaged, 38% of total population) who completed at least some portion of the SDoH survey, providing additional insights into their social environment and health status.</li><br/>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <h2 class="decorative-heading">Data Integration and Preprocessing</h2>
+                                <p> To ensure consistency and reliability of the dataset, several preprocessing steps were carried out:</p>
+                                <ul>
+                                    <li><b>Data Cleaning : </b><br/>The raw data contained several missing values, duplicate entries, and inconsistencies. 
+                                        Missing data was addressed through a combination of imputation techniques and removal of incomplete records where appropriate. 
+                                        Specific columns with a high number of missing values were flagged for possible omission or imputed using the mean/mode value 
+                                        depending on the feature type.
+                                    </li><br/>
+                                    <li><b>Normalization and Standardization : </b><br/>Continuous variables were normalized to bring them to a common scale, ensuring 
+                                        that features such as patient age, CHW contact duration, and SDoH scores were consistent and comparable across the dataset. 
+                                        Standardization was used to facilitate effective training of machine learning models, particularly those sensitive to feature scaling 
+                                        such as Logistic Regression.
+                                    </li><br/>
+                                    <li><b>Feature Engineering : </b><br/>Feature engineering was conducted to enhance the dataset’s predictive capacity. Interaction terms were
+                                         created to capture complex relationships between features such as the frequency of CHW contact and patient comorbidities. 
+                                         Derived variables were also generated from CHW logs, such as the total time spent with CHWs and the total number of contact attempts. 
+                                         Additionally, binary indicators were used to represent the presence or absence of specific SDoH conditions, which allowed for more 
+                                         granular analysis.
+                                    </li><br/>
+                                    <li><b>Data integration of the new patients : </b><br/>Most new SDoH features (added after January 2022) were present in the previous dataset. 
+                                        For new features such as emotional health, survey answers (e.g., anxiety, depression or loneliness) were combined and added based on the 
+                                        number of missing values to limit the number of Not Available (NA) values in the entire dataset 
+                                   </li><br/>
+                                </ul>
+                                
+                                <div class="navigation">        
+                                                                 
+                                    <a href="./sinai_intro.html" class="btn-nav" title="Go to the previous section">Introduction</a>
+                                    <a href="./sinai_methodology.html" class="btn-nav" title="Go to the next section">Methodology</a>
+                                </div> 
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

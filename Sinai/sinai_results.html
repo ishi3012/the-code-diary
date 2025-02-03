@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Leveraging Community Health Workers for Predicting Emergency Department Readmission</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Harnessing the Syndemics Framework:Unraveling Disease Interactions with Machine Learning</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+
+                                <h2 class="decorative-heading">Results</h2>
+                                
+                                <p>We describe our results in the same order as explained in previous section. We start with the observed statistics, 
+                                    followed by the supervised and unsupervised machine learned feature importance before summarizing our insights and 
+                                    translating them into useful actionable recommendations to CHWs.
+                                </p>
+                                
+
+                                <h4>1. Observed Statistics </h4>
+                                <p>
+                                    Our analysis of the dataset examined patient readmission patterns before applying machine learning models. 
+                                    Observed data provides baseline trends and benchmarks for evaluating predictive models. 
+                                    Patients were categorized into three groups based on their engagement with Community Health Workers (CHWs): Non-Engaged, Engaged, and Surveyed. 
+                                    The observed readmission rates are as follows:
+                                </p>
+                                <ul>
+                                    <li><b>Non-Engaged Patients : </b> 35.03% readmission rate.</li>
+                                    <li><b>Engaged Patients : </b> 18.89% readmission rate</li>
+                                    <li><b>Surveyed Patients : </b> 19.49% readmission rate.</li>
+                                </ul>
+                                <p>Engagement with CHWs reduced readmission rates by nearly half compared to the Non-Engaged group. The readmission rate for Surveyed patients 
+                                    was slightly higher than for Engaged patients, suggesting that while SDoH survey participation adds value, it does not significantly enhance 
+                                    the benefits of CHW engagement alone.
+                                </p>
+                                <p>Further examination of demographic factors provided insights into the characteristics of each patient group:</p>
+                                <ul><li><b>High-Risk Readmit Status: </b>This factor was the most critical predictor of readmissions in the Non-Engaged group. Patients categorized 
+                                    as high-risk had higher readmission rates compared to other subgroups.</li>
+                                </ul>
+                                <p>These trends emphasize the need for targeted interventions for high-risk patients, particularly those not engaged with CHWs.</p>
+                                <p>The observed data establishes baselines that guide the evaluation of machine learning models. Features identified through modeling were compared 
+                                    against these observed baselines using the following criteria:
+                                </p>
+                                <ul>
+                                    <li>The feature’s readmission rate must exceed the baseline rate for the respective patient group.</li>
+                                    <li>The feature must represent a significant number of patients (at least 10).</li>
+                                    <li>There must be a notable difference between readmitted and non-readmitted patients within the feature.</li>
+                                </ul>
+                                <p>These criteria ensure that only significant features are recommended for CHW interventions.</p>
+                                
+                                <h4>2. Supervised Learning </h4>
+                                <p>The performance of RF and LR models was evaluated using key metrics: Accuracy, Sensitivity, Specificity, F1-score, and AUC* . 
+                                    For conciseness, we report the accuracy (correctness) and AUC which is a measure of the predictive capabilities of the classifier or in our case, 
+                                    the ability of the model to distinguish between readmitted and non-readmitted patients.  The RF model consistently outperformed LR, particularly in 
+                                    sensitivity and AUC, indicating its superiority in identifying patients at risk for ED readmission.
+                                </p>
+                                <p>
+                                    In our study, RF outperformed LR due to its ability to handle the complexity of the data, including a combination of demographic information, 
+                                    CHW logs, and SDoH features. The ensemble approach is known to help reduce overfitting while providing insight into the importance of each feature. 
+                                    The RF model achieved an accuracy of 0.76 (95% CI: 0.75 - 0.77), and an AUC of 0.77 (95% CI: 0.76 - 0.78) for the surveyed patients subgroup. 
+                                </p>
+                                <figure style="text-align: center;">
+                                    <img src="img/sinai_rf_results_table.png" alt="RF Results">
+                                    <figcaption>Table 1 Random Forest</figcaption>
+                                </figure>
+                                <p>It is interesting to note that the readmissions amongst the non-engaged patients are the least predictable at baseline (using just the demographics 
+                                    and referral information), with an accuracy of about 60% and an AUC of 64%. Using the same data for engaged and surveyed patients, the accuracy already 
+                                    improves by about 10% without any additional data. The accuracy does not significantly increase with the addition of CHW logs and SDoH data respectively, 
+                                    except in the case of surveyed patients with all available data. 
+                                </p>
+                                <p>On the other hand, the ability of the classifier to learn the difference between positive and negative cases (readmitted vs non-readmitted patients) 
+                                    clearly improves with the addition of CHW logs for engaged and surveyed patients. 
+                                </p>
+                                <p>
+                                    To summarize, we focused on the clearly increased classification capabilities of the classifier for surveyed patients with all available data, 
+                                    which shows a 5% increase from the baseline with no overlapping confidence intervals (0.70 [0.68-0.71] to 0.75 [0.74-0.77] )
+                                </p>
+
+                                <h4>3. Supervised Learning Feature Importance</h4>
+                                <p>Feature importance analysis was conducted to determine which specific factors had the greatest influence on the prediction of ED readmissions among 
+                                    different patient groups, using RF and LR models. The analysis is crucial for understanding where Community Health Workers (CHWs) should prioritize 
+                                    their efforts to ensure targeted interventions, which can ultimately enhance patient outcomes.
+                                </p>
+                                <p>
+                                    Among the top features identified by the RF were time spent with CHWs, type of referral (particularly high-risk vs. ED referral), 
+                                    the number of contact attempts, and crucially some social determinants of health (SDoH) indicators such as food security and insurance status. 
+                                    The visualization of these top 30 features, represented in the provided plots (Figure 3 and Figure 4), highlights the key drivers behind the model's predictions. 
+                                    While we had previously demonstrated that important CHW logs features were among the most important features, we now show that food security is ranked tenth and 
+                                    third in the RF and LR model respectively, while insurance is ranked 12th and 6th in the same order. In both cases, these two are the top two SDoH features amongst 
+                                    the 30 most important features. The next agreement in SDoH feature importance is employment status but the agreements, and the magnitude of the importance significantly 
+                                    decreases beyond 14 features. 
+                                </p>
+                                <figure style="text-align: center;">
+                                    <img src="img/sinai_feature_imp_1.png" alt="Feature importance results">
+                                    <figcaption>Feature Importance : Random Forest</figcaption>
+                                </figure><br/><br/>
+                                <figure style="text-align: center;">
+                                    <img src="img/sinai_feature_imp_2.png" alt="Feature importance results">
+                                    <figcaption>Feature Importance : Logistic Regression</figcaption>
+                                </figure>
+
+                                <ol>
+                                    <li>Time Spent with CHWs
+                                        <ul>
+                                            <li>The duration of engagement with Community Health Workers (CHWs) was one of the strongest predictors of 
+                                                reduced ED readmissions. Consistent and meaningful interactions foster trust, improve patient assessments, and enhance adherence to 
+                                                follow-up care plans.
+                                            </li>
+                                        </ul>
+                                    </li><br/>
+                                    <li>Referral Type (High-Risk vs. ED Referral)
+                                        <ul>
+                                            <li>Patients classified as high-risk by social workers had significantly higher readmission rates. 
+                                                This highlights the need for CHWs to focus on these patients with comprehensive care plans and 
+                                                intensive follow-ups to prevent recurrent ED visits.
+                                            </li>
+                                        </ul>
+                                    </li><br/>
+                                    <li>Number of Contact Attempts
+                                        <ul>
+                                            <li>Patients who received four or more contact attempts had a higher likelihood of readmission, 
+                                                suggesting they have more complex healthcare needs. CHWs should consider alternative, 
+                                                more tailored intervention strategies for such patients.
+                                            </li>
+                                        </ul>
+                                    </li><br/>
+                                    <li>Food Security and Insurance Status
+                                        <ul>
+                                            <li>Food insecurity and insurance type were critical social determinants of health (SDoH) 
+                                                influencing readmissions. Patients struggling with food access were at a greater risk, 
+                                                emphasizing the need for CHWs to integrate food assistance into care plans. Similarly, disparities in 
+                                                healthcare access based on insurance status (e.g., public vs. uninsured) contributed to readmission risks, 
+                                                warranting targeted support strategies.
+                                            </li>
+                                        </ul>
+                                    </li><br/>
+                                </ol>
+                                <p>The Surveyed patient group presented different but complementary insights into the factors driving readmissions. 
+                                    The type of referral was again a significant factor—patients admitted as high-risk had a readmission rate of 42%, 
+                                    while those from the Emergency Department had a much lower rate of 6.8%. Regarding the frequency of CHW interactions, 
+                                    patients who received four or more contacts had a readmission rate of 37.8%, which was notably higher than patients 
+                                    who had only one or two contacts, with readmission rates of 3.3% and 4.2%, respectively. Hypertension again emerged as a 
+                                    key factor, with patients with hypertension having a readmission rate of 33.3%, compared to 11.6% for those without hypertension. 
+                                    These findings reiterate the results from the engaged patients in general. The presence of referrals played a crucial role in 
+                                    determining outcomes for the Surveyed group. Patients who received appropriate referrals had a readmission rate of 34.3%, while 
+                                    those without referrals had a significantly lower rate of 12.8%. This finding suggests that while referrals are generally intended 
+                                    to assist patients, there might be mismatches in how these referrals are being used, requiring a reassessment of how resources are 
+                                    being allocated to meet patient needs. </p>
+                                
+                                    <h4>Unsupervised Learning Results</h4>
+                                    <p>Using the elbow method with our K-Modes clustering, we determined that the optimum number of clusters was three. The clustering uncovered 
+                                        three clusters that were easily categorized based on their engagement based on the percentages of patients that were non-engaged, engaged or surveyed.  </p>
+                                    <figure style="text-align: center;">
+                                        <img src="img/sinai_elbow.png" alt="Feature importance results">
+                                        <figcaption>KModes : Elbow Method</figcaption>
+                                    </figure>
+
+                                    <p><b>Summary of Clustering Analysis</b></p>
+                                    <ol>
+                                        <li>Cluster 0 (Largest Group – 47.54%)
+                                            <ul><br/>
+                                                <li>Comprised 1,033 patients with the lowest readmission rate.</li>
+                                                <li>All patients were engaged with CHWs, and around 40% had completed SDoH surveys.</li>
+                                                <li>The findings confirm that engagement reduces readmissions. Increasing survey 
+                                                    participation within this group could further improve patient support and monitoring.</li>
+                                            </ul>
+                                        </li><br/>
+                                        <li>Cluster 1 (Non-Engaged Patients – 33.59%)
+                                            <ul><br/>
+                                                <li>Consisted of 730 patients with the highest readmission rate.</li>
+                                                <li>These patients had lower comorbidity levels and a higher representation of non-Hispanic individuals.</li>
+                                                <li>The lack of engagement suggests a need for greater outreach efforts to encourage CHW participation and reduce readmissions.</li>
+                                            </ul>
+                                        </li><br/>
+                                        <li>Cluster 2 (High-Engagement, Complex Cases – 18.87%)
+                                            <ul><br/>
+                                                <li>Included 410 patients with high levels of both CHW engagement and SDoH survey participation (96% engaged).</li>
+                                                <li>Despite engagement, this group had relatively higher readmission rates, likely due to comorbidities and social challenges.</li>
+                                                <li>This cluster had the highest percentage of Hispanic patients and the most complex health conditions.</li>
+                                                <li>Findings suggest the need for tailored interventions targeting chronic conditions like hypertension and addressing 
+                                                    unmet social needs to improve outcomes.</li>
+                                            </ul>
+                                        </li><br/>
+                                    </ol>
+                                    <p>The clustering analysis highlights that while engagement helps reduce readmissions, additional interventions are required for high-risk groups, 
+                                        particularly those with significant comorbidities and social challenges.</p>
+
+
+                                <div class="navigation">        
+                                    <a href="./sinai_methodology.html" class="btn-nav" title="Go to the previous section">Methodology</a>
+                                    <a href="./sinai_recommendations.html" class="btn-nav" title="Go to the next section">Recommendations</a>
+                                </div> 
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+         
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Leveraging Community Health Workers for Predicting Emergency Department Readmission</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Harnessing the Syndemics Framework:Unraveling Disease Interactions with Machine Learning</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading">Reducing Emergency Department Readmissions: <br/><br/> ~ How Community Health Workers and Social Determinants of Health Make a Difference ~ </h1>
+                                <p>This study explores the role of Community Health Workers (CHWs) and Social Determinants of Health (SDoH) in reducing 
+                                    30-day unplanned Emergency Department (ED) readmissions at Sinai Chicago. The research leverages machine learning to
+                                    assess the impact of integrating CHWs and SDoH data in predictive models. By comparing patient readmission 
+                                    predictions with and without this data, the study demonstrates that when CHWs engage with patients, predictive 
+                                    accuracy improves by 13.0-15.2%. The findings highlight the significance of CHW-related features in classification, 
+                                    reinforcing the value of these programs. The study optimizes predictive models for engaged patients, evaluates 
+                                    various machine learning metrics, and provides recommendations for improving patient care. Ultimately, this work 
+                                    emphasizes the human connection between CHWs and patients as a key factor in reducing avoidable hospital 
+                                    readmissions.</p>
+                                <h2 class="decorative-heading">Introduction</h2>
+                                <p>Emergency department (ED) readmissions within 30 days remain a persistent challenge for healthcare providers. 
+                                    Not only do frequent readmissions strain hospital resources, but they also signal deeper, 
+                                   unresolved issues in patient care and social support. Many readmissions are linked to Social 
+                                   Determinants of Health (SDoH), such as food security, housing stability, and access to healthcare services. As of 2024, 
+                                   hospitals are required by the Centers for Medicare and Medicaid Services (CMS) to screen patients for key SDoH domains 
+                                   and document these needs in medical records. The goal is to create better interventions and improve patient outcomes.
+                                </p>
+                                <p>In our previous study, we demonstrated the positive impact of CHWs and SDoH data on reducing ED readmissions among high-risk patients. 
+                                    Machine learning models were employed to predict the likelihood of readmissions, and it was shown that models incorporating CHW engagement 
+                                    nd SDoH data significantly outperformed models relying solely on demographics and referral data. Specifically, patients who engaged with CHWs 
+                                    had a lower readmission rate of 18.89%, compared to 35.03% for non-engaged patients. However, the scope of the analysis was limited by the 
+                                    relatively small dataset of 1,634 patient records. In this extended study, we started by integrating additional patient data, resulting in a 
+                                    dataset of 2,173 patient records, which increases the robustness of our analysis. 
+                                </p>
+                                <p>
+                                    In addition to confirming our previous results, we aimed to perform a comprehensive feature importance analysis,  and translate it into useful 
+                                    actionable recommendations for the CHW program at Sinai Health Systems. This extended research starts with observed statistics and employs both 
+                                    supervised and unsupervised machine learning techniques to derive deeper insights into patient characteristics and factors influencing readmissions. 
+                                    Specifically, Random Forest (RF) and Logistic Regression (LR) were used for classification, and K-modes clustering was used for unsupervised analysis.
+                                    The primary objective of this paper is to evaluate the predictive power of CHW engagement and SDoH data in reducing ED readmissions and to provide 
+                                    CHWs with actionable recommendations based on feature importance. We hypothesize that CHWs, supported by data-driven insights, can significantly 
+                                    lower the risks of ED readmissions for high-risk patients by providing resources that address SDoH data. This research contributes to the growing 
+                                    body of evidence supporting community-based interventions in healthcare and highlights the potential of machine learning to enhance these 
+                                    interventions.
+                                </p>
+                                <p>
+                                    This study takes a deep dive into how Community Health Workers (CHWs) and SDoH data impact ED readmission rates. 
+                                    Using machine learning techniques, we examine how CHWs' engagement with patients contributes to better health outcomes, 
+                                    and we provide actionable recommendations for optimizing their role.
+                                </p>
+                                <p>
+                                    This blog is based on the research published in the International Journal of Semantic Computing:</p>
+                                    <p><b>Citation:</b>
+                                    Hernandez, N., Karam, K., Baugh, N., Musale, S., Moses, A. P., Raicu, D., Furst, J., McCabe, K., & Tchoua, R. (2023). 
+                                </p>
+                                <p><b>"Leveraging Community Health Workers for Predicting Emergency Department Readmissions."</b></p>
+                                <p>International Journal of Semantic Computing. World Scientific Publishing Company.</p>
+                                
+                                <div class="navigation">        
+                                                                 
+                                    <a href="./sinai_dataprocessing.html" class="btn-nav" title="Go to the next section">Data Processing</a>
+                                </div> 
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

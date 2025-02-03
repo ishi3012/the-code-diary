@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Leveraging Community Health Workers for Predicting Emergency Department Readmission</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Related Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Harnessing the Syndemics Framework:Unraveling Disease Interactions with Machine Learning</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+
+                                <h2 class="decorative-heading">Methodology</h2>
+                                
+                                <p>This extended research study builds upon our previous work, incorporating new data sources and employing advanced analytical 
+                                    techniques to better understand the risk factors associated with patient readmission. The initial focus is on integrating new 
+                                    patient records with existing data to confirm and enhance previous results, demonstrating the robustness of these findings. 
+                                    The next step, or our primary objective in this work is to conduct an in-depth feature importance analysis and translate it into 
+                                    concrete and actionable recommendations for CHWs using observed statistics as well as learned features based on supervised and 
+                                    unsupervised machine learning.
+                                </p>
+                                <p>
+                                    In order to better define our methodology, we need to first describe our data. Crucially, we have categorized the patients 
+                                    based on their levels of engagements with the CHWs. This was done in an attempt to acknowledge and characterize an observed implicit selection 
+                                    bias in the patient base. There is an underlying difference between patients who chose to engage with CHWs and those who do not, i.e., as we will 
+                                    show below, readmissions are better “predicted” for the former than the latter even before considering additional data collected from CHWs. 
+                                    Therefore, in order to make the case that these additional data make a positive difference in model accuracy, we need to establish a reference 
+                                    accuracy that takes into account the different characteristics of patients at baseline. Figure 1 first describes the raw data and the available 
+                                    data for different types of patients based on levels of engagements, while Figure 2 describes our methodology based on the levels of engagements. 
+                                </p>
+                                <figure style="text-align: center;">
+                                    <img src="img/sinai_methodology.png" alt="Methodology details">
+                                    <figcaption>Figure 2: Methodology leveraging observed and learned approaches with respect to different levels of engagement and corresponding data.</figcaption>
+                                </figure>
+
+                                <h4>Observed Feature Statistics</h4>
+                                <p>To establish a baseline understanding of readmission patterns, we examined the raw dataset before applying any machine learning techniques. 
+                                    Observed readmission rates were calculated for each patient group:</p>
+                                <figure style="text-align: center;">
+                                    <img src="img/sinai_baseline.png" alt="Methodology details">
+                                    <figcaption>Figure 2: Methodology leveraging observed and learned approaches with respect to different levels of engagement and corresponding data.</figcaption>
+                                </figure>    
+
+                                <p>This analysis supports our primary hypothesis that engagement with CHWs significantly reduces readmission rates. Furthermore, demographic comparisons 
+                                    revealed that the 'High-risk readmit' factor was a predominant predictor of readmissions in the Non-Engaged group. These baseline statistics serve as
+                                    critical benchmarks against which we compare the learned results from supervised and unsupervised models.
+                                </p>
+
+                                <h4>Supervised Learning Classification and Feature Importance</h4>
+                                <p>In previous work, we defined a classification (supervised learning) problem of high-risk patients who are readmitted to the ED. 
+                                    In order to demonstrate the positive impact of the CHW program on ED readmissions, we set out to predict readmissions and show that: 
+                                    <ol>
+                                    <li>classifier's ability increased with engaged patients using CHW and SDoH data </li> 
+                                    <li>important features included CHW/SDoH related features.</li> 
+                                </ol>
+                                </p>
+                                <p>Towards this goal, we used three types of classifiers:</p> 
+                                    <ol>
+                                        <li><b>Logistic Regression (LR)</b> model which was more commonly used in the previous works related to SDoH data</li><br/>
+                                        <li><b>Random Forest (RF) model</b> - RF models are commonly used due to their predictive power, ability to deal with noisy data 
+                                            and crucially their ability to give feature importance. It is also possible to get feature importance from LR models.  </li><br/>
+                                        <li><b>Neural Networks classifiers</b> - Neural Networks (NNs) are powerful classifiers that have been shown to achieve 
+                                            higher accuracy and are increasingly being leveraged in health informatics.However, they typically require large amounts of data.  </li><br/>
+                                    </ol>
+                                <p>
+                                    Our previous work showed that the RFs models consistently outperformed models, likely due to oversimplification in the case of the 
+                                    LR models and the lack of training data in the case of the NNs. Nevertheless, because we are now more interested in feature importance, 
+                                    we re-ran our experiments (30-run classification experiments using 80% training, 20% testing) using the RF and LR models. 
+                                </p>
+
+                                <h4>Unsupervised Learning: K-Modes Clustering and Feature Importance</h4>
+                                <p>To gain further insights into patient subgroups and identify the characteristics of high-risk patients, clustering was employed to explore 
+                                    latent structures or natural grouping within the patient data given all available data and features. The goal was to identify any additional 
+                                    insights from subgroups within the population that might reveal different patterns with respect to features or readmissions  and require different 
+                                    intervention strategies.</p>
+                                    <p>Partitioning clustering, exemplified by the widely used k-means algorithm, is a cornerstone technique in data analysis and machine learning, 
+                                        finding applications across diverse fields such as image processing, market segmentation, and bioinformatics due to its simplicity and efficiency. 
+                                        K-means however is designed for continuous features. Given the predominantly categorical features in our dataset, we discretized the rare continuous 
+                                        features such as age and time spent looking for resources and utilized K-modes clustering instead. The k-modes algorithm is an adaptation of k-means 
+                                        designed specifically for clustering categorical data, addressing the limitations of k-means, which relies on numerical distance measures like Euclidean 
+                                        distance that are not suitable for categorical attributes. Since we had defined “engaged” by at least some interaction/contact with CHWs, 
+                                        and surveyed as having answered at least one SDoH survey question, we expected some variability amongst these patients, hence some limitation 
+                                        of the supervised learning approach.. The goal of the unsupervised learning was to uncover similarities between patients and lead to a useful subgroup 
+                                        analysis of clusters of patients based on patterns in their demographics, levels of engagement, SDoH needs and/or readmissions risks. 
+                                    </p>
+                                    <p>
+                                        We used the Elbow method to determine the optimum number of clusters. Feature importance in clustering would then consist in the characterization 
+                                        of “interesting” and “relevant” clusters.
+                                    </p>
+                                    <h4>Combining insights from observed statistics and learned feature importance</h4>
+                                    <p>The methodological framework employed in this research aims to highlight the value of combining multiple data sources, statistical observations and 
+                                        feature importance from both supervised and unsupervised approaches to gain deeper insights into patient readmission risks. We hypothesize that some 
+                                        feature importance will emerge as overlapping across approaches, others will be discovered thanks to the particularity of each different model. </p>
+                                <div class="navigation">        
+                                    <a href="./sinai_dataprocessing.html" class="btn-nav" title="Go to the previous section">Data Processing</a>
+                                    <a href="./sinai_results.html" class="btn-nav" title="Go to the next section">Results</a>
+                                </div> 
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
