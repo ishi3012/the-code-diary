@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Building an AI-Powered Movie Recommendation System with Reinforcement Learning & RAG</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="coming_soon.html">AI Tutor</a></li>
+                        </ul>
+                    </nav>
+                </div>
+        
+                
+                
+                        <!-- Blog Post Content -->
+                        <div class="col-md-9">
+                            <article class="mb-4">
+                                <div class="container" >
+                                    <!-- Section 1 -->
+                                    <h2 class="decorative-heading">Choosing & Preprocessing the Dataset</h2>
+                                    <p>For our MVP, we needed a publicly available dataset with user ratings, movie metadata, and watch history. The MovieLens 1M dataset was the perfect fit!</p>
+                                    <h4 style="text-align: center;">Why MovieLens 1M?</h4>
+                                    <ul>
+                                        <li> 1 million ratings from 6,000+ users on 4,000+ movies.</li>
+                                        <li> Includes user demographics (age, gender, occupation).</li>
+                                        <li> Well-structured format, ideal for collaborative & content-based filtering.</li>
+                                    </ul>
+                                    
+                                    <h2 class="decorative-heading">Data Preprocessing Steps</h2>
+                                    <p>Since MovieLens 1M data is split into multiple .dat files, we merged them efficiently:</p>
+                                    <ol>
+                                        <li>Loaded movies.dat, ratings.dat, and users.dat (handling :: separators).</li>
+                                        <li>Merged ratings with movie metadata & user demographics.</li>
+                                        <li>Dropped unnecessary columns (e.g., timestamps).</li>
+                                        <li>Split data into train.csv (80%) & test.csv (20%) for model training.</li>
+                                    </ol>
+
+                                    <h2 class="decorative-heading">Analyzing the Data</h2>
+                                    <p>To gain insights before model training, we explored the dataset using visualizations.</p>
+                                    <h4 style="text-align: center;">Key Analysis:</h4>
+                                    <ol>
+                                        <li>Rating Distribution: Most ratings are between 3.0 and 4.0.</li><br/>
+                                        <img src="./img/rating_distribution.png" alt="Ratings Distribution" loading="lazy"><br/>
+
+                                        <li>Most Rated Movies: Identified top movies users engage with.</li><br/>
+                                        <li>Genre Popularity: Determined which genres dominate user preferences.</li><br/>
+                                        <img src="./img/genre_distribution.png" alt="Genre Distribution" loading="lazy"><br/>
+                                      
+                                        
+                                    </ol>
+                                  
+                                </div>
+                                <div class="navigation">        
+                                    <a href="./recommendation_data.html" class="btn-nav" title="Go to the previous section">Data Processing</a>
+                                    <a href="./recommendation_rag.html" class="btn-nav" title="Go to the next section">Results</a>
+                                </div> 
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
