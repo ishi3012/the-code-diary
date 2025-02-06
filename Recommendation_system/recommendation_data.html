@@ -42,11 +42,6 @@
                         <div class="post-heading">
                             <h1>Building an AI-Powered Movie Recommendation System with Reinforcement Learning & RAG</h1>
                             
-                            <!-- <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2023
-                            </span> -->
                         </div>
                     </div>
                 </div>
@@ -66,9 +61,6 @@
                         </ul>
                     </nav>
                 </div>
-        
-                
-                
                         <!-- Blog Post Content -->
                         <div class="col-md-9">
                             <article class="mb-4">
@@ -82,6 +74,171 @@
                                         <li> Includes user demographics (age, gender, occupation).</li>
                                         <li> Well-structured format, ideal for collaborative & content-based filtering.</li>
                                     </ul>
+
+                                    <h4 style="text-align: center;">Explanation of MovieLens 1M Data Files</h4>
+                                    <p>The MovieLens 1M dataset consists of several .dat files, each containing different aspects of movie ratings, users, and metadata. Here’s a breakdown of each file:</p>
+                                    <ul>
+                                        <li> <b>Movies.dat</b></li>
+                                        <ul>
+                                            <li>Purpose: Contains movie metadata such as titles and genres.</li>
+                                            <li>Structure:
+                                                <code>
+                                                    movieId::title::genres
+                                                </code>
+                                            </li>
+                                            <li>Example Data:<br/>
+                                                <code>
+                                                    1::Toy Story (1995)::Animation|Children's|Comedy<br/>
+                                                    2::Jumanji (1995)::Adventure|Children's|Fantasy<br/>
+                                                    3::Grumpier Old Men (1995)::Comedy|Romance<br/>
+
+                                                </code>
+                                            </li>
+                                            <li>Explanation:<br/>
+                                                <code>
+                                                    movieId → Unique identifier for the movie.<br/>
+                                                    title → Movie name + release year.<br/>
+                                                    genres → Pipe-separated (|) list of genres.<br/>
+
+                                                </code>
+                                            </li>
+                                        </ul><br/>  
+                                        <li><b>Ratings.dat</b></li>
+                                        <ul>
+                                            <li>Purpose: Stores user ratings for movies.</li>
+                                            <li>Structure:
+                                                <code>
+                                                    userId::movieId::rating::timestamp
+                                                </code>
+                                            </li>
+                                            <li>Example Data:<br/>
+                                                <code>
+                                                    1::1193::5::978300760<br/>
+                                                    1::661::3::978302109<br/>
+                                                    1::914::3::978301968<br/>
+                                                </code>
+                                            </li>
+                                            <li>Explanation:<br/>
+                                                <code>
+                                                    userId → Unique identifier for the user.<br/>
+                                                    movieId → Movie being rated.<br/>
+                                                    rating → Score from 1 (worst) to 5 (best).<br/>
+                                                    timestamp → Time when the rating was given (Unix format).<br/>
+                                                </code>
+                                            </li>
+                                        </ul><br/>
+                                        <li><b>Users.dat</b></li>
+                                        <ul>
+                                            <li>Purpose: Contains demographic details of users.</li>
+                                            <li>Structure:
+                                                <code>
+                                                    userId::gender::age::occupation::zipCode
+                                                </code>
+                                            </li>
+                                            <li>Example Data:<br/>
+                                                <code>
+                                                    1::F::1::10::48067<br/>
+                                                    2::M::56::16::70072<br/>
+                                                    3::M::25::15::55117<br/>
+                                                </code>
+                                            </li>
+                                            <li>Explanation:<br/>
+                                                <code>
+                                                    userId → Unique identifier for the user.<br/>
+                                                    gender → M (Male) or F (Female).<br/>
+                                                    age → Encoded in categories<br/>
+                                                    <ul>
+                                                        <li>1: Under 18</li>
+                                                        <li>18: 18-24</li>
+                                                        <li>25: 25-34</li>
+                                                        <li>35: 35-44</li>
+                                                        <li>45: 45-49</li>
+                                                        <li>50: 50-55</li>
+                                                        <li>56: 56+</li>
+                                                    </ul>
+                                                    occupation → Encoded as an integer (mapping available in README).<br/>
+                                                    zipCode → User’s zip code (mostly U.S.-based).<br/>
+                                                </code>
+                                            </li>
+                                        </ul> 
+                                        
+                                        <br/>
+                                        <li><b>tags.dat (Optional)</b></li>
+                                        <ul>
+                                            <li>Purpose: Stores user-generated tags (e.g., "Funny", "Sci-Fi", "Great Acting").</li>
+                                            <li>Structure:
+                                                <code>
+                                                    userId::movieId::tag::timestamp
+                                                </code>
+                                            </li>
+                                            <li>Example Data:<br/>
+                                                <code>
+                                                    15::339::dystopia::1138537770<br/>
+                                                    20::1::pixar::1262184809<br/>
+                                               </code>
+                                            </li>
+                                            <li>Explanation:<br/>
+                                                <code>
+                                                    tag → Custom text labels added by users for movies.<br/>
+                                                    Useful for NLP-based recommendation systems.<br/>                                                    
+                                                </code>
+                                            </li>
+                                        </ul><br/>
+                                        <li><b>Occupations.dat (Mapping file)</b></li>
+                                        <ul>
+                                            <li>Purpose: Provides a mapping of occupation IDs to real-world job titles.</li>
+                                            <li>Structure:
+                                                <code>
+                                                    occupationId::occupationName
+                                                </code>
+                                            </li>
+                                            <li>Example Data:<br/>
+                                                <code>
+                                                    0::other<br/>
+                                                    1::academic/educator<br/>
+                                                    2::artist<br/>
+                                                    3::clerical/admin<br/>
+                                               </code>
+                                            </li>
+                                            <li>Explanation:<br/>
+                                                Used to interpret occupation column from users.dat.
+                                            </li>
+                                        </ul>                
+                                    </ul>
+                                    <h4>Summary Table</h4>
+                                    <table border="1">
+                                        <tr>
+                                            <th>File</th>
+                                            <th>Purpose</th>
+                                            <th>Key Columns</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>movies.dat</code></td>
+                                            <td>Movie metadata</td>
+                                            <td><code>movieId</code>, <code>title</code>, <code>genres</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>ratings.dat</code></td>
+                                            <td>User ratings for movies</td>
+                                            <td><code>userId</code>, <code>movieId</code>, <code>rating</code>, <code>timestamp</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>users.dat</code></td>
+                                            <td>User demographics</td>
+                                            <td><code>userId</code>, <code>gender</code>, <code>age</code>, <code>occupation</code>, <code>zipCode</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>tags.dat</code></td>
+                                            <td>User-generated tags (optional)</td>
+                                            <td><code>userId</code>, <code>movieId</code>, <code>tag</code>, <code>timestamp</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>occupations.dat</code></td>
+                                            <td>Maps occupation IDs to names</td>
+                                            <td><code>occupationId</code>, <code>occupationName</code></td>
+                                        </tr>
+                                    </table><br/>
+                                    
                                     
                                     <h2 class="decorative-heading">Data Preprocessing Steps</h2>
                                     <p>Since MovieLens 1M data is split into multiple .dat files, we merged them efficiently:</p>
@@ -102,10 +259,20 @@
                                         <li>Most Rated Movies: Identified top movies users engage with.</li><br/>
                                         <li>Genre Popularity: Determined which genres dominate user preferences.</li><br/>
                                         <img src="./img/genre_distribution.png" alt="Genre Distribution" loading="lazy"><br/>
-                                      
-                                        
                                     </ol>
-                                  
+
+                                    <h2 class="decorative-heading">What’s Next? </h2>
+                                    <p>Now that we have cleaned & analyzed data, our next steps include:</p>
+                                    <ul>
+                                        <li> Implementing RAG-based retrieval using Sentence-BERT embeddings.</li>
+                                        <li> Training an RL agent to optimize movie recommendations.</li>
+                                        <li> Building an interactive API/UI to test real-time recommendations.</li>                                        
+                                    </ul>
+                                    <p>Stay tuned for Part 2, where we integrate Neural Retrieval + RL for dynamic recommendations! </p>
+                                    <p>Want to contribute? Check out the repo:
+                                    <a href="https://github.com/ishi3012/cine_sense_rl_rag/tree/main/CineSense" target="_blank">CineSense GitHub Repository</a>
+                                    </p>
+
                                 </div>
                                 <div class="navigation">        
                                     <a href="./recommendation_data.html" class="btn-nav" title="Go to the previous section">Data Processing</a>
