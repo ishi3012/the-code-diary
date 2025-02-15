@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Building an AI-Powered Movie Recommendation System with Reinforcement Learning & RAG</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="Intro_rl.html">Reinforcement Learning</a></li>
+                            <li class="nav-item"><a class="nav-link" href="coming_soon.html">Beyond Chatbots: An AI-Powered Learning Assistant for the Future</a></li>
+                        </ul>
+                    </nav>
+                </div>
+        
+                
+                
+                        <!-- Blog Post Content -->
+                        <div class="col-md-9">
+                            <article class="mb-4">
+                                <div class="container" >
+                                    <!-- Section 1 -->
+                                    <h2 class="decorative-heading">System Design of the Reinforcement Learning-Driven RAG-Based Movie Recommendation System</h2>
+                                    <p>In this section, we explore the architecture and system design of our movie recommendation system, 
+                                        which integrates Retrieval-Augmented Generation (RAG) with Reinforcement Learning (RL) to enhance user engagement. 
+                                        Our system is structured into multiple modules, each contributing to the overall recommendation pipeline.</p>
+                                    <br/><br/>
+                                    <h2 class="decorative-heading">System Architecture Overview</h2>
+
+                                    <p><img src="./img/system_design.png" alt="System Architecture Overview" loading="lazy" style="float: left; margin-right: 10px;"><br/></p>
+
+                                    <p><br/>Our Movie Recommendation System leverages SentenceTransformer (all-MiniLM-L6-v2) for generating high-quality 
+                                        vector embeddings of movies and stores them in Pinecone, a scalable vector database for fast similarity searches. 
+                                        Below, we break down how these components work together.</p>
+
+                                    <h4>How We Use SentenceTransformer for Movie Embeddings</h4>
+                                    <p>We use the SentenceTransformer model (all-MiniLM-L6-v2) to convert movie titles, 
+                                        genres, and release years into numerical vectors.</p>
+                                    
+                                        <ul>
+                                            <li><b>Model Used:</b> "sentence-transformers/all-MiniLM-L6-v2" </li>
+                                            <li>Why this Model?
+                                                <ul>
+                                                    <li>Lightweight & Efficient: Provides fast embeddings without heavy computation.</li>
+                                                    <li>Captures Semantic Similarity: Embeddings capture meaning rather than just word-level similarity.</li>
+                                                    <li>Pretrained on Large Datasets: It understands natural language well, making it suitable for movie descriptions.</li>
+                                                </ul>
+                                                <p><img src="./img/sentence_model_comparative_analysis.png" alt="System Architecture Overview" loading="lazy" style="float: left; margin-right: 10px;"><br/></p>
+                                            </li>
+                                        </ul>
+                                        <br/>
+                                    <h4>Step-by-Step Process of Creating Embeddings</h4>
+                                    <p>
+                                        <ol>
+                                            <li>Load the Pretrained Model
+                                                <pre>
+                                                    <code>
+                                                            model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+                                                    </code>
+                                                </pre>
+                                                <p>This loads the transformer model to encode movie descriptions into vector form.</p>
+                                            </li>
+                                            <li>Prepare Movie Metadata for Encoding
+                                                <p>The dataset is processed to create text-based descriptions for each movie:</p>
+                                                <pre>
+                                                    <code>
+                                                        df["text"] = df["title"] + " " + df["genres"] + " " + df["year"].astype(str)
+                                                    </code>
+                                                </pre>
+                                                <p>This ensures that embeddings are based on title, genre, and release year, allowing the model to find contextually relevant movies.</p>
+                                            </li>
+                                            <li>Generate Embeddings
+                                                <p>
+                                                    <pre>
+                                                    <code>
+                                                        embedding = model.encode(row["text"], convert_to_numpy=True).tolist()
+                                                    </code>
+                                                    </pre>
+                                                </p>
+                                                <p>This converts the text description of a movie into a high-dimensional vector representation.
+                                                </p>
+                                            </li>
+                                            
+                                        </ol>
+                                        </p>
+                                        <h4>How We Store Embeddings in Pinecone</h4>
+                                        <p>
+                                            <ol>
+                                                <li>Initialize Pinecone and Set Up an Index
+                <pre>
+                    <code>
+                        pc = Pinecone(api_key=PINECONE_API_KEY)
+                    </code>
+                </pre>
+                                                    <p>This connects to Pinecone using an API key.</p>
+                                                </li>
+                                                <br/>
+                                                <li>Check and Create a Vector Index
+<pre>
+<code>
+    if INDEX_NAME not in pc.list_indexes().names():
+    pc.create_index(
+        name=INDEX_NAME,
+        dimension=DIMENSION,
+        metric=METRIC,
+        spec=ServerlessSpec(cloud="aws", region=PINECONE_ENV)
+    )
+
+</code>
+</pre>
+
+                                                    <p>
+                                                        <ul>
+                                                            <li>The index stores embeddings and allows efficient nearest-neighbor searches.</li>
+                                                            <li>The metric (e.g., cosine similarity) determines how vector similarity is calculated.</li>
+                                                        </ul>
+                                                    </p>
+                                                </li>
+                                                <br/>
+                                                <li>Upsert Movie Embeddings into Pinecone Once embeddings are generated, they are uploaded in batches:
+                                                    <p>
+            <pre>
+            <code>
+                to_upsert.append((movie_id, embedding, {
+                    "title": row["title"], 
+                    "genres": row["genres"], 
+                    "rating": row.get("rating", "N/A"),
+                    "year": row["year"]
+                }))
+                
+                index.upsert(vectors=to_upsert)                                                           
+            </code>
+        </pre>
+                                                    </p>
+                                                    <ul>
+                                                        <li>Each movie is stored with its embedding and metadata.</li>
+                                                        <li>Upserts (Insert/Update) ensure real-time updates.</li>
+                                                    </ul>
+                                                </li>
+                                                <br/>
+                                                <li>Retrieve Similar Movies from Pinecone When a user queries for recommendations, we:
+                                                    <ul>
+                                                        <li>Encode the query into an embedding:
+        <pre>
+            <code>
+                query_embedding = model.encode(query, convert_to_numpy=True).tolist()
+
+            </code>
+        </pre>
+                                                        </li>
+                                                        <li>Perform a similarity search
+        <pre>
+            <code>
+                result = index.query(vector=query_embedding, top_k=5, include_metadata=True)
+
+            </code>
+        </pre>
+                                                        </li>
+                                                        <li>Return the top matching movies based on vector similarity.</li>
+                                                        
+                                                    </ul>
+                                                </li>
+                                                
+                                            </ol>
+                                            </p>
+                                <br/><br/>
+                                <h2 class="decorative-heading">System Workflow: How RAG and RL Work Together</h2>
+                                <p>
+                                    The recommendation system follows a structured workflow, where RAG retrieves relevant movie recommendations, 
+                                    and RL fine-tunes the selection to maximize user engagement.
+                                </p>
+                                <ol>
+                                    <li><b>Step 1: User Input & Data Processing</b>
+                                        <ul><br/>
+                                            <li>The system collects user preferences via explicit ratings, watch history, and engagement data (click-through rates, watch duration, etc.).</li>
+                                            <li>It also leverages external sources such as IMDb and Rotten Tomatoes to gather rich metadata on movies.</li>
+                                        </ul>
+                                    </li><br/>
+                                    <li><b>Step 2: Retrieval with RAG</b>
+                                        <p>The Retrieval-Augmented Generation (RAG) module is responsible for finding the most relevant movies based on user input.
+                                        <ul>
+                                            <li><b>Embedding Generation:</b> We use Sentence-BERT (SBERT) 
+                                                to convert movie descriptions, genres, and user reviews 
+                                                into numerical vector representations.This allows the system to find semantically similar movies, even if they don't share exact keywords.</li>
+                                            <li><b>Vector Similarity Search: </b>
+                                                We implement Pinecone for fast, high-dimensional nearest-neighbor searches to identify similar movies efficiently.
+                                            </li>
+                                            <li><b>GPT-Based Summarization: </b>
+                                                Once movies are retrieved, GPT-4 is used to generate human-like explanations for recommendations.xample: “Based on your interest in sci-fi thrillers like Inception, we recommend Interstellar. It shares complex storytelling and a strong emotional arc.”</li>
+                                        </ul>
+                                    </li><br/>
+                                    <li><b>Step 3: Reinforcement Learning for Optimization</b>
+                                        <p>While RAG provides relevant recommendations, it does not guarantee optimal engagement. This is where Reinforcement Learning (RL) comes in.
+                                        <ol>
+                                            <li><b>Defining the RL Components:</b> 
+                                                <ul>
+                                                    <li><b>State: </b>User preferences, watch history, session time, past interactions.</li>
+                                                    <li><b>Actions: </b>Movie recommendations generated by RAG.</li>
+                                                    <li><b>Reward: </b>Engagement metrics like click-through rate (CTR), watch duration, and likes.</li>
+                                                </ul>
+                                            
+                                            </li>
+                                            <li><b>Training the RL Model: </b>
+                                                <p>We use Deep Q-Network (DQN) or Proximal Policy Optimization (PPO) to optimize recommendations over 
+                                                    multiple interactions.The agent learns which types of recommendations yield the highest engagement over time.</p>
+                                            </li>
+                                            <li><b>GPT-Based Summarization: </b>
+                                                Once movies are retrieved, GPT-4 is used to generate human-like explanations for recommendations.xample: “Based on your interest in sci-fi thrillers like Inception, we recommend Interstellar. It shares complex storytelling and a strong emotional arc.”</li>
+                                        </ol>
+                                    </li><br/>
+                                    <li><b>Step 4: Deployment & Continuous Learning</b>
+                                        
+                                        <p>
+                                                <ul>
+                                                    <li>The RAG + RL model is deployed via an API layer (FastAPI).</li>
+                                                    <li>The system continuously learns and improves by updating user embeddings and adjusting RL policies based on new feedback.</li>
+                                                    
+                                                </ul>
+                                        </p>
+                                            
+                                    </li><br/>
+                                    
+                                </ol>
+                                
+                                <h2 class="decorative-heading">Models and Tools Used</h2>
+                                <p><img src="./img/models_tools_used.png" alt="System Architecture Overview" loading="lazy" style="float: left; margin-right: 10px;"><br/></p>
+
+
+                                </div>
+                                <div class="navigation">        
+                                    <a href="./recommendation_data.html" class="btn-nav" title="Go to the previous section">Data Processing</a>
+                                    <a href="./recommendation_rag.html" class="btn-nav" title="Go to the next section">Results</a>
+                                </div> 
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

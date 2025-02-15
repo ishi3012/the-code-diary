@@ -49,3 +49,13 @@ document.getElementById('prevBtn').addEventListener('click', () => {
         slider.style.transform = `translateX(-${currentPanel * 100}%)`;
     }
 });
+
+// // Check if the current page URL matches a valid route
+// document.addEventListener("DOMContentLoaded", function () {
+//     const validPages = ["/", "/about", "/blog", "/contact"]; // List your valid paths
+//     const currentPath = window.location.pathname;
+
+//     if (!validPages.includes(currentPath)) {
+//         window.location.href = "/404.html"; // Redirect to your custom 404 page
+//     }
+// });
