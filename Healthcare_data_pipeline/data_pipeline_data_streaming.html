@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <style>
+            pre {
+              /* float: left; */
+              background-color: #f4f4f4;
+              padding: 10px;
+              border: 1px solid #ddd;
+              overflow: auto;
+            }
+            pre code {
+              font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+              color: blue !important;
+            }
+          </style>
+        
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Claims to Clarity: Building a Real-Time Healthcare Data Pipeline</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers for Predicting Emergency Department Readmission</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../ReinforcementLearning/Intro_rl.html">Reinforcement Learning Unveiled: A Journey Through Concepts, Algorithms, and Applications</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Building an AI-Powered Movie Recommendation System with Reinforcement Learning & RAG</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading"> <b>~  Streaming with Kafka  ~</b> <br/>The Data Superhighway</h1>
+                                <p>
+                                    Once the data is ingested, it needs a high-speed highway to travel from one part of our system to another. 
+                                    Enter Kafka, our trusty messaging hub. Kafka acts as the central nervous system of our data pipeline, organizing, 
+                                    transporting, and even processing data as it moves through the system.
+                                </p>
+                                <h2 class="decorative-heading">Kafka Topics: Organizing the Flow</h2>
+                                <p>
+                                    Imagine a massive digital bulletin board with different sections—each dedicated to a specific type of information 
+                                    (claims, denials, lab results, etc.). That’s what Kafka topics do. In our design, we have separate topics such as:
+                                    <ul>
+                                        <li>claims_data for EDI 837 (claims) files.</li>
+                                        <li>denials_data for EDI 835 (denials) files.</li>
+                                    </ul>
+                                    These topics ensure that every piece of data finds its proper place, making it easy for downstream systems to subscribe 
+                                    and process the right messages.
+                                </p>
+
+                                <h2 class="decorative-heading">Kafka Connect: The Delivery Service</h2>
+                                <p>
+                                    Behind the scenes, Kafka Connect acts as our digital courier. It moves data seamlessly between Kafka and our storage or 
+                                    processing systems—like Snowflake or our staging JSON files for PySpark ETL. This ensures that once data lands in Kafka, 
+                                    it is delivered reliably and efficiently to where it’s needed.
+                                </p>
+                                <h2 class="decorative-heading">Kafka Streams: Real-Time Data Processing</h2>
+                                <p>
+                                    Kafka Streams is where the magic happens. It processes data on the fly—validating, enriching, and transforming our raw messages 
+                                    so they’re ready for analytics. Think of it as a rapid-response team that instantly checks and fixes errors as they occur, ensuring 
+                                    our insights are built on accurate, clean data.
+                                </p>
+
+                                <h2 class="decorative-heading">Code in Action</h2>
+                                <p>
+                                    <h4>Unified Kafka Producer (for EDI 837 and 835)</h4>
+                                    This producer reads both claims and denials data from files, processes the records, 
+                                    and sends them to their respective Kafka topics.
+
+                                    <pre><code>
+        import json
+        import time
+        import random
+        from kafka import KafkaProducer
+
+        # Kafka setup
+        KAFKA_BROKER = 'localhost:9092'
+        CLAIMS_TOPIC = 'claims_data'
+        DENIALS_TOPIC = 'denials_data'
+
+        # Data files
+        EDI_837_FILE = "data_samples/edi_837_sample.txt"
+        EDI_835_FILE = "data_samples/edi_835_sample.txt"
+
+        # List of realistic denial reason codes
+        DENIAL_REASONS = ["CO-45", "CO-97", "PR-1", "OA-23", "CO-16", "CO-29", "PI-204", "CO-11"]
+
+        # Initialize Kafka producer
+        producer = KafkaProducer(
+            bootstrap_servers=KAFKA_BROKER,
+            value_serializer=lambda v: json.dumps(v).encode('utf-8')
+        )
+
+        def interleave_and_send():
+            """
+            Reads claims (EDI 837) and denials (EDI 835) simultaneously and sends messages to Kafka.
+            Ensures denial reasons are included where applicable.
+            """
+            try:
+                # Open both files at the same time
+                with open(EDI_837_FILE, "r") as claims_file, open(EDI_835_FILE, "r") as denials_file:
+                    while True:
+                        claim_line = claims_file.readline().strip()
+                        denial_line = denials_file.readline().strip()
+
+                        # Process a claim message
+                        if claim_line and claim_line.startswith("CLM*"):
+                            fields = claim_line.split("*")
+                            claim_data = {
+                                "claim_id": fields[1],
+                                "billed_amount": float(fields[2]) if fields[2].replace('.', '', 1).isdigit() else 0.0,
+                                "status": "Submitted"
+                            }
+                            producer.send(CLAIMS_TOPIC, value=claim_data)
+                            print(f"Sent Claim: {claim_data}")
+
+                        # Process a denial message
+                        if denial_line and denial_line.startswith("CLP*"):
+                            fields = denial_line.split("*")
+
+                            try:
+                                billed_amount = float(fields[3])  # Extract billed amount from file
+                                paid_amount = float(fields[4]) if fields[4].replace('.', '', 1).isdigit() else 0.0  # Extract paid amount
+                            except (IndexError, ValueError):
+                                print(f"Error processing denial record: {denial_line}")
+                                continue  
+                            # Determine payment status
+                            if paid_amount == 0:
+                                status = "Fully Denied"
+                                denial_reason = random.choice(DENIAL_REASONS)
+                            elif paid_amount < billed_amount:
+                                status = "Partially Denied"
+                                denial_reason = random.choice(DENIAL_REASONS)
+                            else:
+                                status = "Paid Fully"
+                                denial_reason = ""  # Fully paid claims have no denial reason
+
+                            denial_data = {
+                                "claim_id": fields[1],
+                                "billed_amount": billed_amount,
+                                "paid_amount": paid_amount,
+                                "denial_reason": denial_reason,
+                                "status": status
+                            }
+                            producer.send(DENIALS_TOPIC, value=denial_data)
+                            print(f"Sent Denial: {denial_data}")
+
+                        # Simulate real-time ingestion delay
+                        time.sleep(1)
+
+                        # Stop when both files are completely read
+                        if not claim_line and not denial_line:
+                            break
+
+            except FileNotFoundError as e:
+                print(f"Error: {e}")
+            except IndexError:
+                print("Error: Invalid data format in EDI files. Please check file structure.")
+
+        # Run the producer with interleaved processing
+        interleave_and_send()
+
+                                        </code></pre>
+                                </p>
+                         
+
+                    
+                        <h4>Kafka Consumer for EDI 835 (Denials Processing)</h4>
+                        <pre><code>
+                            from kafka import KafkaConsumer
+                            import json
+
+                            # Kafka setup
+                            KAFKA_BROKER = 'localhost:9092'
+                            TOPIC = 'denials_data'
+                            OUTPUT_FILE = "data_samples/staging_denials.json"
+
+                            consumer = KafkaConsumer(
+                                TOPIC,
+                                bootstrap_servers=KAFKA_BROKER,
+                                value_deserializer=lambda m: json.loads(m.decode('utf-8')),
+                                auto_offset_reset='earliest'
+                            )
+
+                            print("Listening for new denials...")
+                            with open(OUTPUT_FILE, "w") as f:
+                                for message in consumer:
+                                    denial_record = message.value
+                                    json.dump(denial_record, f)
+                                    f.write("\n")
+                                    print(f"Received and stored denial: {denial_record}")
+
+                            </code></pre>
+
+                        <h4>Kafka Consumer for EDI 837 (Claims Processing)</h4>
+                        <pre><code>
+                            from kafka import KafkaConsumer
+                            import json
+
+                            KAFKA_BROKER ="localhost:9092"
+                            TOPIC = "claims_data"
+                            OUTPUT_FILE = "data_samples/staging_claims.json"
+
+                            consumer = KafkaConsumer(
+                                TOPIC, 
+                                bootstrap_servers=KAFKA_BROKER, 
+                                value_deserializer=lambda m: json.loads(m.decode('utf-8')),
+                                auto_offset_reset="earliest"
+                            )
+
+                            print("Listening for new claims...")
+
+                            with open(OUTPUT_FILE, "w") as f:
+                                for message in consumer:
+                                    claim = message.value
+                                    json.dump(claim, f)
+                                    f.write("\n")
+                                    print(f"Received and stored claim: {claim}")
+
+
+                            </code></pre>
+                    
+                            <h2 class="decorative-heading">Wrapping Up</h2>
+                            <p>Together, these code snippets show the flow of data from ingestion through real-time streaming to storage:</p>
+                            <ul>
+                                <li><b>Kafka Producer:  </b>Reads and interleaves EDI 837 and 835 files, sending messages to the respective Kafka topics.</li>
+                                <li><b>Kafka Consumers: </b>Listen to those topics, processing and saving the data for further transformation and analytics.</li>
+                            </ul>
+                            <p>By combining the power of Kafka topics, Kafka Connect, and Kafka Streams, our system creates a robust data superhighway that ensures 
+                                every claim and denial is accurately processed and readily available for analysis.</p>
+                                <p>This architecture not only supports real-time data processing but also paves the way for advanced analytics, ensuring that our healthcare data pipeline remains both agile and reliable.</p>
+
+
+                                <div class="navigation">  
+                                    <a href="./data_pipeline_data_ingestion.html" class="btn-nav" title="Go to the previous section">Data Ingestion</a>
+                                    <a href="./data_pipeline_data_storage_processing.html" class="btn-nav" title="Go to the next section">Data Storage and Processing</a>
+                                </div> 
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

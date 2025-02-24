@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <style>
+            pre {
+              /* float: left; */
+              background-color: #f4f4f4;
+              padding: 10px;
+              border: 1px solid #ddd;
+              overflow: auto;
+            }
+            pre code {
+              font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+              color: blue !important;
+            }
+          </style>
+        
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Claims to Clarity: Building a Real-Time Healthcare Data Pipeline</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers for Predicting Emergency Department Readmission</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../ReinforcementLearning/Intro_rl.html">Reinforcement Learning Unveiled: A Journey Through Concepts, Algorithms, and Applications</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Building an AI-Powered Movie Recommendation System with Reinforcement Learning & RAG</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading"> <b>~  Data Ingestion ~</b> <br/> Capturing the Vital Signs</h1>
+                                <p>
+                                    Think of data ingestion as our method for gathering vital signs from every patient in a busy hospital. We tap into multiple channels:
+                                </p>
+                                <h2 class="decorative-heading">2.1 File-Based Ingestion</h2>
+                                <p>Our journey begins with the traditional route—EDI files (claims and denials) delivered via secure file transfers. This method is tried and 
+                                    true, ensuring that standardized data enters our system safely.</p>
+                                <p><b>Why It Works: </b>EDI is the healthcare industry's common language, ensuring consistency and reliability.</p>
+
+                                <h2 class="decorative-heading">2.2 HL7 Messaging</h2>
+                                <p>Next, we capture HL7 messages—these are the live updates from clinical systems, delivering real-time information 
+                                    such as lab results and patient admissions.</p>
+
+                                <p>HL7® FHIR® (Fast Healthcare Interoperability Resources) is a next-generation standard for exchanging healthcare data in a modern, web-friendly way. 
+                                    Unlike older HL7 v2 messages that are often transmitted via sockets or interface engines, FHIR primarily uses RESTful APIs over HTTP/HTTPS, making 
+                                    it simpler to integrate with web and cloud applications. Below is a brief overview of how FHIR typically sends data:
+                                    <ol>
+                                        <li><b>Resource-Based Model :</b>FHIR organizes data into “resources,” each representing a core entity (e.g., Patient, Observation, Claim).
+                                            When a hospital system needs to send data about a patient’s vitals or claims, it packages that information into the relevant FHIR resource.</li>
+                                        
+                                        <li><b>RESTful APIs :</b>FHIR servers expose endpoints like /Patient, /Observation, or /Claim.Client systems (e.g., EHRs or integration engines) 
+                                            make HTTP requests (GET, POST, PUT, DELETE) to these endpoints to query, create, update, or remove resources.Responses are typically returned 
+                                            in JSON (or XML) format, containing the resource data.</li>
+                                        <li><b>Cloud and Hybrid Deployments :</b>FHIR servers can be deployed on-premise, in the cloud, or in a hybrid model, making it flexible for 
+                                            organizations at different stages of cloud adoption.</li>
+                                    </ol>
+                                                                   
+                                </p>
+
+                                <p>How This Fits into our Design: 
+                                <ul>
+                                    <li>In the diagram, the hospital sends data via FHIR to a central repository or a FHIR server (e.g., Corepoint).</li>
+                                    <li>This FHIR data is then processed, transformed, or routed to downstream systems—such as legacy R1 Core RCM 
+                                        platforms or other analytics engines—so that both modern and older systems stay in sync.</li>
+                                    <li>Because FHIR uses RESTful web services, the integration is simpler to maintain, more secure, and easier to scale, 
+                                        aligning with the overall Azure-based pipeline design.</li>
+                                </ul></p>
+                                <!-- <p><b>Why It Works: </b>HL7 is the gold standard for clinical data exchange, making it indispensable in real-time scenarios.</p> -->
+                                <p>Below is an example of a Python snippet that creates a simple TCP server to receive HL7 messages over a network socket. 
+                                    The server listens for incoming connections, receives the HL7 message, parses it using the hl7apy library, and then sends 
+                                    back an acknowledgment.
+                                </p>
+
+                                
+                                <pre><code>
+                                    import socketserver
+                                    from hl7apy.parser import parse_message
+                                    
+                                    class HL7TCPHandler(socketserver.BaseRequestHandler):
+                                        def handle(self):
+                                            # Receive data from the client (up to 1024 bytes)
+                                            data = self.request.recv(1024).strip()
+                                            hl7_message = data.decode('utf-8')
+                                            print(f"Received HL7 message:\n{hl7_message}")
+                                    
+                                            try:
+                                                # Parse the HL7 message
+                                                message = parse_message(hl7_message)
+                                                print("Parsed HL7 message:")
+                                                print(message.to_er7())
+                                            except Exception as e:
+                                                print("Error parsing HL7 message:", e)
+                                    
+                                            # Optionally, send an acknowledgment back to the provider
+                                            ack_message = "ACK"
+                                            self.request.sendall(ack_message.encode('utf-8'))
+                                    
+                                    if __name__ == "__main__":
+                                        HOST, PORT = "localhost", 2575  # Use appropriate host and port
+                                        with socketserver.TCPServer((HOST, PORT), HL7TCPHandler) as server:
+                                            print(f"HL7 server listening on {HOST}:{PORT}")
+                                            server.serve_forever()
+                                    </code></pre>
+                                <h2 class="decorative-heading">2.3 REST API Integration</h2>
+                                <p>Finally, modern systems often speak in REST APIs—these web-based messages bring flexibility and speed, allowing us to 
+                                    plug in data from diverse sources.</p>
+                                <p><b>Example: </b>Think of it as integrating wearable devices that continuously send patient health metrics.</p>
+                                <p><b>Why It Works: </b>It offers scalability and ease of integration for modern, cloud-based applications.</p>
+                                    
+                                <p>This snippet demonstrates how to build a simple REST API using Flask. The endpoint accepts POST requests with JSON payloads. 
+                                    In a production system, this endpoint could be used to integrate data from modern, web-based systems (such as wearable devices 
+                                    sending patient metrics).</p>
+                          
+                                    <pre><code>
+                from flask import Flask, request, jsonify
+
+                app = Flask(__name__)
+
+                @app.route('/api/ingest', methods=['POST'])
+                def ingest_data():
+                    # Extract JSON data from the request
+                    data = request.get_json()
+                    if not data:
+                        return jsonify({"error": "No JSON payload provided"}), 400
+
+                    # Process the data (e.g., validate and push to a message queue)
+                    print("Received data:", data)
+                    
+                    # Here, you would add additional logic to route the data to your pipeline.
+                    return jsonify({"status": "success", "data": data}), 200
+
+                if __name__ == '__main__':
+                    # Run the Flask app on localhost port 5000
+                    app.run(host='0.0.0.0', port=5000)
+
+                                        </code></pre>
+
+
+
+                                
+
+                                <div class="navigation">  
+                                    <a href="./data_pipeline_intro.html" class="btn-nav" title="Go to the next section">Introduction</a>
+                                    <a href="./data_pipeline_data_streaming.html" class="btn-nav" title="Go to the next section">Streaming with Kafka</a>
+                                </div> 
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <style>
+            pre {
+              /* float: left; */
+              background-color: #f4f4f4;
+              padding: 10px;
+              border: 1px solid #ddd;
+              overflow: auto;
+            }
+            pre code {
+              font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+              color: blue !important;
+            }
+          </style>
+        
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Claims to Clarity: Building a Real-Time Healthcare Data Pipeline</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            <!-- <li class="nav-item"><a class="nav-link" href="#introduction">Introduction to Reinforcement Learning</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers for Predicting Emergency Department Readmission</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../ReinforcementLearning/Intro_rl.html">Reinforcement Learning Unveiled: A Journey Through Concepts, Algorithms, and Applications</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Building an AI-Powered Movie Recommendation System with Reinforcement Learning & RAG</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="k_armed_bandit.html">K-Armed Bandit Problem</a></li> -->
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Blog Post Content -->
+                <div class="col-md-9">
+                    <article class="mb-4">
+                        <div class="container"> 
+                            
+                                <!-- Section 1 -->
+                                <h1  class="decorative-heading"> <b>~  Data Storage and Processing  ~</b> <br/>Building the Digital Vault</h1>
+                                <p>
+                                    Once data is streamlined through Kafka, it finds its home in our "digital vault" – Snowflake, our central data 
+                                    warehouse hosted on Azure. This vault isn’t a single monolithic store; it’s a layered system designed to manage 
+                                    data at different stages of its lifecycle, ensuring both flexibility and rigorous control.
+                                </p>
+
+                                <h2 class="decorative-heading">Snowflake: The Heart of Our Data</h2>
+                                <p>Snowflake is designed to handle large volumes of healthcare data securely and efficiently. It employs a multi-layered 
+                                    architecture that acts much like a hospital's patient management system—each layer has a distinct role, ensuring data is 
+                                    handled appropriately at every stage.
+                                    <ol>
+                                        <li>Transient Layer
+                                            <ul>
+                                                <li><b>What It Is: </b>A temporary holding area for newly ingested data.</li>
+                                                <li><b>Analogy: </b>Imagine a waiting room where patients check in before seeing a doctor.
+                                                    This area is designed for short-term use—data here is raw and unrefined.</li>
+                                                <li><b>Purpose: </b>It provides an immediate, but ephemeral, storage solution where data can be quickly 
+                                                    loaded and later transformed without cluttering long-term storage.</li>
+                                            </ul>
+                                        </li>
+
+                                        <li>Persistent Layer
+                                            <ul>
+                                                <li><b>What It Is: </b>A stable staging area where data is cleaned, deduplicated, and standardized.</li>
+                                                <li><b>Analogy: </b>Think of this as the patient triage area, where initial assessments are made, and information 
+                                                    is organized before further treatment.</li>
+                                                <li><b>Purpose: </b>Data here is processed and normalized to ensure consistency. This layer forms the basis for 
+                                                    building reliable business insights.</li>
+                                            </ul>
+                                        </li>
+
+                                        <li>Raw Vault
+                                            <ul>
+                                            <li><b>What It Is: </b>A secure archive that preserves the original, unaltered data.</li>
+                                            <li><b>Analogy: </b>Picture a secure, read-only archive where original patient records are stored for compliance and audit purposes.</li>
+                                            <li><b>Purpose: </b>The raw vault is critical for auditing, data lineage, and compliance. It ensures that even if transformations go wrong, 
+                                                there is always a pristine copy of the original data.</li>
+                                            </ul>
+                                        </li>
+
+                                        <li>Business Vault
+                                            <ul>
+                                            <li><b>What It Is: </b>A refined data repository where complex business transformations are applied.</li>
+                                            <li><b>Analogy: </b>Imagine a specialized treatment area where doctors refine and interpret patient data to diagnose and plan care.</li>
+                                            <li><b>Purpose: </b> This layer transforms raw data into actionable insights—combining, enriching, and summarizing data so that 
+                                                it’s ready for advanced analytics and decision-making.</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </p>
+                                <h2 class="decorative-heading">Supporting Cast: MongoDB & PostgreSQL</h2>
+                                <p>Not every type of data fits perfectly within the structured confines of a data warehouse like Snowflake. That’s why we also leverage specialized 
+                                    databases for particular workloads:</p>
+                                <h4>MongoDB</h4>
+                                <ul>
+                                        <li><b>Usage:</b> Ideal for unstructured or semi-structured data, such as free-form clinical notes, JSON documents, and flexible data types.</li>
+                                        <li><b>Analogy:</b> Think of MongoDB as the digital equivalent of a patient diary or a collection of case studies—where every record can have its own unique structure.</li>
+                                        <li><b>Benefit:</b> It offers the flexibility to store diverse data types without needing a fixed schema, enabling rapid iteration and scaling as data formats evolve.</li>
+                                </ul>
+                                <h4>PostgreSQL</h4>
+                                <ul>
+                                        <li><b>Usage:</b> A robust relational database that manages structured, transactional data like application metadata, reference tables, and user records.</li>
+                                        <li><b>Analogy:</b> Consider PostgreSQL as the hospital’s administrative office, where structured, routine information is meticulously managed.</li>
+                                        <li><b>Benefit:</b> Its strong ACID compliance and rich SQL capabilities make it perfect for applications that require reliable, transactional processing and complex queries.</li>
+                                </ul>
+                    
+                                <h2 class="decorative-heading">Why This Matters</h2>
+                                <p>Using a multi-layered approach in Snowflake ensures that we handle data at every stage—raw, processed, and refined—in the most efficient and secure manner. 
+                                    By supplementing this with specialized databases like MongoDB and PostgreSQL, we ensure that each type of data is stored in the environment best suited for its characteristics. 
+                                    This “right tool for the right job” strategy:</p>
+                                <ul>
+                                    <li><b>Enhances Performance:</b> Optimizes data retrieval and processing speeds.</li>
+                                    <li><b>Ensures Scalability:</b> Each layer and database can scale independently as data volume grows.</li>
+                                    <li><b>Improves Efficiency:</b> Streamlines data management and supports diverse use cases, from compliance audits to real-time analytics.</li>
+                                </ul>
+                       
+                                <p>In essence, this architecture not only secures our healthcare data but also transforms it into a highly organized, accessible resource—ready to drive advanced analytics and support informed 
+                                    decision-making across the organization.</p>
+
+                                <h2 class="decorative-heading">Code in Action</h2>
+                                <h4>Transient Storage in Snowflake</h4>
+                                <p>To ensure cost-effectiveness and efficient short-term storage, we designate a staging area as a transient table in Snowflake. Transient tables are perfect for handling newly ingested data since they offer lower 
+                                    storage costs by limiting Time Travel and fail-safe features.</p>
+                                <h6>Creating a Transient Table</h6>
+                                <pre><code>
+                CREATE TRANSIENT TABLE TRANSIENT_CLAIMS (
+                    LOAD_TIMESTAMP TIMESTAMP,
+                    DATA VARIANT
+                );
+                                </code></pre>
+                                
+                                <h6>Inserting Data into the Transient Table</h6>
+                                <p>Once the transient table is created, you can insert data into it. 
+                                    Below is an example Python code snippet using the Snowflake Connector that loads JSON data into our transient table:</p>
+                                <pre><code>
+                import snowflake.connector
+
+                def load_data_into_snowflake(data, table_name):
+                    """
+                    Loads JSON data into a specified Snowflake table.
+                    """
+                    try:
+                        # Establish a connection to Snowflake
+                        conn = snowflake.connector.connect(
+                            user='<YOUR_USER>',
+                            password='<YOUR_PASSWORD>',
+                            account='<YOUR_ACCOUNT>',
+                            warehouse='<YOUR_WAREHOUSE>',
+                            database='<YOUR_DATABASE>',
+                            schema='<YOUR_SCHEMA>'
+                        )
+                        
+                        cursor = conn.cursor()
+                        
+                        # Insert the JSON data into the table
+                        # Using PARSE_JSON to convert the string into a JSON object
+                        insert_sql = f"""
+                            INSERT INTO {table_name} (LOAD_TIMESTAMP, DATA)
+                            VALUES (CURRENT_TIMESTAMP(), PARSE_JSON(%s))
+                        """
+                        cursor.execute(insert_sql, (data,))
+                        
+                        conn.commit()
+                        print("Data loaded successfully into Snowflake table:", table_name)
+                    
+                    except Exception as e:
+                        print("Error loading data into Snowflake:", e)
+                    
+                    finally:
+                        # Always close the cursor and connection
+                        cursor.close()
+                        conn.close()
+                    </code></pre>
+
+                                <h4>Persistent Storage in Snowflake</h4>
+                                <p>Below is an example Python code snippet that demonstrates how to load data into a persistent table in 
+                                    Snowflake—representing our persistent layer. In contrast to transient tables, 
+                                    persistent tables are designed for long-term storage with full Time Travel and fail-safe features enabled.</p>
+                                <h6>Creating a Persistent  Table</h6>
+                                <pre><code>
+                    CREATE TABLE PERSISTENT_CLAIMS (
+                        CLAIM_ID VARCHAR,
+                        BILLED_AMOUNT NUMBER,
+                        STATUS VARCHAR,
+                        LOAD_TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+                    );
+                                    
+                                </code></pre>
+                                
+                                <h4>Raw Vault in Snowflake</h4>
+                                <p>The Raw Vault is designed to store unmodified, original data for auditing and lineage purposes. 
+                                    It typically uses a flexible VARIANT column to accommodate various data structures.</p>
+                                <h6>Create Raw Vault Table</h6>
+                                <pre><code>
+                    CREATE TABLE RAW_VAULT_CLAIMS (
+                        CLAIM_ID VARCHAR,
+                        RAW_DATA VARIANT,
+                        LOAD_TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+                    );
+                                                 
+                                </code></pre>
+
+                                <h4>Business Vault in Snowflake</h4>
+                                <p>The Business Vault contains refined, transformed data that’s ready for business analytics. 
+                                    It applies business rules and logic to convert raw data into actionable insights.</p>
+                                <h6>Create Raw Vault Table</h6>
+                                <pre><code>
+                    CREATE TABLE RAW_VAULT_CLAIMS (
+                        CLAIM_ID VARCHAR,
+                        RAW_DATA VARIANT,
+                        LOAD_TIMESTAMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+                    );
+                                                 
+                                </code></pre>
+
+                                <h6>Create insights using Business vault</h6>
+                                <p>Below is an example that demonstrates how data stored in the Business Vault can be transformed into actionable insights. 
+                                    In this snippet, we query the BUSINESS_VAULT_CLAIMS table to generate metrics—such as the count of claims by final status, 
+                                    average billed amounts, and total billed amounts—which can help healthcare administrators quickly assess performance and identify 
+                                    areas for improvement.</p>
+                                <pre><code>
+            import snowflake.connector
+            import pandas as pd
+
+            def fetch_actionable_insights():
+                """
+                Connects to Snowflake, queries the BUSINESS_VAULT_CLAIMS table,
+                and computes actionable metrics such as claim counts, average billed amounts,
+                and total billed amounts grouped by final status.
+                """
+                try:
+                    # Establish a connection to Snowflake
+                    conn = snowflake.connector.connect(
+                        user='<YOUR_USER>',
+                        password='<YOUR_PASSWORD>',
+                        account='<YOUR_ACCOUNT>',
+                        warehouse='<YOUR_WAREHOUSE>',
+                        database='<YOUR_DATABASE>',
+                        schema='<YOUR_SCHEMA>'
+                    )
+                    cursor = conn.cursor()
+                    
+                    # Query to aggregate data for actionable insights
+                    query = """
+                        SELECT 
+                            FINAL_STATUS,
+                            COUNT(*) AS claim_count,
+                            AVG(ADJUSTED_BILLED_AMOUNT) AS avg_billed,
+                            SUM(ADJUSTED_BILLED_AMOUNT) AS total_billed
+                        FROM BUSINESS_VAULT_CLAIMS
+                        GROUP BY FINAL_STATUS
+                    """
+                    cursor.execute(query)
+                    results = cursor.fetchall()
+                    
+                    # Load results into a Pandas DataFrame for further analysis or visualization
+                    df = pd.DataFrame(results, columns=['FINAL_STATUS', 'claim_count', 'avg_billed', 'total_billed'])
+                    print("Actionable Insights from Business Vault:")
+                    print(df)
+                    
+                except Exception as e:
+                    print("Error fetching actionable insights:", e)
+                finally:
+                    # Close the cursor and connection
+                    cursor.close()
+                    conn.close()
+
+
+            fetch_actionable_insights()
+
+                                                                    
+                                </code></pre>
+
+                                <h4>MongoDB Storage</h4>
+                                <p>Below is an example code snippet that demonstrates how to work with MongoDB in our healthcare data pipeline. 
+                                    This snippet uses Python's PyMongo library to connect to a MongoDB instance, insert a document (which could represent 
+                                    unstructured data such as clinical notes or other semi-structured information), and print the inserted document’s ID.</p>
+                                
+                                <pre><code>
+                from pymongo import MongoClient
+                from datetime import datetime
+                
+                # Connect to MongoDB (adjust the URI as needed)
+                client = MongoClient("mongodb://localhost:27017/")
+                
+                # Select or create the database and collection
+                db = client["healthcare_db"]
+                collection = db["clinical_notes"]
+                
+                # Example document representing unstructured clinical data
+                document = {
+                    "patient_id": "P001",
+                    "note": "Patient admitted with chest pain. ECG shows ST elevation.",
+                    "timestamp": datetime.utcnow(),
+                    "additional_info": {
+                        "doctor": "Dr. Smith",
+                        "department": "Cardiology"
+                    }
+                }
+                
+                # Insert the document into the collection
+                result = collection.insert_one(document)
+                print("Inserted document with ID:", result.inserted_id)
+                                    
+                                </code></pre>
+
+
+                                <h4>Postgre Storage</h4>
+                                <p>Below is an example code snippet using Python and the psycopg2 library to interact with PostgreSQL. 
+                                    This snippet demonstrates how to connect to a PostgreSQL database, insert a record into a table 
+                                    (e.g., for storing structured claims data), and then close the connection.
+                                <pre><code>
+        
+                import psycopg2
+
+                def insert_claim_postgresql(claim_id, billed_amount, status):
+                    try:
+                        # Establish connection to PostgreSQL
+                        connection = psycopg2.connect(
+                            user="your_user",
+                            password="your_password",
+                            host="localhost",
+                            port="5432",
+                            database="healthcare_db"
+                        )
+                        cursor = connection.cursor()
+                
+                        # SQL query to insert data into the claims table
+                        insert_query = """
+                            INSERT INTO claims (claim_id, billed_amount, status)
+                            VALUES (%s, %s, %s)
+                        """
+                        record_to_insert = (claim_id, billed_amount, status)
+                        cursor.execute(insert_query, record_to_insert)
+                        connection.commit()
+                        print("Record inserted successfully into claims table")
+                
+                    except (Exception, psycopg2.Error) as error:
+                        print("Error while inserting into PostgreSQL", error)
+                
+                    finally:
+                        # Close the database connection.
+                        if connection:
+                            cursor.close()
+                            connection.close()
+                            print("PostgreSQL connection is closed")
+                
+                
+                insert_claim_postgresql("12345", 1000.00, "Submitted")
+                                                                        
+                                </code></pre>
+                                
+
+
+
+
+
+                                <div class="navigation">  
+                                    <a href="./data_pipeline_data_streaming.html" class="btn-nav" title="Go to the previous section">Streaming with Kafka</a>
+                                    <a href="./data_pipeline_data_access_analytics.html" class="btn-nav" title="Go to the next section">Data Access and Analytics</a>
+                                </div> 
+                        </div>                        
+                        
+                    </article>
+                </div>
+                           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
