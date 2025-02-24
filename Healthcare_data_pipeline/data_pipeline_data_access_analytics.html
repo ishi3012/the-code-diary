@@ -132,7 +132,91 @@
                                 
                                 <p>In essence, AtScale transforms our robust, multi-layered data architecture into actionable insights, bridging the technical complexities and the everyday needs of business users. It’s the key that turns 
                                     our sophisticated data pipeline into a powerful tool for driving strategic decisions in healthcare.</p>
+                                
+                                <h2 class="decorative-heading">Code in Action</h2>
+                                <h4>Interact with AtScale</h4>
+                                <p>
+                                    Below is a hypothetical Python code snippet that demonstrates how you might interact with AtScale via its REST API to query a semantic layer. 
+                                    Note that AtScale is typically integrated with BI tools through ODBC/JDBC connections, but many organizations also use RESTful APIs to programmatically fetch metrics. 
+                                    Adjust the endpoint, headers, and payload as required by your AtScale deployment.
+                                </p>                                    
 
+                                <pre><code>
+import requests
+
+# Hypothetical AtScale API endpoint for running queries
+atscale_api_url = "https://atscale-instance.example.com/api/query"
+
+# Replace with your actual API token or authentication method
+headers = {
+    "Authorization": "Bearer YOUR_API_TOKEN",
+    "Content-Type": "application/json"
+}
+
+# Define a query that leverages AtScale's semantic layer.
+# For example, fetching total denials by insurance provider.
+payload = {
+    "query": """
+        SELECT insurance_provider, COUNT(*) AS total_denials
+        FROM BUSINESS_VAULT_CLAIMS
+        WHERE status = 'Denied'
+        GROUP BY insurance_provider
+    """
+}
+
+response = requests.post(atscale_api_url, json=payload, headers=headers)
+
+if response.status_code == 200:
+    data = response.json()
+    print("Query Results from AtScale Semantic Layer:")
+    print(data)
+else:
+    print("Error querying AtScale:", response.status_code, response.text)
+
+       
+
+                                </code></pre>
+                                </p>
+
+                                <h4>Integrate with Power BI</h4>
+                                <pre>
+                                    <code>
+                let
+                    // Define the AtScale API endpoint
+                    url = "https://atscale-instance.example.com/api/query",
+                    
+                    // Define the query payload to be sent as JSON. 
+                    // Here, we query total denials by insurance provider.
+                    payload = Json.FromValue([
+                        query = "SELECT insurance_provider, COUNT(*) AS total_denials FROM BUSINESS_VAULT_CLAIMS WHERE status = 'Denied' GROUP BY insurance_provider"
+                    ]),
+                    
+                    // Set up the necessary HTTP headers including authorization
+                    headers = [
+                        #"Authorization" = "Bearer YOUR_API_TOKEN",
+                        #"Content-Type" = "application/json"
+                    ],
+                    
+                    // Call the AtScale REST API via Web.Contents
+                    response = Web.Contents(url, [
+                        Headers = headers,
+                        Content = Text.ToBinary(Json.ToText(payload))
+                    ]),
+                    
+                    // Parse the JSON response into a Power BI friendly format
+                    jsonResponse = Json.Document(response),
+                    
+                    // Assuming the response contains a field "results" with the query data
+                    results = jsonResponse[results],
+                    
+                    // Convert the results list into a table
+                    tableResults = Table.FromList(results, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+                in
+                    tableResults
+
+                                    </code>
+                                </pre>
+                                
                                 <div class="navigation">  
                                     <a href="./data_pipeline_data_storage_processing.html" class="btn-nav" title="Go to the next section">Data Storage and Processing</a>
                                     <a href="./data_pipeline_conclusion.html" class="btn-nav" title="Go to the next section">Conclusion</a>
