@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <style>
+            .indented {
+              text-indent: 2em;
+            }
+            .comparison-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.95rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                border: 1px solid #ccc;
+                padding: 0.75rem 1rem;
+                text-align: left;
+                vertical-align: top;
+            }
+            .comparison-table th {
+                background-color: #282929; /* Deep dark green */
+                color: white;
+                font-weight: 600;
+                text-align: center;
+            }
+            .comparison-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .comparison-table td:first-child {
+                font-weight: 600;
+                color: #282929;
+            }
+          </style>
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Designing NutriBot: A Domain-Aware AI Assistant for Diet & Wellness</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Personalizing Entertainment: The Math & Magic Behind Movie Suggestions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers & Social Determinants of Health for Predicting Emergency Department Readmissions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Unlocking the Syndemics Approach: How Machine Learning Reveals Disease Interactions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                 <!-- Blog Post Content -->
+                    <div class="col-md-9">
+                        <article class="mb-4">
+                            <div class="container" >
+                                <!-- Section 1 -->
+                                <!-- <h1 id="introduction" class="decorative-heading">Lights, Camera, Algorithms: <br/> ~ The Science of Movie Recommendations ~ </h1> -->
+                                
+                                <h2 class="decorative-heading">Section 4: Meal Logging & Nutrient Scoring</h2>
+                                Before NutriBot can give personalized recommendations, it needs to understand what you’re eating. But users don’t talk in JSON:
+                                <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    “Had biryani, raita, and a Coke for lunch.”<br/>
+                                    “Added boiled eggs to breakfast.”<br/>
+                                    “Dinner was salmon, quinoa, and sautéed spinach.”<br/>
+                                </blockquote>
+                                
+                                <p>For the system, this means turning natural language into a structured nutrient log — something queryable, comparable, and analyzable.</p>
+                                
+                                <h5 class="decorative-heading">The Challenge</h5>
+                                <p>This task requires:</p>
+                                <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    <ol>
+                                        <li><b>Entity extraction</b> (meals, portions, time of day)</li>
+                                        <li><b>Food normalization</b> (map “Coke” to “Coca-Cola, 12 oz”)</li>
+                                        <li><b>Nutrient mapping</b> (via USDA FoodData Central or proprietary tables)</li>
+                                        <li><b>Scoring logic</b> (is this high in sodium? low in fiber?)</li>
+                                    </ol>
+                                </blockquote>
+                                <p>Think of it as NER + enrichment → nutrient vector.</p>
+                                
+                                <h3 class="decorative-heading">Step-by-Step Pipeline</h3>
+                                
+                                    <table class="comparison-table">
+                                    <thead>
+                                      <tr>
+                                        <th>Stage</th>
+                                        <th>Tool / Strategy</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Text parsing</td>
+                                        <td>spaCy / OpenAI function call-like parsing</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Food normalization</td>
+                                        <td>USDA FDC API + synonym dictionary</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Nutrient retrieval</td>
+                                        <td>API fetch or local SQLite + pandas</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Nutrient scoring</td>
+                                        <td>Custom rule engine or ML classifier</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            
+                            <h3 class="decorative-heading">Code Snippet: From Meal Text → Nutrient Breakdown</h3>
+                            <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                <pre>
+                                    <code class="language-python">
+import requests
+
+# Step 1: Extract food items (simplified)
+def extract_food_items(text):
+    # In production, use spaCy NER or LLM to extract foods
+    return ["boiled eggs", "toast", "avocado"]
+
+# Step 2: Query USDA FoodData Central for nutrient values
+def query_usda(food_item):
+    API_KEY = "YOUR_USDA_API_KEY"
+    url = f"https://api.nal.usda.gov/fdc/v1/foods/search?query={food_item}&api_key={API_KEY}"
+    res = requests.get(url).json()
+    top_result = res["foods"][0]
+    return {
+        "name": top_result["description"],
+        "calories": top_result.get("foodNutrients", [{}])[0].get("value", 0),
+        "protein": top_result.get("foodNutrients", [{}])[1].get("value", 0),
+        # expand with sodium, fat, etc.
+    }
+
+# Full process
+meal = "Had boiled eggs and toast with avocado"
+foods = extract_food_items(meal)
+nutrient_log = [query_usda(food) for food in foods]
+                                        
+                                        </code>
+                                    </pre>                               
+                                </blockquote>
+
+                                        <h5 class="decorative-heading">Example Output:</h5>
+                                        <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                            <pre>
+                                                <code class="language-python">
+[
+    {"name": "Egg, whole, boiled", "calories": 78, "protein": 6.3, "sodium": 62},
+    {"name": "Toast, white", "calories": 74, "protein": 2.0, "sodium": 135},
+    {"name": "Avocado", "calories": 160, "protein": 2.0, "sodium": 7}
+]
+                                            </code>
+                                        </pre>                               
+                                        </blockquote>
+                                
+                                        <h5 class="decorative-heading">Example Output:</h5>
+                                        <p>Once we log meals as nutrient vectors, we apply a rule-based or learnable scoring engine. For instance:</p>
+                                            <ul>
+                                                <li>⚠️ >2400mg sodium/day → flag “high sodium”</li>
+                                                <li>✅ >25g fiber/day → “good fiber intake”</li>
+                                                <li>🧠 Protein distribution across meals → track muscle-gain optimization</li>
+                                            </ul>
+                                            This feedback helps personalize future meals, e.g.:
+                                            <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                                “Today’s meals were high in sodium. Would you like low-sodium recipes for dinner?”
+                                            </blockquote>
+                                
+                                
+                                <h3 class="decorative-heading">Data Storage and Access Strategy</h3>
+                                <table class="comparison-table">
+                                    <thead>
+                                      <tr>
+                                        <th>Layer</th>
+                                        <th>Approach</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Storage</td>
+                                        <td>Structured DB (PostgreSQL or DynamoDB)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Write access</td>
+                                        <td>From “Enter Meals” tool (see Section 3)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Retrieval</td>
+                                        <td>User-specific meal history for prompts</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Optional optimization</td>
+                                        <td>Feature vector caching in Redis for speed</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                  <h3 class="decorative-heading">Engineering Design Notes</h3>
+                                  <ul>
+                                    <li><b>Latency-aware lookups:</b> Nutrient mapping runs on AWS Lambda for scalability</li>
+                                    <li><b>Stateless ingestion:</b> All parsing can be made ephemeral for serverless execution</li>
+                                    <li><b>Version control:</b> Food mapping dictionary is versioned to ensure consistency across sessions</li>
+                                  </ul>
+
+                                  <h3 class="decorative-heading">Architectural Recap</h3>
+                                  <ul>
+                                    <li>NutriBot turns natural food logs into structured nutrient data using NLP, food APIs, and scoring logic.</li>
+                                    <li>It applies diet-specific thresholds to detect imbalances and guide personalization.</li>
+                                    <li>This structured data forms the foundation for:
+                                        <ul>
+                                            <li>RAG context prompts (next section)</li>
+                                            <li>Feedback loops (Section 6)</li>
+                                            <li>Personalized plan generation (future roadmap)</li>
+                                        </ul>
+                                    </li>
+                                  </ul>
+
+
+
+
+
+                                
+
+                            </div>
+                            <div class="navigation">       
+                                <a href="./NutriBot_Section3_IntentClassification.html" class="btn-nav" title="Go to Section 2">Section 3: Intent Classification</a>
+                                <a href="./NutriBot_Section5_Personalized_feedback.html" class="btn-nav" title="Go to Section 2">Section 5: Personalized Feedback Generation</a>
+
+                            </div> 
+                        </article>
+                    </div>
+                </div>
+            </div>           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <style>
+            .indented {
+              text-indent: 2em;
+            }
+            .comparison-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.95rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                border: 1px solid #ccc;
+                padding: 0.75rem 1rem;
+                text-align: left;
+                vertical-align: top;
+            }
+            .comparison-table th {
+                background-color: #282929; /* Deep dark green */
+                color: white;
+                font-weight: 600;
+                text-align: center;
+            }
+            .comparison-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .comparison-table td:first-child {
+                font-weight: 600;
+                color: #282929;
+            }
+          </style>
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Designing NutriBot: A Domain-Aware AI Assistant for Diet & Wellness</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Personalizing Entertainment: The Math & Magic Behind Movie Suggestions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers & Social Determinants of Health for Predicting Emergency Department Readmissions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Unlocking the Syndemics Approach: How Machine Learning Reveals Disease Interactions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                 <!-- Blog Post Content -->
+                    <div class="col-md-9">
+                        <article class="mb-4">
+                            <div class="container" >
+                                <!-- Section 1 -->
+                                <!-- <h1 id="introduction" class="decorative-heading">Lights, Camera, Algorithms: <br/> ~ The Science of Movie Recommendations ~ </h1> -->
+                                
+                                <h2 class="decorative-heading">Section 3: Intent Classification and Tool Routing</h2>
+                                When a user types:
+                                <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    “Had quinoa and grilled chicken for lunch”<br/>
+                                    or<br/>
+                                    “Is quinoa good for anemia?”<br/>
+                                    or<br/>
+                                    “Tell me why iron is important”<br/>
+                                </blockquote>
+                                … how does NutriBot know whether to:
+                                <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                   <ul>
+                                    <li>Log the meal</li>
+                                    <li>Retrieve advice</li>
+                                    <li>Provide educational content </li>
+                                   </ul>
+                                </blockquote>
+                                <p>This is where Intent Classification becomes essential. And just like Uber routes ride types (Pool, UberX, Comfort) or Anthropic routes tool use in agents, NutriBot must classify queries to route them to the correct toolchain.</p>
+                                
+                                <h3 class="decorative-heading">Tool-Oriented Agent Design</h3>
+                                <p>In Section 2, we saw how RAG powers contextual generation. But upstream of that lies this crucial gatekeeper:</p>
+                                <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    Which tool should handle this query?
+                                </blockquote>
+                                <p>Referring to your architecture (System Design Diagram):</p>
+                                <ul>
+                                    <li>“Enter Meals” → updates structured DB (log-only flow)</li>
+                                    <li>“Meal Advice” → triggers a RAG-backed advice generator</li>
+                                    <li>“Education” → retrieves nutrition facts with general tone</li>
+                                </ul>
+                                <p>These tools are not abstract — each one invokes a distinct chain of logic, using prompts, context, and sometimes retrieval.</p>
+                                
+                                <h3 class="decorative-heading">Our Intent Classification Strategy</h3>
+                                <p>NutriBot uses a hybrid pipeline for routing:</p>
+                                    <table class="comparison-table">
+                                    <thead>
+                                      <tr>
+                                        <th>Layer</th>
+                                        <th>Role</th>
+                                        <th>Notes</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Rule-based logic</td>
+                                        <td>Quick detection via regex, verbs, slot types</td>
+                                        <td>Low-latency, interpretable (good for MVP)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Zero-shot classifier</td>
+                                        <td>Handles open-ended, ambiguous queries</td>
+                                        <td>Based on HuggingFace’s <code>facebook/bart-large-mnli</code></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Fallback chaining</td>
+                                        <td>Meta-prompts asking LLM to self-classify intent</td>
+                                        <td>When above methods disagree or fail</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                  <h5 class="decorative-heading">Example Categories</h5>
+                                  <table class="comparison-table">
+                                    <thead>
+                                        <tr>
+                                          <th>Intent Category</th>
+                                          <th>Example Queries</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>log_meal</td>
+                                          <td>“Add boiled eggs to lunch”, “Had biryani and salad for dinner”</td>
+                                        </tr>
+                                        <tr>
+                                          <td>ask_advice</td>
+                                          <td>“Is this high in protein?”, “What can I eat for low sodium?”</td>
+                                        </tr>
+                                        <tr>
+                                          <td>educational</td>
+                                          <td>“What does fiber do?”, “Explain macros in food”</td>
+                                        </tr>
+                                      </tbody>
+                                  </table>
+                            <h3 class="decorative-heading">Code Snippet: Rule-Based + Zero-Shot Intent Classifier</h3>
+                            <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                <pre>
+                                    <code class="language-python">
+import re
+from transformers import pipeline
+
+# Step 1: Simple rule-based classifier
+def rule_based_intent(query):
+    if re.search(r'\b(had|ate|add|remove|logged)\b', query.lower()):
+        return "log_meal"
+    if re.search(r'\b(should|can|is|low|high|good|bad|advice)\b', query.lower()):
+        return "ask_advice"
+    return None  # fallback to ML
+
+# Step 2: Zero-shot classifier
+classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+
+def classify_intent(query):
+    label = rule_based_intent(query)
+    if label:
+        return label
+
+    # Fallback to ML classifier
+    candidate_labels = ["log_meal", "ask_advice", "educational"]
+    result = classifier(query, candidate_labels)
+    return result["labels"][0]
+                                    </code>
+                                </pre>                               
+                            </blockquote>
+
+                            <h5 class="decorative-heading">Real-Time Routing</h5>
+                                <p>Once intent is classified, NutriBot dynamically selects the right tool to activate (see diagram block: Ms. Potts → Tools → Jarvis).</p>
+                                <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    <pre>
+                                        <code class="language-python">
+intent = classify_intent(user_query)
+
+if intent == "log_meal":
+    return update_meal_log(query)
+elif intent == "ask_advice":
+    return get_contextual_recommendation(query)
+elif intent == "educational":
+    return get_nutrition_fact(query)
+                                        </code>
+                                    </pre>                               
+                                </blockquote>
+
+                                <h3 class="decorative-heading">Engineering Decisions</h3>
+                                <table class="comparison-table">
+                                    <thead>
+                                        <tr>
+                                          <th>Decision Point</th>
+                                          <th>NutriBot Design</th>
+                                          <th>Industry Parallel</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Rule + ML hybrid</td>
+                                          <td>Best of both worlds — fast + flexible</td>
+                                          <td>Uber uses rule-based + ML for ETA routing</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Stateless classification</td>
+                                          <td>Classifier doesn't rely on history/context</td>
+                                          <td>Anthropic tool routers in LLM agents</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Tool invocation chain</td>
+                                          <td>Each intent triggers a specific chain (LangChain-like)</td>
+                                          <td>Similar to LangChain Agents</td>
+                                        </tr>
+                                      </tbody>
+                                </table>
+                                <p>This layered architecture also sets the foundation for future multi-intent handling, where one input could both log a meal and ask for advice — just like multi-intent flows in Uber’s driver app.</p>
+                                
+                                
+                                <h3 class="decorative-heading">Architectural Recap</h3>
+                                <ul>
+                                    <li>NutriBot uses intent classification as a core control flow mechanism.</li>
+                                    <li>Queries are categorized into log_meal, ask_advice, or educational.</li>
+                                    <li>Routing decisions are modular, enabling future plug-in of new tools (e.g., Generate Shopping List or Meal Plan Builder).</li>
+                                    <li>This strategy mirrors how systems at Uber or Anthropic handle query classification, grounding, and tool orchestration.</li>
+
+                                </ul>
+
+                            </div>
+                            <div class="navigation">       
+                                <a href="./NutriBot_Section2_RAG_architecture.html" class="btn-nav" title="Go to Section 2">Section 2: RAG Architecture</a> 
+                                <a href="./NutriBot_Section4_meal_logging.html" class="btn-nav" title="Go to Section 2">Section 4: Meal Logging</a>
+
+                            </div> 
+                        </article>
+                    </div>
+                </div>
+            </div>           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

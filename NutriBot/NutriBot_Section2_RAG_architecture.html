@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <style>
+            .indented {
+              text-indent: 2em;
+            }
+            .comparison-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.95rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                border: 1px solid #ccc;
+                padding: 0.75rem 1rem;
+                text-align: left;
+                vertical-align: top;
+            }
+            .comparison-table th {
+                background-color: #282929; /* Deep dark green */
+                color: white;
+                font-weight: 600;
+                text-align: center;
+            }
+            .comparison-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .comparison-table td:first-child {
+                font-weight: 600;
+                color: #282929;
+            }
+          </style>
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Designing NutriBot: A Domain-Aware AI Assistant for Diet & Wellness</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Personalizing Entertainment: The Math & Magic Behind Movie Suggestions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers & Social Determinants of Health for Predicting Emergency Department Readmissions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Unlocking the Syndemics Approach: How Machine Learning Reveals Disease Interactions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                 <!-- Blog Post Content -->
+                    <div class="col-md-9">
+                        <article class="mb-4">
+                            <div class="container" >
+                                <!-- Section 1 -->
+                                <!-- <h1 id="introduction" class="decorative-heading">Lights, Camera, Algorithms: <br/> ~ The Science of Movie Recommendations ~ </h1> -->
+                                
+                                <h2 class="decorative-heading">Section 2: RAG Architecture — Retrieval-Augmented Nutrition Intelligence</h2>
+                                <p>
+                                    <blockquote style="border-left: 4px solid #014421; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                        How do you turn a vague user query like “What’s a good post-workout snack for muscle gain?” into a precise, medically sound, and personalized recommendation?
+                                        <br/><b>Answer: </b>RAG — Retrieval-Augmented Generation.
+                                    </blockquote>
+
+                                    Used by companies like Anthropic (Constitutional AI), Meta (Galactica), and Uber for knowledge-grounded agents, RAG enhances generative AI by adding retrieval from domain-specific knowledge bases. NutriBot adapts this to nutrition science.
+                                </p>
+                                <h3 class="decorative-heading">What is RAG?</h3>
+                                <p>
+                                    RAG combines two major components:
+                                    <ol>
+                                        <li><b>Retriever:</b> Fetches relevant information from an indexed knowledge base (e.g., nutrition textbooks, medical literature)</li>
+                                        <li><b>Generator:</b> Uses an LLM (via AWS Bedrock in our case) to synthesize answers grounded in that information</li>
+                                    </ol>
+                                    This approach:
+                                    <ul>
+                                        <li>Improves factuality</li>
+                                        <li>Allows updates without fine-tuning</li>
+                                        <li>Keeps cost low (lightweight vector DB, fewer large model calls)</li>
+                                    </ul>
+                                </p>
+                                <h3 class="decorative-heading">NutriBot RAG Flow — Architecture Overview</h3>
+                                <p>
+                                    We'll break this into two major layers:
+                                    <ul>
+                                        <li>A. Retrieval Pipeline (Chunk → Embed → Index → Fetch)</li>
+                                        <li>B. Generation Pipeline (Prompt → Bedrock LLM → Output)</li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    We'll use these diagrams to guide us:
+                                    <ol>
+                                        <li>Embedding Flow:
+                                            <blockquote style="border-left: 2px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                                <img src="../NutriBot/img/Simple_local_RAG.png" alt="Simple local RAG" width="100%" />
+                                            </blockquote>
+                                        </li>
+                                        <li>End-to-End Architecture:
+                                            <blockquote style="border-left: 2px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                                <img src="../NutriBot/img/System_Design_Diagram.png" alt="Simple local RAG" width="100%" />
+                                            </blockquote>
+                                        </li>                                        
+                                    </ol>
+                                </p>
+                                <h4 class="decorative-heading">A. Document Ingestion, Chunking, Embedding, and Indexing</h4>
+                                <p>We preprocess nutrition PDFs into small chunks, convert each into embeddings, and index them using a vector database (e.g., ChromaDB for local prototyping or Pinecone/FAISS for scale).</p>
+                                <p>Code Snippet: Chunking + Embedding Pipeline</p>
+                                <blockquote style="border-left: 2px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    <pre>
+                                    <code class="language-python">
+from langchain.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from sentence_transformers import SentenceTransformer
+import chromadb
+
+# 1. Load and split documents
+loader = PyPDFLoader("Nutrition_Handbook.pdf")
+documents = loader.load()
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+chunks = text_splitter.split_documents(documents)
+
+# 2. Create embeddings
+embedder = SentenceTransformer("all-MiniLM-L6-v2")
+texts = [chunk.page_content for chunk in chunks]
+embeddings = embedder.encode(texts)
+
+# 3. Index using ChromaDB
+db = chromadb.Client()
+collection = db.create_collection(name="nutribot_knowledge")
+
+for i, text in enumerate(texts):
+    collection.add(documents=[text], embeddings=[embeddings[i]], ids=[f"doc_{i}"])
+                                    </code>
+                                    </pre>
+                                        
+                                </blockquote>
+
+                                <h4 class="decorative-heading">B. Query: Semantic Search + Grounded Generation</h4>
+                                    <p>When the user sends a query like “Good post-meal for iron deficiency?”:</p>
+                                        <ol>
+                                            <li>It is embedded using the same model (all-MiniLM-L6-v2)</li>
+                                            <li>Top-k relevant chunks are retrieved</li>
+                                            <li>These chunks are passed as context into the LLM via a structured prompt</li>
+                                        </ol>
+                                    <p>Code Snippet: Search + Prompt Construction</p>
+                                    <blockquote style="border-left: 2px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    <pre>
+                                        <code class="language-python">
+query = "What’s a good snack for iron deficiency?"
+query_embedding = embedder.encode([query])[0]
+
+# Semantic search
+results = collection.query(query_embeddings=[query_embedding], n_results=3)
+retrieved_docs = [doc['document'] for doc in results['documents']]
+
+# Format context
+context = "\n".join(retrieved_docs)
+
+prompt = f"""You are a certified nutritionist.
+Context: {context}
+Question: {query}
+Answer:"""
+                                        </code>
+                                    </pre>
+                                    </blockquote>
+                                <h3 class="decorative-heading">☁️ Powered by AWS Bedrock: Claude / Titan Integration</h4>
+                                    <p>NutriBot uses Amazon Bedrock for LLM inference — meaning you get access to Claude (Anthropic) or Titan (Amazon) without managing models directly.</p>
+                                    <h5 class="decorative-heading">Why Bedrock?</h5>
+                                    <table class="comparison-table">
+                                        <thead>
+                                          <tr>
+                                            <th>Feature</th>
+                                            <th>Benefit</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Private API Gateway</td>
+                                            <td>No sensitive data leaves AWS network</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Choice of Models</td>
+                                            <td>Claude (alignment) or Titan (Amazon native, faster for generation)</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Cost Control</td>
+                                            <td>Pay-per-request, monitored via Billing API</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Scalable Integration</td>
+                                            <td>Works directly with Lambda, API Gateway, and EC2 backends</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                            <h5 class="decorative-heading">Deployment Cost Snapshot </h5>
+                                                <table class="comparison-table">
+                                                    <thead>
+                                                        <tr>
+                                                        <th>Component</th>
+                                                        <th>Monthly Cost (Est.)</th>
+                                                        <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                        <td>EC2 Backend</td>
+                                                        <td>$48.47</td>
+                                                        <td>App + embedding server</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>Bedrock Inference</td>
+                                                        <td>(varies by usage)</td>
+                                                        <td>LLM calls via Titan or Claude</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>Lambda (stateless)</td>
+                                                        <td>$0.04</td>
+                                                        <td>Preprocessing + meal scoring</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>API Gateway</td>
+                                                        <td>$0.04</td>
+                                                        <td>Routes frontend → backend</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>S3 / CloudFront</td>
+                                                        <td>$0.05</td>
+                                                        <td>Doc storage + asset serving</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            <blockquote style="border-left: 2px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                            ⚙️ This architecture is similar in cost-awareness and stateless scaling to Netflix’s recommender infra, where storage, retrieval, and ranking models operate asynchronously.
+                                            </blockquote>
+
+
+                                    <h3 class="decorative-heading">RAG Design Tradeoffs — Interview Notes</h3>
+                                    <table class="comparison-table">
+                                        <thead>
+                                            <tr>
+                                              <th>Decision Point</th>
+                                              <th>NutriBot Approach</th>
+                                              <th>FAANG Parallel</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>Chunk size / overlap</td>
+                                              <td>500 chars / 100 overlap for higher coherence</td>
+                                              <td>Uber AI Search</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Embedding model</td>
+                                              <td>MiniLM-L6-v2 (efficient, open-source)</td>
+                                              <td>Netflix Offline Embeddings</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Retrieval system</td>
+                                              <td>ChromaDB (MVP) → Pinecone (scale)</td>
+                                              <td>Anthropic Constitutional RAG</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Generator</td>
+                                              <td>Bedrock Claude (factual + privacy-compliant)</td>
+                                              <td>Claude at Anthropic</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Infra</td>
+                                              <td>Lambda + Bedrock + EC2 mix</td>
+                                              <td>Netflix Lambda-Rank Architecture</td>
+                                            </tr>
+                                          </tbody> 
+                                    </table>
+
+                                    <h3 class="decorative-heading"> Key Takeaways</h3>
+                                    <ul>
+                                        <li>NutriBot’s RAG system uses a chunk-embed-retrieve pipeline backed by ChromaDB and Bedrock-hosted LLMs.</li>
+                                        <li>Retrieval improves factual accuracy and reduces hallucination in dietary advice.</li>
+                                        <li>The design is modular, stateless, and cost-efficient — directly inspired by how large-scale systems like Netflix and Uber handle retrieval, personalization, and response generation.</li>
+                                    </ul>
+                            </div>
+                            <div class="navigation">       
+                                <a href="./NutriBot_Section1_intro.html" class="btn-nav" title="Go to Section 2">Section 1: Introduction</a> 
+                                <a href="./NutriBot_Section3_IntentClassification.html" class="btn-nav" title="Go to Section 2">Section 3: Intent Classification</a>
+
+                            </div> 
+                        </article>
+                    </div>
+                </div>
+            </div>           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

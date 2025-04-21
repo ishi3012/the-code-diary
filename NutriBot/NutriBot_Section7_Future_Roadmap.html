@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <style>
+            .indented {
+              text-indent: 2em;
+            }
+            .comparison-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.95rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                border: 1px solid #ccc;
+                padding: 0.75rem 1rem;
+                text-align: left;
+                vertical-align: top;
+            }
+            .comparison-table th {
+                background-color: #282929; /* Deep dark green */
+                color: white;
+                font-weight: 600;
+                text-align: center;
+            }
+            .comparison-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .comparison-table td:first-child {
+                font-weight: 600;
+                color: #282929;
+            }
+          </style>
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Designing NutriBot: A Domain-Aware AI Assistant for Diet & Wellness</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Personalizing Entertainment: The Math & Magic Behind Movie Suggestions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers & Social Determinants of Health for Predicting Emergency Department Readmissions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Unlocking the Syndemics Approach: How Machine Learning Reveals Disease Interactions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                 <!-- Blog Post Content -->
+                    <div class="col-md-9">
+                        <article class="mb-4">
+                            <div class="container" >
+                                <!-- Section 1 -->
+                                <!-- <h1 id="introduction" class="decorative-heading">Lights, Camera, Algorithms: <br/> ~ The Science of Movie Recommendations ~ </h1> -->
+                                
+                                <h2 class="decorative-heading">Section 7: Future Roadmap & Scaling Plans</h2>
+                                <p>Great products don’t stop at MVP — they evolve. NutriBot was built to scale beyond demos, with a roadmap that addresses:</p>
+                                    <ul>
+                                        <li><b>Globalization</b> (language, culture, accessibility)</li>
+                                        <li><b>Multimodal intelligence</b> (speech, sensors, wearable data)</li>
+                                        <li><b>Model orchestration</b> (goal-specific prompts, fallback chains)</li>
+                                        <li><b>Robustness</b> (A/B testing, drift detection, observability)</li>
+                                    </ul>
+                                <p>Whether it’s adapting to a diabetic patient in Delhi or integrating with Apple Health for a runner in Chicago — personalization must scale responsibly.</p>
+                                    
+                                    <h3 class="decorative-heading">1. Multilingual & Voice Support</h3>
+                                    <p>NutriBot will support:</p>
+                                    <table class="comparison-table">
+                                        <thead>
+                                            <tr>
+                                              <th>Modality</th>
+                                              <th>Stack Recommendation</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>Voice Logging</td>
+                                              <td>Whisper ASR + Punctuation restoration</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Language Translation</td>
+                                              <td>AWS Translate / MarianMT + prompt templating</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Multilingual Prompting</td>
+                                              <td>Prompt injection supports regional tone / diet</td>
+                                            </tr>
+                                          </tbody>
+                                    </table>
+
+                                        <h5 class="decorative-heading">Example:</h5>
+                                        <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                            “मैंने दो रोटियाँ और दाल खाई।” → “I had two rotis and lentils” → parsed + scored
+                                        </blockquote>
+                                        <p>🎯 Why this matters: Companies like Uber and Netflix localize UI, prompts, and logic to deliver culturally relevant experiences. NutriBot does the same for dietary guidance.</p>
+
+                                    <h3 class="decorative-heading">2. Wearable & Real-Time Sensor Integration</h3>
+                                    <p>To personalize deeper, NutriBot will support <b>biometric signals</b> from:</p>
+                                    <ul>
+                                        <li>Apple Health / Google Fit</li>
+                                        <li>CGMs (continuous glucose monitors)</li>
+                                        <li>Sleep trackers (e.g., Oura, Fitbit)</li>
+                                    </ul>
+                                        <h5 class="decorative-heading"> Example Use Case:</h5>
+                                        <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                            “Based on your glucose spike from yesterday’s lunch and current step count, you may want to avoid simple carbs for dinner.”
+                                        </blockquote>
+                                        <p>These signals can be converted to:</p>
+                                        <ul>
+                                            <li>Prompt variables (e.g., glucose_sensitivity: high)</li>
+                                            <li>Temporal context (“post-exercise window”)</li>
+                                            <li>Recommendation tuning</li>
+                                        </ul>
+                                    
+                                    <h3 class="decorative-heading">3. Modular Agent & Prompt Orchestration</h3>
+                                    <p>As new tools emerge (e.g., Generate Meal Plan, Suggest Grocery List), NutriBot’s agent framework allows for plug-and-play modularity.</p>
+                                    <p>Like LangChain or ReAct-based architectures, future components will:</p>
+                                        <ul>
+                                            <li>Route via tool chooser LLM (e.g., Ms. Potts in your diagram)</li>
+                                            <li>Dynamically assemble RAG + logic + scoring chains</li>
+                                            <li>Support meta-prompts (“What tool should be invoked?”)</li>
+                                        </ul>
+                                            <h5 class="decorative-heading"> Example Prompt chain:</h5>
+                                            <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+<pre><code class="language-python">User query → Intent router → “ask_grocery_list” → Retrieve common ingredients → Score nutritional match → LLM outputs shopping guide
+    </code></pre>
+                                            </blockquote>
+
+                                    <h3 class="decorative-heading">4. Observability, Drift Detection & A/B Testing</h3>
+                                    <p>As NutriBot scales:</p>
+                                        <ul>
+                                            <li>Responses will be logged and monitored for toxicity, hallucination, and irrelevance</li>
+                                            <li>Meal logs will be assessed for behavioral drift (e.g., keto → pescatarian)</li>
+                                            <li>Features like reinforcement-based reranking can be tested via A/B slices</li>
+                                        </ul>
+                                        <p>Infra ideas:</p>
+                                        <table class="comparison-table">
+                                            <thead>
+                                                <tr>
+                                                  <th>Feature</th>
+                                                  <th>Tooling Stack Example</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr>
+                                                  <td>Prompt/response logs</td>
+                                                  <td>AWS CloudWatch + JSON logs</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>A/B experimentation</td>
+                                                  <td>Feature flags + cohort tracking via LaunchDarkly</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Drift detection</td>
+                                                  <td>Scikit Drift, Alibi Detect</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PII safeguarding</td>
+                                                    <td>Prompt-layer filters + prompt injection guards</td>
+                                                  </tr>
+                                              </tbody>
+                                        </table>
+                                        <p>This mirrors Uber’s infra for LLM rollout testing, Netflix’s personalization experiments, and Anthropic’s model alignment evaluations.</p>                                
+                                        
+                                        
+                                        <h3 class="decorative-heading">5. Deployment & Scaling Notes</h3>
+                                        <table class="comparison-table">
+                                            <thead>
+                                                <tr>
+                                                  <th>Domain</th>
+                                                  <th>Scaling Plan</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr>
+                                                  <td>Model Inference</td>
+                                                  <td>Bedrock auto-scaling (Claude → Titan fallback)</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Vector DB</td>
+                                                  <td>Chroma (local) → Pinecone (cloud) migration</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Hosting & API Infra</td>
+                                                  <td>EC2 (MVP) → Lambda + EKS for modular deployment</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cost control</td>
+                                                    <td>Per-user caching, API usage quotas</td>
+                                                  </tr>
+                                              </tbody>
+                                        </table>
+                                        <p>This ensures the system is cloud-native, budget-aware, and enterprise-ready.</p>
+
+                                        <h3 class="decorative-heading">Final System Recap</h3>
+                                        <p>You’ve now seen how NutriBot combines:</p>
+                                        <ul>
+                                            <li>GenAI grounding (RAG + Claude/Titan)</li>
+                                            <li>Structured data (meal logs, nutrient maps)</li>
+                                            <li>User modeling + intent routing</li>
+                                            <li>Prompt-level personalization</li>
+                                            <li>Feedback learning + global scalability</li>
+                                        </ul>
+                                        <p>It’s a full-stack GenAI product — not just a demo — built for the kind of real-world scale, precision, and adaptiveness expected in high-impact teams.</p>
+                                        
+                                        <figure style="text-align: center; margin: 2rem 0;">
+                                            <img src="/assets/img/ThankYou3.jpg" alt="Thank You!" width="300" />
+                                         </figure>
+
+
+                            </div>
+                            <div class="navigation">       
+                                <a href="./NutriBot_Section1_intro.html" class="btn-nav" title="Go to Section 2">Section 1: Introduction</a>
+                                
+                            </div> 
+                        </article>
+                    </div>
+                </div>
+            </div>           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

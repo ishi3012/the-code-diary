@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <!-- <style>
+            .indented {
+              text-indent: 2em;
+            }
+            
+          </style> -->
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Designing NutriBot: A Domain-Aware AI Assistant for Diet & Wellness</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Personalizing Entertainment: The Math & Magic Behind Movie Suggestions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers & Social Determinants of Health for Predicting Emergency Department Readmissions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Unlocking the Syndemics Approach: How Machine Learning Reveals Disease Interactions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                 <!-- Blog Post Content -->
+                    <div class="col-md-9">
+                        <article class="mb-4">
+                            <div class="container" >
+                                <!-- Section 1 -->
+                                <!-- <h1 id="introduction" class="decorative-heading">Lights, Camera, Algorithms: <br/> ~ The Science of Movie Recommendations ~ </h1> -->
+                                
+                                <h2 class="decorative-heading">Section 1: Introduction — Personalizing Nutrition with GenAI + RAG</h2>
+                                <p>In an era where GenAI writes our emails, curates our playlists, and helps us code, the question naturally arises:
+                                    Why hasn’t it revolutionized something as essential as food — personalized to our health, lifestyle, and biology?
+                                    
+                                    That’s the problem space NutriBot sets out to solve. </p>
+                                    <h3 class="decorative-heading">The Problem: Nutrition Advice is Generic, Yet Health is Deeply Personal</h4>
+                                    <p>Today’s diet and wellness tools suffer from a fundamental design flaw — they generalize. Most:<br/>
+                                        <ul>
+                                            <li>Recommend food choices without understanding your goals (weight loss, PCOS, high cholesterol)</li>                                        
+                                            <li>Lack medical grounding or context-awareness.</li>                                        
+                                            <li>Don’t scale the way AI systems do — one nutritionist can’t serve a million users.</li>
+                                        </ul>
+                                    Yet the need for personalization is universal. If Uber dynamically adjusts ETA predictions per rider-driver context, and Netflix reshuffles your homepage based on embeddings of past behavior, why can’t your food guidance system do the same?</p>
+
+                                    <h3 class="decorative-heading">Opportunity: GenAI Meets Contextual Retrieval</h4>
+                                    <p>At its core, NutriBot is a GenAI-powered nutrition assistant that blends:
+                                            <ul>
+                                                <li>Structured data from user meal logs</li>
+                                                <li>Unstructured knowledge from trusted dietary sources</li>
+                                                <li>LLM-based synthesis for personalized, grounded answers</li>
+                                            </ul>
+                                            <p>The secret sauce? Retrieval-Augmented Generation (RAG) — the same approach used by companies like Anthropic and Meta AI to ensure factuality, domain precision, and reduced hallucination risk in LLMs.</p>
+                                            <p>
+                                                <blockquote style="border-left: 4px solid #014421; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                                    NutriBot doesn’t hallucinate facts. It retrieves relevant context from nutrition corpora, then generates advice tailored to your latest meals, conditions, and goals.
+                                                </blockquote>
+                                            </p>
+                                    <h3 class="decorative-heading">Personalization Isn’t Just a Buzzword — It’s the System’s Spine</h4>
+                                    <p>Personalization in NutriBot is not an afterthought — it’s deeply embedded in each stage of the system:</p>
+                                    <table class="comparison-table">
+                                        <thead>
+                                          <tr>
+                                            <th>Layer</th>
+                                            <th>Personalization Approach</th>
+                                            <th>Inspiration / Industry Parallel</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>User Modeling</td>
+                                            <td>Structured logging + food embeddings to track habits, macros, gaps</td>
+                                            <td>Netflix: User embedding vectors for recommendations</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Query Understanding</td>
+                                            <td>Intent classification to detect "log vs ask" flows</td>
+                                            <td>Uber: Multi-intent routing for driver/passenger queries</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Response Generation</td>
+                                            <td>Context-aware prompts conditioned on retrieved dietary literature + user health tags</td>
+                                            <td>Anthropic: Constitutional RAG for safety + precision</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Feedback Loop</td>
+                                            <td>Recommendations evolve based on user corrections and patterns</td>
+                                            <td>Spotify: Feedback-weighted reinforcement of taste vectors</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                      <p>This architecture ensures that NutriBot doesn't offer “one-size-fits-all” diet plans. Instead, it generates responses like:
+                                            <blockquote style="border-left: 4px solid #014421; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                                “Based on your recent sodium intake, this recipe might exceed your recommended daily allowance — would you like a low-sodium alternative using lentils instead of sausage?”
+                                            </blockquote>
+                                            This level of intelligence, grounded in user history and domain evidence, mirrors the personalization stack you’d expect in high-impact AI teams.
+                                      </p>
+
+                                      <h3 class="decorative-heading">Why This Matters — System Thinking Beyond Chatbots</h4>
+                                      <p>NutriBot isn’t a chatbot with a dietary skin. It’s a system architected with production-level principles:
+                                        <ul>
+                                            <li><b>Low-latency responses</b> via stateless AWS Lambda + Bedrock model calls</li>
+                                            <li><b>Contextual reasoning</b> through retrieval layers rather than raw fine-tuning</li>
+                                            <li><b>Cost-aware scaling</b> using dynamic resource provisioning (t4g EC2, pay-as-you-go inference)</li>
+                                        </ul>
+                                        These design choices were inspired by the way Uber Eats personalizes menu layouts, or how Netflix pipelines handle fallback ranking logic — always fast, always relevant, always grounded.
+                                      </p>
+                                      <h3 class="decorative-heading">Summary: What We’re Building</h4>
+                                      <p>NutriBot is a GenAI-native personalization engine for health, combining:
+                                        <ul>
+                                            <li>Retrieval-augmented synthesis (RAG)</li>
+                                            <li>Domain-specific feedback loops</li>
+                                            <li>Structured + unstructured data fusion</li>
+                                            <li>Cloud-native infra that can scale to millions</li>
+                                        </ul>
+                                        It’s not a demo — it’s a design thesis, built to reflect the kind of engineering systems that power consumer AI at scale.
+                                      </p>
+                            </div>
+                            <div class="navigation">        
+                                <a href="./NutriBot_Section2_RAG_architecture.html" class="btn-nav" title="Go to Section 2">Section 2: RAG Architecture</a>
+
+                            </div> 
+                        </article>
+                    </div>
+                </div>
+            </div>           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

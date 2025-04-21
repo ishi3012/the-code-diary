@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shilpa Musale</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <style>
+            .indented {
+              text-indent: 2em;
+            }
+            .comparison-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.95rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                border: 1px solid #ccc;
+                padding: 0.75rem 1rem;
+                text-align: left;
+                vertical-align: top;
+            }
+            .comparison-table th {
+                background-color: #282929; /* Deep dark green */
+                color: white;
+                font-weight: 600;
+                text-align: center;
+            }
+            .comparison-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .comparison-table td:first-child {
+                font-weight: 600;
+                color: #282929;
+            }
+          </style>
+    </head>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="../index.html">Shilpa Musale (Ishi)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>Designing NutriBot: A Domain-Aware AI Assistant for Diet & Wellness</h1>
+                            
+                            <!-- <span class="meta">
+                                Posted by
+                                <a href="#!">Start Bootstrap</a>
+                                on August 24, 2023
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- Left Sidebar Navigation -->
+                <div class="col-md-3">
+                    <nav id="toc" class="sticky-top">
+                        <h3>Other Articles</h3>
+                        <ul class="nav flex-column">
+                            
+                            <li class="nav-item"><a class="nav-link" href="../Recommendation_system/recommendation_intro.html">Personalizing Entertainment: The Math & Magic Behind Movie Suggestions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Sinai/sinai_intro.html">Leveraging Community Health Workers & Social Determinants of Health for Predicting Emergency Department Readmissions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../Syndemics/syndemics_intro.html">Unlocking the Syndemics Approach: How Machine Learning Reveals Disease Interactions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                 <!-- Blog Post Content -->
+                    <div class="col-md-9">
+                        <article class="mb-4">
+                            <div class="container" >
+                                <!-- Section 1 -->
+                                <!-- <h1 id="introduction" class="decorative-heading">Lights, Camera, Algorithms: <br/> ~ The Science of Movie Recommendations ~ </h1> -->
+                                
+                                <h2 class="decorative-heading">Section 5: Personalized Feedback Generation</h2>
+                                <p>Once NutriBot understands what you’ve eaten and retrieves relevant scientific context, the final task is to deliver something more useful than “great choice!” — something actionable, specific, and medically grounded.</p>
+                                <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                    “Today’s sodium intake exceeds 2,400 mg. Based on your hypertension flag, would you prefer a low-sodium dinner recipe recommendation?”
+                                </blockquote>
+                                <p>This is the difference between chatbot-level engagement and a production-grade GenAI assistant — where feedback isn’t just generated, it’s engineered.</p>
+           
+                                    <h4 class="decorative-heading">From Data to Dialogue: What Gets Fused?</h4>
+                                    <p>At inference time, NutriBot fuses:</p>
+                                    <ol>
+                                        <li><b>Structured nutrient intake logs</b> (e.g., 62g protein, 1,900mg sodium today)</li>
+                                        <li><b>User health tags</b> (e.g., PCOS, hypertension, vegetarian)</li>
+                                        <li><b>Retrieved evidence</b> (chunks from medical literature via RAG)</li>
+                                        <li><b>Goal state</b> (muscle gain, low sodium, etc.)</li>
+                                        <li><b>Tone controls</b> (educational, motivational, clinical)</li>
+                                    </ol>
+                                    <p>These are fed into a prompt template that guides the LLM’s generation.</p>
+
+                                    <h4 class="decorative-heading">Prompt Engineering Template</h4>
+                                    <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                        <b>Tool</b>: AWS Bedrock-hosted Claude or Titan<br/>
+                                        <b>Context</b>: Retrieved documents + user metadata<br/>
+                                        <b>Input</b>: Prompt with variable injection (see below)<br/>
+                                    </blockquote>
+                                    <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                        <pre><code class="language-python">prompt_template = """
+You are a certified dietitian assistant. Your task is to provide personalized and grounded dietary feedback.
+
+Context:
+{retrieved_chunks}
+
+User Profile:
+- Daily Goal: {user_goal}
+- Conditions: {health_conditions}
+- Today's Meal Log Summary: {nutrient_summary}
+
+Instruction:
+Respond concisely with clear guidance. Reference specific meals and offer substitutions if needed. Be empathetic and informative.
+User Query: {user_query}
+"""</code></pre></blockquote>
+
+                                    <p>The LLM is invoked via Bedrock:</p>
+                                    <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                        <pre><code class="language-python">from langchain.llms import Bedrock
+
+llm = Bedrock(model_id="anthropic.claude-v2")
+response = llm(prompt_template.format(...))  # inject variables here</code></pre></blockquote>
+
+                                    <h5 class="decorative-heading">Example Input → Output</h5>
+                                    <p>Input:</p>
+                                    <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                        <pre><code class="language-python">{
+    "retrieved_chunks": "...(text from a sodium-reduction guideline)...",
+    "user_goal": "Muscle gain",
+    "health_conditions": ["Hypertension"],
+    "nutrient_summary": "Total Sodium: 2,400mg; Protein: 130g; Fiber: 10g",
+    "user_query": "Had ramen and chips for lunch. What's for dinner?"
+}</code></pre></blockquote>
+                                    <p>Output:</p>
+                                    <blockquote style="border-left: 4px solid #818686; padding: 1rem; background-color: #f8fdf8; font-style: italic; margin: 1.5rem 0;">
+                                        “Your lunch already brings you close to your recommended sodium limit. Since you’re aiming for muscle gain, I’d recommend a grilled chicken and lentil salad with olive oil dressing — high protein, low sodium. Would you like a prep guide?”
+                                    </blockquote>
+                            
+                            
+
+                            <h3 class="decorative-heading">Safety Considerations</h3>
+                            <p>To prevent hallucinated or unsafe recommendations:</p>
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                      <th>Safety Layer</th>
+                                      <th>Strategy</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>Evidence grounding</td>
+                                      <td>All answers tied to retrieved documents (via RAG)</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Instruction-tuned prompts</td>
+                                      <td>Prompts condition the LLM to cite context and not improvise</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Condition guards</td>
+                                      <td>Flags for high-risk conditions (pregnancy, kidney disorders)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Model selection</td>
+                                        <td>Claude preferred for alignment and instruction-following</td>
+                                    </tr>
+                                  </tbody>
+                            </table>
+                            <p>Just like Anthropic’s Constitutional AI or Google Med-PaLM, NutriBot takes a layered defense approach for trustworthiness.</p>
+
+                            <h3 class="decorative-heading">Tone Adaptation (Optional Future)</h3>
+                            <p>Tone adaptation can allow NutriBot to respond differently for:</p>
+                            <ul>
+                                <li>Clinical mode → Used in hospital guidance</li>
+                                <li>Friendly coach → General public feedback</li>
+                                <li>Educational mentor → College athletes, students</li>
+                            </ul>
+                            <p>Each is a lightweight prompt variant — similar to how Uber or Netflix adapt copy based on user segment or product surface.</p>
+
+                            <h3 class="decorative-heading">Engineering Takeaways</h3>
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                      <th>Component</th>
+                                      <th>NutriBot Approach</th>
+                                      <th>Industry Inspiration</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>Prompt design</td>
+                                      <td>Context-aware, instructive, user-specific</td>
+                                      <td>Claude prompts in Anthropic evals</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Response personalization</td>
+                                      <td>Food log fusion + RAG evidence + health tags</td>
+                                      <td>Netflix's "ranking context" fusion</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Model selection</td>
+                                      <td>Claude (safety) / Titan (speed, lower cost)</td>
+                                      <td>Bedrock-based inference infra</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tone & trust</td>
+                                        <td>Template-tuned language + guardrails</td>
+                                        <td>Anthropic Constitutional RAG</td>
+                                    </tr>
+                                  </tbody>
+                            </table>
+                            
+                            <h3 class="decorative-heading">Architectural Recap</h3>
+                            <ul>
+                                <li>NutriBot generates feedback by blending RAG evidence, structured logs, and user metadata.</li>
+                                <li>Prompts are constructed to reflect real dietary reasoning — not generic GenAI fluff.</li>
+                                <li>The system uses LLM orchestration via Bedrock, with retrieval and personalization layers as first-class citizens.</li>
+                            </ul>
+
+                            </div>
+                            <div class="navigation">       
+                                <a href="./NutriBot_Section4_meal_logging.html" class="btn-nav" title="Go to Section 2">Section 4: Meal Logging</a>
+                                <a href="./NutriBot_Section6_Feedback_Loop.html" class="btn-nav" title="Go to Section 2">Section 6: Feedback Loop & Adaptive Learning</a>
+
+                            </div> 
+                        </article>
+                    </div>
+                </div>
+            </div>           
+        
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/shilpamusale/" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            <li class="list-inline-item">
+                                <a href="https://github.com/ishi3012">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="mailto:ishishiv3012@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; The Code Diary 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

@@ -10834,24 +10834,74 @@ header.masthead .post-heading .meta a {
   text-decoration: underline;
   color: #0056b3;
 }
+/* Base decorative style */
 .decorative-heading {
   position: relative;
-  font-size: 2rem;
   font-weight: bold;
   color: #333;
-  text-align: center; /* Center the heading */
+  text-align: center;
   margin-bottom: 1rem;
 }
 
+/* Line style shared across all */
 .decorative-heading::after {
-  content: '';
-  display: block;
-  height: 4px; /* Thickness of the line */
-  background-color: #FF6347; /* Line color */
-  margin: 0.5rem auto 0; /* Space below the text */
-  width: 100%; /* Makes the line as wide as the heading */
-  max-width: 300px; /* Optional: Limits the maximum line width */
+  font-size: 2rem;
+  font-weight: 800;
+  color: #222;
+  text-align: center;
+  display: inline-block; /* Shrinks to text width */
+  
+  padding-bottom: 0.3rem;
 }
+
+/* Specific styles per heading level */
+h2.decorative-heading {
+  font-size: 2rem;
+  border-bottom: 4px solid #FF6347; /* Full underline under text */
+}
+
+h3.decorative-heading {
+  font-size: 1.75rem;
+  border-bottom: 4px solid #014421;
+  
+}
+
+h4.decorative-heading {
+  font-size: 1.5rem;
+  border-bottom: 2px solid #059142;
+}
+
+h5.decorative-heading {
+  font-size: 1.25rem;
+  border-bottom: 1.75px solid #a3e3c4;
+}
+
+h6.decorative-heading {
+  font-size: 1.1rem;
+}
+
+/* Optional: adjust underline thickness for each heading */
+h2.decorative-heading::after {
+  height: 4px;
+}
+
+h3.decorative-heading::after {
+  height: 3px;
+}
+
+h4.decorative-heading::after {
+  height: 2.5px;
+}
+
+h5.decorative-heading::after {
+  height: 2px;
+}
+
+h6.decorative-heading::after {
+  height: 1.5px;
+}
+
+
 
 
 .subtopic {
@@ -10931,4 +10981,33 @@ header.masthead .post-heading .meta a {
   font-weight: 600;
   color: #2c3e50;
   white-space: nowrap;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+.comparison-table th {
+  background-color: #282929; /* Deep dark green */
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+.comparison-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.comparison-table td:first-child {
+  font-weight: 600;
+  color: #282929;
 }
